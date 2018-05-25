@@ -41,7 +41,7 @@
 \usepackage{hyperref}
 %\graphicspath{ {-} }
 \usepackage[toc,page]{appendix}
-
+\newtheorem{theorem}{Teorema}
 %opening
 \title{Hypothesis testing in biostatistics}
 \author{Ruhugu, cocoseva, thebooort}
@@ -76,6 +76,98 @@ Esto si que creo que no entra nada, pasando.
 Dados los vectores de prediccion y experimentacion, ajustarlos de manera que la norma eculidea entre ellos sea la minima. 
 \subsubsection{Ejercicios con aspectos teoricos pero no hay ej. signi de lo que buscamos}
 \subsection{Tema 8}
+\subsubsection{Intro}
+Hipotesis que especifican totalmente la distribucion poblacional : hipotesis simples (constituidas por una unica funcion de distribucion)
+
+Hipótesis  que comprenden varias distribuciones poblacionales se califican de: hipótesis compuestas.
+
+So much tralla con el lema de Neyman-Pearson.
+
+Tema 8 y 9 : paramétricos
+Tema 10 no paramétrico (buscamos contrastar propiedad global de la distribución)
+\subsubsection{Planteamiento general de los contrastes de hipótesis}
+Sea $H_0$ la hipotesis nula y $H_1$ la hipotesis alternativa. El problema del contraste de hipotesis consiste en aceptar o rechazar $H_0$.
+
+Tendremos que dividir para ello el espacio muestral  en dos regiones distintas: region critica (rechazo) region de aceptacion (aceptacion).
+Esto nos lleva a los test no aleatorizados.
+
+Si queremos tener un test aleatorizado: un test a. es cualquier funcion ($\phi$) mediable que vaya del espacio de muestras a $[0,1]$ (funcion critica del test), de manera que esa expresa la probabilidad de rechazar la hipotesis nula cuando se observa la muestra.
+tendremos, pues probabilidad $\phi$ de rechazar $H_0$ y $1-\phi$ de no hacerlo. 
+
+Tipos de errores: tipo I : rechazar $H_0$ cuando es cierta . tipo II: aceptar $H_0$ cuando es falsa.
+
+Por tanto a la hora de plantear o diseñar un test de hipotesis:
+1.fijar una cota para cometer error de tipo 1 , $\alpha$(nivel de significacion)
+
+2. Excluir todos los test que no impongan que la probabilidad de rechazar $H_0$ cuando es cierta no supere el valor de $\alpha$  
+
+3. Entre los test no excluidos por la condicion anterior, tratar de minimizar la probabilidad de error de tipo II.
+
+
+En el marco de los problemas parametricos, el criterio descrito para la seleccion de test puede formularse como:
+
+
+Si la distribucion teorica depende de un parametro $\theta \in \Theta$ acerca del cual hay que contrastar la hipotesis nula $H_0: \theta \in \Theta_0$ frente a la alternativa $H_1: \theta \in \Theta_1$ se denomina funcion de potencia, $\beta(\theta)$, de un test a la probabilidad de rechazar $H_0$ cuando el valor del parametro es $\theta$. Es decir, si se trata de un test no aleatorizado de region critica C entonces: $$\beta(\theta)=P_\theta(C)$$
+mientras que en general, para un test de funcion critica $\varphi$, es $$\beta(\theta)=E_\theta[\varphi(X_1,...,X_n)].$$
+Un test tiene nivel de significacion $\alpha$ si es:  $$\beta(\theta)\leq\alpha \text{ para cada } \theta \in \Theta_0;$$
+y se denomina tamaño del test al número: $$sup_{\theta\in\Theta_0}\beta(\theta).$$
+
+Es deseable que tamaño y nivel de significacion coincidan, verificandose: 
+$$sup_{\theta\in\Theta_0}\beta(\theta)=\alpha$$
+
+Para distribuciones discretas tendremos que recurrir a test aleatorizados en los cuales variar $\varphi$ de forma continua.
+
+Si tenemos que hacer varios test de funciones criticas podemos obtener una ordenacion parcial de los test mediante la función potencia.
+
+Lo que se suele hacer es diseñar un test de manera que obtengamos la funcion potencia dependiente de $\alpha$ y que se decidad con todas las curvas de potencia cual nos viene bien. Sin embargo esto a menudo es dificil. Por tanto lo que se hace es proceder al diseño en funcion de $\alpha$ y una vez obtenida la muestra concreta, observar el nivel de significacion mas pequeño para el que tal muestra obliga a rechazar la hipotesis nula, éste numero es el p-valor o nivel critico (indica el apoyo que la hipotesis nula recibe de las observaciones, cuanto más grande, mas confirmada queda la hipotesis nula.)
+
+
+Un nivel critico superior a 0,1 es apoyo suficiente para mantenerr la hipotesis nula. Cuanto mas cercana a cero se encuentre mas confiadamente podemos rechazar la hipotesis nula ( no perder de vista la probabilidad de error tipo II)
+
+\subsubsection{Contraste de hipótesis simple frente a simple}
+metodo sistematico para determinar los test de maxima potencia en cualquier contraste de hipotesis simple frente a simple:
+Test no aleatorizado:
+Lema de Neyman-Pearson y posterior ejemplo.
+\begin{theorem}
+Dada una muestra aleatoria con distribucion $P_\theta$ sea $f_\theta(x_1,...,x_n)$ su funcion de densidad o de probabilidad (segun que la poblacion sea continua o discreta). Si $C^*\subset X$ es tal que: $$\{(x_1,...,x_n)\in X | f_\theta \ge kf_\theta\}\subset C^*\subset\{(x_1,...,x_n)\in X | f_\theta \geq kf_\theta\}$$
+para alguna constante $k>0$ y es $P_theta_0(C*)=\alpha$, entonces $C^*$ es la region critica de un test de nivel de significacion $\alpha$ para contrastar $H_0:\theta =\theta_0$ frente a $H_1: \theta=\theta_1$, de máxima potencia dentro de la familia de test no aleatorizados.
+\end{theorem}
+
+ tambien se destacan casos discretos. Los vamos a hacer?
+ 
+ \subsubsection{Contrastes de hipótesis unilaterales y bilaterales}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
