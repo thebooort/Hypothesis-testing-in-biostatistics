@@ -133,14 +133,46 @@ Dada una muestra aleatoria con distribucion $P_\theta$ sea $f_\theta(x_1,...,x_n
 para alguna constante $k>0$ y es $P_theta_0(C*)=\alpha$, entonces $C^*$ es la region critica de un test de nivel de significacion $\alpha$ para contrastar $H_0:\theta =\theta_0$ frente a $H_1: \theta=\theta_1$, de máxima potencia dentro de la familia de test no aleatorizados.
 \end{theorem}
 
- tambien se destacan casos discretos. Los vamos a hacer?
+ También se destacan casos discretos. Los vamos a hacer?
  
- \subsubsection{Contrastes de hipótesis unilaterales y bilaterales}
+ \subsubsection{Contrastes de hipótesis unilaterales}
 
 
+Es habitual que la hipotesis alternativa no esté tan bien definida. Lo que habitualmente se tiene en la practica son situaciones de la forma $H_0: \theta \geq \Theta$ frente a $H_1: \theta < \Theta$ o viceversa, que reciben el nombre de test unilaterales. Vemos como podemos obtener test uniformemmente de maxima potencia para contrastar hipotesis unilaterales:
+\begin{theorem}
+	Karlin-Rubin: Si la distribucion $P_\theta$ de la muestra tiene razon de verosimilitud monotona el estadistico $T(x_1,..,x_n)$ entonces:
+	\begin{enumerate}[a]
+		\item Para cada $\alpha\in(0,1)$ existe un test $\varphi$ de tamaño $\alpha$ y uniformemente de maxima potencia para contrastar $H_0: \theta \leq\theta_0$ frente a $H_1: \theta >\theta_0$ que es de la forma: 
+		
+		\item todo test con funcion critica de la forma anterior tiene funcion de potencia $\beta()\theta$ estrictamente creciente, mientras sea $0<\beta(\theta)<1.$
+		\item Para cualquier test $\varphi'$ con $E_{\theta_0}[\varphi']=\alpha$ se cumple $E_{\theta_0}[\varphi]\leq E_{\theta_0}[\varphi']$ para cualquier $\theta \leq \theta_0$.
+	\end{enumerate}
+\end{theorem}
+Le siguen la demostracion y un ejemplo.
+
+\subsubsection{Hipotesis bilaterales}
+Son hipotesis de la forma parametro=$\theta_0$ frente a parametro $\neq\theta_0$.
+AQUI YA SALE LA NORMAL!!! :D
+Introduccion del concepto de test insesgado: La probabillidad de rechazar $H_0$ cuando es falsa es mauor que la de rechazarla cuando es cierta (notese que cualquier  test uniformemente de maxima potencia es insesgado).
 
 
+Introduce el teorema de Lehmann pero creo que nos lo podemos saltar.
 
+\subsection{Tema 9: Metodos de contraste.}
+
+\subsubsection{Test de tazon de verosimilitudes}
+El test se utiliza en situaciones en las que se desea contrastar si un parametro de la distribucion de la muestra pertenece a un subconjunto del espacio de parametros frente al complementario de ese conjunto.
+
+El test se basa em que para una muestra fija, su verosimilitud $f_\theta(x_1,...,x_n)$ es una medida de lo bien que explica el valor $\theta$ del parametro los resultados obtenidos. Por consiguiente $ sup_{\theta_0\in\Theta_0}f_\theta(x_1,...,x_n) $ supone un indice acerca de la mejor explicacion de la muestra que puede obtenerse baho $ H_0 $ y coincide con la cantidad que se puede calcular usando el estimador de maxima verosimilitud $ f_{\hat{\theta}}(x_1,...,x_n) $. $sup_{\theta\in\Theta}f_\theta(x_1,...,x_n) $ proporciona tal indice entre todos los posibles valores del parametro y pasa lo mismo con el estimador de maxima verosimilitud.
+
+Si $ f_{\theta_0} $ es mas bajo que la otra implica que la explicacion de los resultados sobre la base de que $H_0$ es cierta es mucho peor que la explicacion si tal restriccion; por tanto rechazamo $H_0$
+La comparacion entre ambas se hace con el cociente
+
+Se emplearan test no aleatorizados cuando la distribucion del estadistico cociente sea continua. La distribucion que se coge es la $\chi^2$.
+
+El resto son ejemplos, tendríamos que ir eligiendolos.
+
+\subsubsection{Constrastes multiples}
 
 
 
