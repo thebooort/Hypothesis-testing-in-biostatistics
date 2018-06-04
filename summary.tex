@@ -174,6 +174,54 @@ El resto son ejemplos, tendríamos que ir eligiendolos.
 
 \subsubsection{Constrastes multiples}
 
+\subsection{Tema 10: Contrastes globales sobre la distribución poblacional (tests no paramétricos)}
+\subsubsection{Introducción}
+En muchas ocasiones es necesario emitir un juicio estadístico sobre la dist. poblecional en su conjunto: ejemplo
+\begin{itemize}
+\item M.a. de una población, ¿puede admitirse que la dist. poblacional coincide con una dada? Problema de la bondad del ajuste
+\item Teniendo varias m.a.s., puede admitirse que provengan de la misma distribución teórica? Problema de homogeneidad
+\item Se observan dos o más características de los elementos de una población, son independientes? Problema de la independencia.
+\end{itemize}
+
+Se distinguen dos tipos de planteamientos, a saber:
+\begin{enumerate}
+\item Descomponer el recorrido de la distribución teórica en un número finito de subconjuntosy clasificar las observaciones muestrales según el conjunto al que pertenezcan. Después, comparar las frecuencias observadas de cada subconjunto con las que corresponderían a la distribución teórica. Esto da lugar a los tests $\chi^2$, los cuales reducen un problema no paramétrico a uno que sí lo es.
+\item Unas la distribución muestral $F^*_n(x)$ para compararla con la distribución teórica o para compararlas entre sí. Midiendo la distancia entre ambas puede saberse si es o no significativa siempre que se tenga un patrón
+\end{enumerate}
+
+\subsubsection{Contrastes $\chi^2$ de bondad del ajuste}
+\textbf{Hipótesis simple} \\
+Se dispone de una m.a.s. de tamaño n de una población con distribución desconocida $F$. Contrastar si puede aceptarse la hipótesis $H_0 : F = F_0$ donde $F_0$ es una distribución especificada (no parsamétrica). La hipótesis nula $H_1$ se trata entonces de todas las distribuciones distintas a $F_0$.
+
+El recorrido de la distribución poblacional se divide en $k$ conjuntos disjuntos $A_1,...,A_k$. Sea $p^0_i$ la probabilidad de cada $A_i$ bajo $F_0$ y $p_i$ la probabilidad desconocida que la distribución teórica asigna a cada $A_i$:
+
+La variable aleatoria que cuenta el nº de observaciones de la muestra en cada subconjunto tiene distribución multinomial con parámetros $n$ y $\textbf{p}= (p_1,...,p_k)$:
+$$P\{N_1=n_1,...,N_k=n_k\}= \frac{n!}{n_1!\cdots n_k!} p^{n_1}_1\cdots p^{n_k}_k$$
+
+Se ha logrado pues pasar a un test paramétrico de $H_0: $\textbf{$p$} =\textbf{$p^0$} frente a la hipótesis de que el parámetro sea otro.
+
+Por tanto, esto se puede resolver por un test de razón de verosimilitudes, aunque la tradición clásica hace que el estadístico a usar normalmente sea otro (que da los mismos resultados)(esto se puede desarrollar como mucho, no sé cuánto nos vamos a meter)
+
+\textbf{Hipótesis compuesta} \\
+La situación habitual es que la hipótesis a contrastar sea compuesta; más concretamente se especifica una familia de distribuciones con forma funcional dad pero dependiente de algunos parámetros no especificados.
+
+Se podría pensar en hacer los dos tests por separado, i.e., realizar la estimación puntual de los parámetros para contrastar después el ajuste a la distribución poblacional que indiquen los propios datos como la más adecuada, pero para ello se necesitarían dos m.a.s. independientes (explicación de esto p.439).
+
+Alternativa: Contrastar una hipótesis nula de la forma $F \in \{F_\theta| \theta \in \Theta \subset R^q\}$
+Se procede de igual manera que con la hipótesis simple, terminando por comparar paramétricamente una distribución multinomial (de nuevo, esto se puede extender lo que queramos, según cómo vaya lo demás).
+
+\subsubsection{Contraste \chi^2 de homogeneidad}
+¿Tenemos $m$ muestras de tamaños $n_1, n_2,...,n_m$ o bien una única muestra de tamaño $n_1+n_2+\cdots + n_m$?
+
+Al ser un test $\chi ^2$ el procedimiento es el mismo: dividir en subconjuntos, clasificar las observaciones muestrales y convertirlo todo en un test paramétrico sobre los parámetros de la distribución multinomial que sigue la variable aleatoria que cuenta el número de observaciones de la muestra en cada subconjunto. (Again, se alarga tanto como queráis).
+
+\subsubsection{Contraste $\chi^2$ de independencia}
+Se tienen $n$ elementos de una población en los que se observan 2 caracterísiticas, $X$ e $Y$ obteniéndose una m.a.s. bidimensional $(X_1,Y_1),...,(X_n,Y_n)$, ¿son estas características independientes?
+SE PROCEDE DE LA MISMA MANERA POR SER UN TEST CHI CUADRADO
+
+\subsubsection{Contraste de Kolmogorov-Smirnov }
+Estos son los de comparar con la distribución muestral, están en camino
+
 
 
 
