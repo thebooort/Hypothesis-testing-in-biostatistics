@@ -210,7 +210,7 @@ Se podría pensar en hacer los dos tests por separado, i.e., realizar la estimac
 Alternativa: Contrastar una hipótesis nula de la forma $F \in \{F_\theta| \theta \in \Theta \subset R^q\}$
 Se procede de igual manera que con la hipótesis simple, terminando por comparar paramétricamente una distribución multinomial (de nuevo, esto se puede extender lo que queramos, según cómo vaya lo demás).
 
-\subsubsection{Contraste \chi^2 de homogeneidad}
+\subsubsection{Contraste $\chi^2$ de homogeneidad}
 ¿Tenemos $m$ muestras de tamaños $n_1, n_2,...,n_m$ o bien una única muestra de tamaño $n_1+n_2+\cdots + n_m$?
 
 Al ser un test $\chi ^2$ el procedimiento es el mismo: dividir en subconjuntos, clasificar las observaciones muestrales y convertirlo todo en un test paramétrico sobre los parámetros de la distribución multinomial que sigue la variable aleatoria que cuenta el número de observaciones de la muestra en cada subconjunto. (Again, se alarga tanto como queráis).
@@ -220,8 +220,67 @@ Se tienen $n$ elementos de una población en los que se observan 2 caracterísit
 SE PROCEDE DE LA MISMA MANERA POR SER UN TEST CHI CUADRADO
 
 \subsubsection{Contraste de Kolmogorov-Smirnov }
-Estos son los de comparar con la distribución muestral, están en camino
+Desventajas de los tests $\chi^2$ : al discretizar las observaciones muestrales en conjuntos de una cierta partición , en el caso de las distribuciones continuas se ignora el valor exacto de las observaciones, lo que puede dar lugar a errores significativos en caso de que la muestra no sea lo suficientemente grande.
 
+Por tanto, para el caso de bondad del ajuste a una distribución unidimensional de tipo continuo es preferible el uso de un pocedimiento alternativo: en lugar de estudiar la diferencia entre los histogramas de frecuencias se compoara la función de distribución muestral con la función de distribución teórica.
+
+La función de distribución muestral asociada a  una m.a. $x_1, x_2,..,x_n$ es 
+$$F^*_n(x) = \frac{nº de x_i \leq x}{n} = \left\{ \begin{array}{lcc}
+             0 &   si  & x \leq x_{(1)} \\
+             \\ i/n &  si & x_{(i)} < x < x_{(i+1)} \\
+             \\ 1 &  si  & x \geq x_{(n)}
+             \end{array}
+   \right. $$
+donde $x_{(1)},...,x_{(n)}$ son los elementos de la m.a. ordenada.
+
+Si estamos frente a una m.a.s. de una población descrita por la variable aleatoria $X$ con función de distribución $F$, por el \textbf{Teorema de Glivenko-Cantelli} se tiene que hay probabilidad 1 de obtener una sucesión muestral con la cual $F^*_n(x)$ converja a $F(x)$ uniformemente en $x$,i.e.,
+$$\sup |F^*_n(x) - F(x)| \longrightarrow^{c.s.} 0$$
+% esto se tiene que poder escribir mejor
+
+Teniendo en cuenta que $F$ es desconocida y que se pretende contrastar la hipótesis nula $H_0 : F_0 = F$ usaremos como estadístico
+$$\Delta_n = \sup |F^*_n(x) - F(x)|  $$
+y por tanto tendremos como región crítica $\{\Delta_n > k\}$. Aunque esto de poco sirve si no se conoce la distribución de $\Delta_n$ bajo la hipótesis nula para determinar el nivel crítico $k$ a partir del cual sus valores son significativos de la existencia de una desviación de $F$ respecto a $F_0$.
+
+\begin{theorem}
+(Lema) Si $F = F_0$ y $F_0$ es continua, la distribución de $\Delta_n$ no depende de $F_0$
+\end{theorem}
+Con la demostración se da una expresión integral de la distribución buscada (p.456) que no proporciona un resultado explícito pero que permite tabular la distribución de $\Delta_n$ para valores pequeños de $n$.
+
+Para valores grandes de $n$ se puede usar la distribución $K$ de Kolmogorov:
+$$P\{\sqrt{n}\Delta_n \leq z \} \longrightarrow \sum^{\infty}_{K=-\infty} (-1)^{k} e^{-2k^2 z^2}  $$
+
+que fue tabulada por Smirnov.
+
+Puesto que los resultados sobre la distribución de $\Delta_n$ provienen de suponer que la distribución poblacional es continua, es obvio que sólo se podrá utilizar este test en este tipo de distribuciones.
+
+Como pega, comentar que para hipótesis compuestas es necesario tener dos muestras independientes, cosa que no pasaba con los tests $\chi^2$.
+
+
+
+\subsection{Contraste de homogeneidad de Kolmogorov-Smirnov}
+
+Se dispone de dos m.a.s. independientes, $X_1,...,X_n $ e $Y_1,...,Y_m$ y se quiere contrastar la hipótesis nula $H_0:F_X = F_Y$.
+
+Si dichas distribuciones son de tipo continuo, los tests $\chi^2$ tienen los mismos problemas que en la sección anterior y sólo podrían usarse para muestras grandes.
+
+Para muestras pequeñas, se usará la misma técnica de los estadísticos de Kolmogorov-Smirnov. Considerando
+\begin{center}
+$F^*_n (x)=\frac{1}{n}\sum_{i=1}^n I_{\{X_i \leq x\}}$ y $G^*_n (x)=\frac{1}{m}\sum_{i=1}^m I_{\{Y_i \leq x\}}$
+\end{center}
+construimos el estadístico de Kolmogorov-Smirnov correspondiente a ambas muestras $$\Delta_{n,m}=\sup|F^*_n(x)-G^*_m (x)|$$
+Contrastamos la hipótesis $H_0$ con un test de región crítica $\{ \Delta_{n,m} > k\}$.
+
+La distribución del estadístico $\Delta_{n,m}$ se pueden determinar por métodos combinatorios, aunque también están tabulados para $n$ y $m$ pequeños.
+
+Para $n$ y $m$ grandes, se puede usar los resultados de la distribución asintótica de Kolmogorov:
+$$P\{ \sqrt{\frac{nm}{n+m}}\Delta_{n,m}\leq z\}\longrightarrow \sum^{\infty}_{i=-\infty}(-1)^i e^-2i^2z^2$$
+
+
+\subsection{Contrastes de Independencia}
+Para contrastar la independencia entre dos características poblacionales continuas $X$ e $Y$, hay otras opciones como el test $\tau$ de Kendall, el test de rachas o el test de coeficiente de correlación entre rangos de Spearman.
+
+ATENCIÓN : ¿esto queréis desarrolarlo? Lo digo porque es una puta mierda\\
+También me he saltado los tests de posición, echadle un ojo y decidme qué hago, que igual se nos está haciendo esto muy grande o algo no? Yo hago lo que me digáis
 
 
 
