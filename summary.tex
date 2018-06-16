@@ -279,10 +279,44 @@ $$P\{ \sqrt{\frac{nm}{n+m}}\Delta_{n,m}\leq z\}\longrightarrow \sum^{\infty}_{i=
 \subsection{Contrastes de Independencia}
 Para contrastar la independencia entre dos características poblacionales continuas $X$ e $Y$, hay otras opciones como el test $\tau$ de Kendall, el test de rachas o el test de coeficiente de correlación entre rangos de Spearman.
 
-ATENCIÓN : ¿esto queréis desarrolarlo? Lo digo porque es una puta mierda\\
-También me he saltado los tests de posición*, echadle un ojo y decidme qué hago, que igual se nos está haciendo esto muy grande o algo no? Yo hago lo que me digáis
+\subsection{Contrastes de Localización}
+Dada una distribución unidimensional desconocida de una población, en ocasiones sólo interesa conocer su posición sobre la recta ya que se presupone que las condiciones en que se observa el fenómeno sólo pueden trasladarla, dejando invariante su forma.
 
-* porque son una mierda, porque son una mierda de escribir y porque son una mierda, pero ojo, que yo los escribo si os gustan. No sé cómo de exhaustivo queréis hacer esto.
+Si puede admitirse la normalidad de las distribuciones, la manera de proceder sría aplicando tests paramétricos sobre la media de una normal. Sin embargo, cuando no quepa esta posibilidad, lo habitual es el uso de la mediana muestral para contrastar hipótesis sobre las medianas poblacionales.
+
+\subsubsection{Test de los signos}
+Se trata de una prueba no paramétrica para comparar el rango medio de dos muestras relacionadas y determinar si existen diferencias entre ellas. Es una alternativa al test $t$ de Student cuando no se puede suponer la normalidad de las muestras.
+
+Se dispone de una muestra aleatoria simple de tamaño $n$ proveniente de una distribución continua pero desconocida $F$ cuya mediana se denotará por $M$. Se quiere contrastar la hipótesis nula $H_0: M=m_0$frente a una delas alternativas, ya sea $M<m_0$, $M>m_0$ o simplemente $M\neq m_0$.
+
+Por definición, $F(M)=1/2$ por lo que si $H_0$ se cumple, cabe esperar que en torno a la mitad de las observaciones estén por debajo de $m_0$ y la otra mitad esté por encima. Basaremos por tanto el contraste en el estadístico
+
+\begin{center}
+$T$ = número de observaciones muestrales mayores que $m_0$.
+\end{center}
+
+Notar que $T$ sigue una distribución binomial de parámetros $n$ y $1/2$, bajo la hipótesis nula.
+
+La región crítica va a depender de cuál sea$H_1$, por ejemplo, si $H_1:M>m_0$, cuando $H_0$ no sea cierta, la muestra tenderá a presentar más valores superiores a $m_0$ de los esperados, por lo que la región crítica será de la forma:
+$$\{T\geq k \},$$
+
+con $k$ tal que $\frac{1}{2^n}\sum_{j=k}^{n} \binom{n}{j} < \alpha$ para que el contraste tenga nivel de significación $\alpha$. Esto es análogo para el caso $H_1: M< m_0$.
+
+Sin embargo, para algo más general como es el caso de $H_1:M\neq m_0$, el test debe rechazar valores muy altos y muy bajos de $T$, de manera que la región crítica será $$\{T\leq k\}\cup \{T\geq n - k \}$$, con $k$ tal que $\frac{1}{2^n}\sum_{j=1}^{k} \binom{n}{j} + \frac{1}{2^n}\sum_{j=n-k}^{n} \binom{n}{j} \leq \alpha$.
+
+Si el tamaño muestral es lo suficientemente grade, puede emplearse la aproximación normal a la distribución binomial.
+
+\subsubsection{El test de Wilcoxon de los rangos signados}
+En el caso de que la distribución pueda considerarse simétrica, ademásde continua, Wilcoxon propuso un test para la misma hipótesis que el test de los signos, es decir, $H_0:M =m_0$ que saca más provecho de los valores de las observaciones.
+
+Llamemos $D_i=X_i - m_0$ a las diferencias entre las observaciones muestrales y el valor a contrastar para $M$. Podemos ordenar los valores absolutos $|D_i|$ y anotar el rango $r(|D_i|)$ que cada uno ocupa en la ordenación.  Entonces podemos usar como estadístico de contraste la suma de los rangos de las observaciones mayores que $m_0$:
+$$T^+ = \sum_{i =1}^{n} r(|D_i|)I_{\{D_i>0\}}.$$
+
+Si se cumple la hipótesis alternativa $H_1:M>m_0$, parece razonable esperar que haya más diferencias positivas que negativas y que las positivas tengan valores absolutos superiores a las negativas. Es decir, habrá que rechazar la hipótesis alternativa si $T^+$ tiene un valor alto, lo que nos lleva a tomar como región crítica $\{T^+ > k_1\}$. El resultado es simétrico para la hipótesis $H_1:M<m_0$.
+
+Para la hipótesis más general $H_1: M \neq m_0$, la región crítica es $\{ T^+<k\}\cup\{T^+ >k'\}.$
+
+Si llamamos $a_n(t)$ al número de asignaciones de signos a los rangos que hace $T^+=t$ se tiene $$P\{T^+ = t\}=\frac{a_n(t)}{2^n}$$ 
 
 
 
