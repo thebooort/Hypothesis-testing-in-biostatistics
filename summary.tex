@@ -44,65 +44,62 @@
 \newtheorem{theorem}{Teorema}
 %opening
 \title{Hypothesis testing in biostatistics}
-\author{Ruhugu, cocoseva, thebooort}
+
+\author{Ruben Hurtado, Bartolomé Ortiz , Cristina Seva }
 
 \begin{document}
 
 \maketitle
 
 \begin{abstract}
-We do science á.Just for books to appear in our bibliography for now:
-\cite{velez1993principios} \cite{rosner2015fundamentals}
+El presente expone un recorrido por los principales conceptos y fundamentos del contraste de hipótesis. En él proporcinamos un enfoque estadístico de este area centrado en test paramétricos (para una o dos poblaciones normales) y test no paramétricos (recogiendo en particular bondad de ajuste, independencia y localizacion) . 
 \end{abstract}
 
-\section{Summary and utilities del \cite{velez1993principios} }
-\subsection{Tema 7}
-\subsubsection{metodo de los momentos:}
-Igualar los primeros momentos teóricos poblacionales (aquellos no constantes) a los correspondientes momentos muestrales hasta obtener un sistema de ecuaciones resoluble:
-$$E_\theta[X^r]=\alpha(\theta_1,...)$$
-$$a_r=\frac{1}{n}\sum_{i=1}^{n}X_i^r$$
-$$\alpha_r=a_r $$
-Aunque pueden funcionar carecen de justificación seria.
-\subsubsection{metodo maxima verosimilitud}
-Dada una m.a.s. de un apoblacion, la aproximacion de los parametros debe hacerse como aquella que maximiza la probabilidad de obtener esa m.a.s.
-Special guest: ecuaciones de verosimilitud:
-$$\frac{\partial}{\partial\theta_j}log f_\theta(x_1,x_2,...)=0$$
-$$\forall j$$
-\subsubsection{propiedades asintoticas de los estimadores de maxima vero1similitud}
-Quien dice esto dice cascar dos teoremas. No creo que sean main point del trabajo, pero se pueden mirar
-\subsubsection{estimacion bayesiana}
-Esto si que creo que no entra nada, pasando.
-\subsubsection{estimacion minimo cuadratica}
-Dados los vectores de prediccion y experimentacion, ajustarlos de manera que la norma eculidea entre ellos sea la minima. 
-\subsubsection{Ejercicios con aspectos teoricos pero no hay ej. signi de lo que buscamos}
-\subsection{Tema 8}
-\subsubsection{Intro}
-Hipotesis que especifican totalmente la distribucion poblacional : hipotesis simples (constituidas por una unica funcion de distribucion)
 
-Hipótesis  que comprenden varias distribuciones poblacionales se califican de: hipótesis compuestas.
+\section{Base teórica del contraste de hipótesis}
+\subsection{Introdución}
+El contraste de hipótesis es un area de la inferencia estadistica que se preocupa por conocer determinados aspectos de la distribución que tiene nuestro experimento.
 
-So much tralla con el lema de Neyman-Pearson.
+Más concretamente, \textit{"la finalidad de un contraste de hipótesis es decidir si una determinada hipótesis, afirmación, o conjetura, sobre la distribución poblacional estudiada, es confirmada o invalidada estadísticamente a partir de las observaciones contenidas en la muestra"}, \cite{velez1993principios}.
 
-Tema 8 y 9 : paramétricos
-Tema 10 no paramétrico (buscamos contrastar propiedad global de la distribución)
-\subsubsection{Planteamiento general de los contrastes de hipótesis}
-Sea $H_0$ la hipotesis nula y $H_1$ la hipotesis alternativa. El problema del contraste de hipotesis consiste en aceptar o rechazar $H_0$.
+En general, dentro de los test de hipótesis, vamos a llamar \textbf{hipótesis nula o $H_0$} a la hipótesis que se asume sobre nuestra distribucion y la cual se pretende contrastar. Frente a ella, nos encontramos la \textbf{hipótesis alternativa o $H_1$}, que agrupa aquellas distribuciones que no poseen $H_0$ como cualidad.
 
-Tendremos que dividir para ello el espacio muestral  en dos regiones distintas: region critica (rechazo) region de aceptacion (aceptacion).
-Esto nos lleva a los test no aleatorizados.
+A parte, tambien destacamos otra división usual:
+\begin{itemize}
+	\item \textbf{Hipótesis simples}: son aquellas que especifican totalmente la distribución poblacional (constituidas por una unica funcion de distribucion)
+	\item \textbf{Hipotesis compuestas}: Hipótesis  que comprenden varias distribuciones poblacionales 
+\end{itemize}
 
-Si queremos tener un test aleatorizado: un test a. es cualquier funcion ($\phi$) mediable que vaya del espacio de muestras a $[0,1]$ (funcion critica del test), de manera que esa expresa la probabilidad de rechazar la hipotesis nula cuando se observa la muestra.
-tendremos, pues probabilidad $\phi$ de rechazar $H_0$ y $1-\phi$ de no hacerlo. 
+\subsection{Planteamiento general de los contrastes de hipótesis}
+Sea $H_0$ la hipótesis nula y $H_1$ la hipotesis alternativa. El problema del contraste de hipotesis consiste en aceptar o rechazar $H_0$.
+
+\subsubsection{Tipos}
+Habitualmente esta decision podemos seguir un proceso que puede ser o no aleatorio: 
+\begin{itemize}
+	\item si se lleva a cabo dividiendo el espacio muestral $\chi$ en dos regiones distintas:
+	\begin{itemize}
+		\item region critica (rechazo)
+		\item region de aceptacion (aceptacion).
+	\end{itemize} 
+	hablamos de test no aleatorio.
+	\item Si queremos tener un test aleatorizado: escogeremos una funcion ($\phi$) medible que vaya del espacio de muestra a $[0,1]$ (funcion critica del test), de manera que esta funcion expresa la probabilidad de rechazar la hipotesis nula cuando se observa la muestra $(x_1,...,x_n)$.
+	Tendremos pues, probabilidad $\phi$ de rechazar $H_0$ y $1-\phi$ de no hacerlo. 
+\end{itemize}
+
+\subsubsection{Errores}
 
 Tipos de errores: tipo I : rechazar $H_0$ cuando es cierta . tipo II: aceptar $H_0$ cuando es falsa.
 
-Por tanto a la hora de plantear o diseñar un test de hipotesis:
-1.fijar una cota para cometer error de tipo 1 , $\alpha$(nivel de significacion)
+\subsubsection{Criterios de eleccion}
+A la hora de plantear o diseñar un test de hipotesis buscamos la disminución de todos los tipos de error, es habitual que esto sea dificil de alcanzar, puesto que disminuir la probabilidad de cometer un erro de tipo 1 influye positivamente en la probabilidad de cometer error de tipo 2. Ante esta amplitud de posibilidades, existen un criterio tradicional para para diseñar los test:
+\begin{enumerate}
+	\item fijar una cota para cometer error de tipo 1 , $\alpha$(nivel de significacion)
+	\item Excluir todos los test que no impongan que la probabilidad de rechazar $H_0$ cuando es cierta no supere el valor de $\alpha$  
+	\item  Entre los test no excluidos por la condicion anterior, tratar de minimizar la probabilidad de error de tipo II.
+\end{enumerate}
 
-2. Excluir todos los test que no impongan que la probabilidad de rechazar $H_0$ cuando es cierta no supere el valor de $\alpha$  
 
-3. Entre los test no excluidos por la condicion anterior, tratar de minimizar la probabilidad de error de tipo II.
-
+\section{Constraste de hipótesis paramétrico}
 
 En el marco de los problemas parametricos, el criterio descrito para la seleccion de test puede formularse como:
 
@@ -174,8 +171,8 @@ El resto son ejemplos, tendríamos que ir eligiendolos.
 
 \subsubsection{Constrastes multiples}
 
-\subsection{Tema 10: Contrastes globales sobre la distribución poblacional (tests no paramétricos)}
-\subsubsection{Introducción}
+\section{Contrastes globales sobre la distribución poblacional (tests no paramétricos)}
+\subsection{Introducción}
 En muchas ocasiones es necesario emitir un juicio estadístico sobre la dist. poblecional en su conjunto: ejemplo
 \begin{itemize}
 \item M.a. de una población, ¿puede admitirse que la dist. poblacional coincide con una dada? Problema de la bondad del ajuste
@@ -189,7 +186,7 @@ Se distinguen dos tipos de planteamientos, a saber:
 \item Unas la distribución muestral $F^*_n(x)$ para compararla con la distribución teórica o para compararlas entre sí. Midiendo la distancia entre ambas puede saberse si es o no significativa siempre que se tenga un patrón
 \end{enumerate}
 
-\subsubsection{Contrastes $\chi^2$ de bondad del ajuste}
+\subsection{Contrastes $\chi^2$ de bondad del ajuste}
 \textbf{Hipótesis simple} \\
 Se dispone de una m.a.s. de tamaño n de una población con distribución desconocida $F$. Contrastar si puede aceptarse la hipótesis $H_0 : F = F_0$ donde $F_0$ es una distribución especificada (no parsamétrica). La hipótesis nula $H_1$ se trata entonces de todas las distribuciones distintas a $F_0$.
 
@@ -210,16 +207,16 @@ Se podría pensar en hacer los dos tests por separado, i.e., realizar la estimac
 Alternativa: Contrastar una hipótesis nula de la forma $F \in \{F_\theta| \theta \in \Theta \subset R^q\}$
 Se procede de igual manera que con la hipótesis simple, terminando por comparar paramétricamente una distribución multinomial (de nuevo, esto se puede extender lo que queramos, según cómo vaya lo demás).
 
-\subsubsection{Contraste $\chi^2$ de homogeneidad}
+\subsection{Contraste $\chi^2$ de homogeneidad}
 ¿Tenemos $m$ muestras de tamaños $n_1, n_2,...,n_m$ o bien una única muestra de tamaño $n_1+n_2+\cdots + n_m$?
 
 Al ser un test $\chi ^2$ el procedimiento es el mismo: dividir en subconjuntos, clasificar las observaciones muestrales y convertirlo todo en un test paramétrico sobre los parámetros de la distribución multinomial que sigue la variable aleatoria que cuenta el número de observaciones de la muestra en cada subconjunto. (Again, se alarga tanto como queráis).
 
-\subsubsection{Contraste $\chi^2$ de independencia}
+\subsection{Contraste $\chi^2$ de independencia}
 Se tienen $n$ elementos de una población en los que se observan 2 caracterísiticas, $X$ e $Y$ obteniéndose una m.a.s. bidimensional $(X_1,Y_1),...,(X_n,Y_n)$, ¿son estas características independientes?
 SE PROCEDE DE LA MISMA MANERA POR SER UN TEST CHI CUADRADO
 
-\subsubsection{Contraste de Kolmogorov-Smirnov }
+\subsection{Contraste de Kolmogorov-Smirnov }
 Desventajas de los tests $\chi^2$ : al discretizar las observaciones muestrales en conjuntos de una cierta partición , en el caso de las distribuciones continuas se ignora el valor exacto de las observaciones, lo que puede dar lugar a errores significativos en caso de que la muestra no sea lo suficientemente grande.
 
 Por tanto, para el caso de bondad del ajuste a una distribución unidimensional de tipo continuo es preferible el uso de un pocedimiento alternativo: en lugar de estudiar la diferencia entre los histogramas de frecuencias se compoara la función de distribución muestral con la función de distribución teórica.
@@ -322,6 +319,31 @@ Si llamamos $a_n(t)$ al número de asignaciones de signos a los rangos que hace 
 
 
 
+\section{Aplicación en Bioinformática:}
+\large{Identificacion de Genes Responsables de Rasgos Cuantitativo \textit{(QuantitativeTrait Loci, QTLs)}}
+\normalsize{}
+\subsection{Contexto biológico}
+Tras los ejemplos que se han podido observar a lo largo del texto sobre aplicaciones en bioestadística, en especial en el campo de la salud, queremos profundizar en algún aspecto que nos acerque al estudio bioinformático para complementar nuestro trabajo.
+
+En este caso, la temática escogida es el uso que se le pueden dar a los test de hipótesis en la identificacion de genes responsables de rasgos cuantitativos. Aunque todo el estudio de este procedimiento se sale un poco del trabajo, queremos aportar una visión global de este problema biológico y el acercamiento estadístico hacia su solución basándonos en \cite{uned2}.
+
+La problematica se centra en el estudio de los rasgos poligenéticos (cuantitativos), es decir, caracteristicas de los seres vivos que surgen de la interaccion de varios genes, ademas de la posible interaccion con el medio ambiente. 
+Nuestro objetivo final es detectar donde se encuentran estos genes, que producen cambios en rasgos cuantitativos (los llamados QTLs), pero realmente a priori no sabemos cuales son. Por tanto, el procedimiento habitual es marcar tramos de la secuencia de ADN (lo que se conoce como marcador genético) y estudiar si entre dos de ellos existen diferencias cuando el rasgo que queremos comprender es diferente. 
+
+Es intiutivo observar que nuestro resultados no pueden quedarse aquí, puesto que los marcadores genéticos pueden contener una gran cantidad de genes distintos. Surge la necesidad de la primera herramienta estadística que sería una regresion desde el marcador hasta el gen que queremos buscar. Nuestros problemas no acaban ahi, y es que durante la división celular sabemos que se se produce una recombinación genética con lo que la información que nos proporcionan los marcadores puede verse alterada. 
+En resumen, para llevar a cabo este estudio analizaremos diferencias entre marcadores geneticos entre dos poblaciones (retrocruzadas\footnote{El retrocruzamiento es un proceso experimental con el fin de obetener individuos homocigoticos (ambos cromosomas identicos en ambas posiciones)}) que presente dimorfismo en el rasgo que nos interesa, buscando hacer inferencia de las diferencias entre QTLs usando los marcadores.
+
+\subsection{Ejemplos de aplicaciones de test de hipótesis}
+La manera más simple de identificar si existe o no un QTL en dos poblaciones, es considerar cada marcador al que tenemos acceso individualmente, dividir los individuos segun su genotipo (homocigoticos y heterocióticos) y, para cada marcador genetico, hacer un test de la t de Student de comparacion de dos poblaciones (diferenciadas en nuestro caso por el rasgo escogido), puesto que no es descabellado pensar que al tratar con un rasgo cuantitativo en dos poblaciones, éste venga determinado por una distribución normal.
+
+PLanteando el problema en un lenguaje más matemático, estamos ante dos expresiones difernetes de un rasgo. En la poblacion 1 el rasgo sigue una distribución $N(\mu_1,\sigma)$ y en la población 2 el rasgo sigue una distribucion $N(\mu_2,\sigma)$, siendo la $H_0:$No existen diferencias significativas entre ambas medias poblacionales (o, más específicamente hablando, no hay una diferencia significativa en los genes del marcador seleccionado\footnote{En realidad la hipótesis nula que vamos buscando es la no existencia de diferencias entre todos los marcadores, pero en esta breve exposición de aplicaciones, no vamos a profundizar a tanto nivel}).
+Como podemos ver, un test de comparación de medias.
+
+Por otra parte, también es habitual realizar test de hipótesis conocida una región determinada de nuestro marcador. En ese caso se utiliza un estadístico particular LOD (logaritmos de las odd ratio a favor de una relación QTL). Este estadístico como se expone en, tiene una distribución aproximada $\chi^2$
+con lo que podremos utilizar los test para esta distribución.
+Sin embargo, como apuntabamos si queremos centrarnos en todo el genoma, debemos modificar estos tests y con ello los estadisticos en los que se basan. 
+
+Exponemos así que lo dicho en el trabajo es solo una pincelada de las aplicaciones de los test de hipótesis y tambien de la teoría estadístca en la que yacen. Conforme nuevos problemas surgen en biología y en especial en bioinformática con su actual auge, la estadística tambien debe evolucionar.
 
 
 
@@ -352,7 +374,7 @@ Si llamamos $a_n(t)$ al número de asignaciones de signos a los rangos que hace 
 
 
 
-\bibliographystyle{alpha}
+\bibliographystyle{apalike}
 \bibliography{bibliography/bibliografia}
 
 \end{document}
