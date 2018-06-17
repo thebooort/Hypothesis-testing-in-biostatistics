@@ -100,78 +100,124 @@ A la hora de plantear o diseñar un test de hipótesis buscamos la disminución 
 \end{enumerate}
 
 
-\section{Constraste de hipótesis paramétrico}
-
+\section{Test paramétricos: Distribución Normal}
+\subsection{Introducción}
 En el marco de los problemas paramétricos, el criterio descrito para la selección de test puede formularse como:
 
-
-Si la distribución teórica depende de un parámetro $\theta \in \Theta$ acerca del cual hay que contrastar la hipótesis nula $H_0: \theta \in \Theta_0$ frente a la alternativa $H_1: \theta \in \Theta_1$ se denomina funcion de potencia, $\beta(\theta)$, de un test a la probabilidad de rechazar $H_0$ cuando el valor del parametro es $\theta$. Es decir, si se trata de un test no aleatorizado de región crítica C entonces: $$\beta(\theta)=P_\theta(C)$$
+\textit{ Si la distribución teórica depende de un parámetro $\theta \in \Theta$ acerca del cual hay que contrastar la hipótesis nula $H_0: \theta \in \Theta_0$ frente a la alternativa $H_1: \theta \in \Theta_1$ se denomina funcion de potencia, $\beta(\theta)$, de un test a la probabilidad de rechazar $H_0$ cuando el valor del parametro es $\theta$. Es decir, si se trata de un test no aleatorizado de región crítica C entonces: $$\beta(\theta)=P_\theta(C)$$
 mientras que en general, para un test de función crítica $\varphi$, es $$\beta(\theta)=E_\theta[\varphi(X_1,...,X_n)].$$
 Un test tiene nivel de significación $\alpha$ si es:  $$\beta(\theta)\leq\alpha \text{ para cada } \theta \in \Theta_0;$$
 y se denomina tamaño del test al número: $$sup_{\theta\in\Theta_0}\beta(\theta).$$
-
 Es deseable que tamaño y nivel de significación coincidan, verificándose: 
-$$sup_{\theta\in\Theta_0}\beta(\theta)=\alpha$$
+$$sup_{\theta\in\Theta_0}\beta(\theta)=\alpha$$ }
 
-Para distribuciones discretas tendremos que recurrir a test aleatorizados en los cuales variar $\varphi$ de forma continua.
-
-Si tenemos que hacer varios test de funciones críticas podemos obtener una ordenación parcial de los test mediante la función potencia.
-
-Lo que se suele hacer es diseñar un test de manera que obtengamos la función potencia dependiente de $\alpha$ y que se decida con todas las curvas de potencia cuál nos viene bien. Sin embargo, esto a menudo es difícil. Por tanto lo que se hace es proceder al diseño en función de $\alpha$ y una vez obtenida la muestra concreta, observar el nivel de significación más pequeño para el que tal muestra obliga a rechazar la hipótesis nula. Este numero es el p-valor o nivel crítico (indica el apoyo que la hipótesis nula recibe de las observaciones, cuanto más grande, mas confirmada queda la hipótesis nula).
+Una vez tenemos los conceptos básicos en cuanto al constraste de hipótesis, vamos a ofrecer un pequeño recorrido por los test paramétricos que están relacionados con las distribuciones normales.
 
 
-Un nivel critico superior a $0.1$ es apoyo suficiente para mantener la hipótesis nula. Cuanto mas cercana a cero se encuentre, más confiadamente podemos rechazar la hipótesis nula ( no perder de vista la probabilidad de error tipo II).
-
-\subsection{Contraste de hipótesis simple frente a simple}
-Método sistemático para determinar los test de máxima potencia en cualquier contraste de hipótesis simple frente a simple
-Test no aleatorizado:
-Lema de Neyman-Pearson y posterior ejemplo.
-\begin{theorem}
-Dada una muestra aleatoria con distribución $P_\theta$ sea $f_\theta(x_1,...,x_n)$ su función de densidad o de probabilidad (según la población sea continua o discreta). Si $C^*\subset X$ es tal que: $$\{(x_1,...,x_n)\in X | f_\theta \ge kf_\theta\}\subset C^*\subset\{(x_1,...,x_n)\in X | f_\theta \geq kf_\theta\}$$
-para alguna constante $k>0$ y es $P_{\theta_0}(C*)=\alpha$, entonces $C^*$ es la región crítica de un test de nivel de significación $\alpha$ para contrastar $H_0:\theta =\theta_0$ frente a $H_1: \theta=\theta_1$, de máxima potencia dentro de la familia de test no aleatorizados.
-\end{theorem}
-
-
+ \subsection{Contraste T de Student}
+ El test t de Student o Test-T es cualquier prueba en la que el estadístico utilizado tiene una distribución t de Student si la hipótesis nula es cierta.
  
- \subsection{Contrastes de hipótesis unilaterales}
+ Este test se suele utilizar cuando la población estudiada sigue una distribución normal pero el tamaño muestral es demasiado pequeño como para que el estadístico en el que está basada la inferencia esté normalmente distribuido, utilizándose una estimación de la desviación típica en lugar del valor real. 
+ 
+ En la bioestadística podemos tener casos en los cuales nuestro tamaño de muestra sera pequeño. Esto por ejemplo puede darse en medicina cuando tratamos a grupo reducido de pacientes. 
+ \subsubsection{Contraste t de una muestra para la media de una distribución normal con varianza desconocida (Media alternativa <media nula)}
+ En este caso enfrentamos la hipótesis de que nuestros datos tengan una determinada media, frente a la posibilidad  de que la media sea menor: 
+ \begin{itemize}
+ 	\item $H_0:\mu=\mu_0$
+ 	\item $H_1: \mu<mu_0$
+ \end{itemize}
+ Con la particularidad de que la varianza nos es desconocida.
+ 
+ En este caso el estadístico para nuestro test es: 
+ $$t=\frac{\bar{x}-\mu_0}{s/\sqrt{n}}$$
+ Un vez, obtenido, elejimos un nivel de significación $\alpha$ y finalmente:
+ \begin{itemize}
+ 	\item Si $t<t_{n-1,\alpha}$, rechazamos $H_0$
+ 	\item Si $t<t_{n-1,\alpha}$, aceptamos $H_0$
+ \end{itemize}
+ Para lo cual deberemos usar una tabla de la distribución T de Student o un ordenador.
+ Añadimos también que el p-valor podría calcularse vía:
+ $$p_{valor}=P[t_{n-1}\leq t]$$
+ 
+ \subsubsection{Contraste t de una muestra para la media de una distribución normal con varianza desconocida (Media alternativa >media nula)}
+ En este caso enfrentamos la hipótesis que completa el estado anterior, es decir, queremos saber si nuestros datos tienen una determinada media, frente a la posibilidad  de que la media sea mayor: 
+ \begin{itemize}
+ 	\item $H_0:\mu=\mu_0$
+ 	\item $H_1: \mu>mu_0$
+ \end{itemize}
+ Con la particularidad de que la varianza nos es desconocida.
+ 
+ En este caso el estadístico para nuestro test es el mismo: 
+ $$t=\frac{\bar{x}-\mu_0}{s/\sqrt{n}}$$
+ Un vez, obtenido, elegimos un nivel de significación $\alpha$ y finalmente:
+ \begin{itemize}
+ 	\item Si $t>t_{n-1,1-\alpha}$, rechazamos $H_0$
+ 	\item Si $t\leq t_{n-1,1-\alpha}$, aceptamoss $H_0$
+ \end{itemize}
+ Para lo cual deberemos usar una tabla de la distribución T de Student o un ordenador.
+ Añadimos también que el p-valor podría calcularse vía:
+ $$p_{valor}=P[t_{n-1}> t]$$
+ 
+ \subsubsection*{Caso practico en bioestadística}
+ (De \cite{rosner2015fundamentals}) 
+Supongamos que estamos examinando el nivel de colesterol de n=10 niños cuyos padres murieron de una enfermedad cardiaca. Mediante las pruebas encontramos que la media de nuestra muestra es de 200 mg/dL con una disviación típica de 50mg/dL. Suponemos que es un parametro que se distribuye como una normal, pero nuestro grupo es demasiado pequeño, por lo que usamos un test T de Student para comparar si la media de colesterol es significativamente mayor aquí que en la poblacion general, la cual posee 175 mg/dL de media.
+Planteamos por tanto el problema:
+\begin{itemize}
+	\item $H_0:\mu=175$
+	\item $H_1: \mu>mu_0$
+\end{itemize}
+Con nivel de significación $\alpha=0.05$
+$$t=\frac{200-175}{50/\sqrt{10}}=\frac{25}{15.81}=1.58$$
+ahora comprobamos:
+$$t<t_{n-1,1-\alpha}=t_{9,0.95}=1.8333$$
+Por lo que acpetamos la hipótesis nula.
+
+\subsubsection{Contraste t de una muestra para la media de una distribución normal con varianza desconocida. Alternativa bilateral}
+Es habitual no poder encajar los test de hipótesis en test unilaterales sobre la distribución. Por ello, añadimos un test bilateral para discernir en problemas en los que se busca comprobar la igualdad o desigualdad de un parámetro.
+
+En este caso enfrentamos la hipótesis de que nuestros datos tengan una determinada media, frente a la posibilidad  de que la media sea menor: 
+\begin{itemize}
+	\item $H_0:\mu=\mu_0$
+	\item $H_1: \mu\neq mu_0$
+\end{itemize}
+Con la particularidad de que la varianza nos es desconocida.
+
+En este caso el estadístico vuelve a ser: 
+$$t=\frac{\bar{x}-\mu_0}{s/\sqrt{n}}$$
+Un vez, obtenido, elejimos un nivel de significación $\alpha$ y finalmente:
+\begin{itemize}
+	\item Si $|t|>t_{n-1,1-\alpha/2}$, rechazamos $H_0$
+	\item Si $|t|\leq t_{n-1,1-\alpha/2}$, aceptamos $H_0$
+\end{itemize}
+Para lo cual deberemos usar una tabla de la distribución T de Student o un ordenador.
+La obtencion del p-valor para este caso es más complicada:
+$$p_{valor} = \begin{cases} 2P[t_{n-1}\leq t], & \mbox{si } t\leq 0 \\ 2(1-P[t_{n-1}\leq t]), & \mbox{si } t>0 \end{cases}$$
+
+\subsection{Contraste (bilateral) $\chi^2$ para la varianza de una distribución normal}
+
+Terminamos la seccion de test para una sola poblacion aportando un caso en el que nos interesa la varianza de la poblacion que suponemos normal.
+
+En este caso enfrentamos la hipótesis de que nuestros datos tengan una determinada varianza, frente a la posibilidad  de que la varianza no sea la esperada: 
+\begin{itemize}
+	\item $H_0:\sigma^2=\sigma^2_0$
+	\item $H_1: \sigma^2\neq\sigma^2_0$
+\end{itemize}
+
+En este caso el estadístico vuelve a ser: 
+$$X^2=\frac{(n-1)S^2}{\sigma^2}$$
+Un vez, obtenido, elejimos un nivel de significación $\alpha$ y finalmente, tras observar que el estadístico viene aproximado por una distribución $\chi^2$:
+\begin{itemize}
+	\item Si $X^2<\chi^2_{n-1,\alpha/2}$ o,$X^2>\chi^2_{n-1,1-\alpha/2}$, rechazamos $H_0$
+	\item Si $\chi^2_{n-1,\alpha/2}\leq X^2\leq\chi^2_{n-1,1-\alpha/2}$, aceptamos $H_0$
+\end{itemize}
+Para lo cual deberemos usar una tabla de la distribución $\chi^2$ o un ordenador.
+
+ \subsubsection*{Caso practico en bioestadística}
+(De \cite{rosner2015fundamentals}) Trasladar el que empieza en el ejemplo 6.39 y sigue por 7.46 y 7.47
 
 
-Es habitual que la hipótesis alternativa no esté tan bien definida. Lo que normalmente se tiene en la práctica son situaciones de la forma $H_0: \theta \geq \Theta$ frente a $H_1: \theta < \Theta$ o viceversa, que reciben el nombre de test unilaterales. Veamos cómo podemos obtener test uniformemente de máxima potencia para contrastar hipótesis unilaterales:
-\begin{theorem}
-	Karlin-Rubin: Si la distribución $P_\theta$ de la muestra tiene razón de verosimilitud monótona, el estadístico $T(x_1,..,x_n)$ entonces:
-	\begin{enumerate}[a]
-		\item Para cada $\alpha\in(0,1)$ existe un test $\varphi$ de tamaño $\alpha$ y uniformemente de máxima potencia para contrastar $H_0: \theta \leq\theta_0$ frente a $H_1: \theta >\theta_0$ que es de la forma: 
-		\todo{de qué forma es? xD}
-		
-		\item todo test con función critica de la forma anterior tiene función de potencia $\beta(\theta)$ estrictamente creciente, mientras sea $0<\beta(\theta)<1.$
-		\item Para cualquier test $\varphi'$ con $E_{\theta_0}[\varphi']=\alpha$ se cumple $E_{\theta_0}[\varphi]\leq E_{\theta_0}[\varphi']$ para cualquier $\theta \leq \theta_0$.
-	\end{enumerate}
-\end{theorem}
-\todo{Le siguen la demostracion y un ejemplo.se va a poner al final?}
+\subsection{Contrastes para dos poblaciones normales}
 
-\subsection{Hipótesis bilaterales}
-Son hipótesis de la forma parámetro=$\theta_0$ frente a parametro $\neq\theta_0$.
-
-Introducción del concepto de test insesgado: La probabillidad de rechazar $H_0$ cuando es falsa es mayor que la de rechazarla cuando es cierta (nótese que cualquier  test uniformemente de máxima potencia es insesgado).
-
-
-Introduce el teorema de Lehmann pero creo que nos lo podemos saltar.\todo{falta chicha}
-
-\subsection{Métodos de contraste}
-
-\subsubsection{Test de razón de verosimilitudes}
-El test se utiliza en situaciones en las que se desea contrastar si un parámetro de la distribución de la muestra pertenece a un subconjunto del espacio de parámetros frente al complementario de ese conjunto.
-
-El test se basa en que, para una muestra fija, su verosimilitud $f_\theta(x_1,...,x_n)$ es una medida de lo bien que explica el valor $\theta$ del parámetro los resultados obtenidos. Por consiguiente, $ sup_{\theta_0\in\Theta_0}f_\theta(x_1,...,x_n) $ supone un índice acerca de la mejor explicación de la muestra que puede obtenerse bajo $ H_0 $ y coincide con la cantidad que se puede calcular usando el estimador de máxima verosimilitud $ f_{\hat{\theta}}(x_1,...,x_n) $. $sup_{\theta\in\Theta}f_\theta(x_1,...,x_n) $ proporciona tal índice entre todos los posibles valores del parámetro y pasa lo mismo con el estimador de máxima verosimilitud.
-
-Si $ f_{\theta_0} $ es mas bajo que la otra implica que la explicación de los resultados sobre la base de que $H_0$ es cierta es mucho peor que la explicación sin tal restricción; por tanto rechazamos $H_0$
-La comparación entre ambas se hace con el cociente.
-
-Se emplearan test no aleatorizados cuando la distribución del estadístico cociente sea continua. La distribución que se coge es la $\chi^2$.
-\todo{El resto son ejemplos, tendríamos que ir eligiendolos.}
-
-\subsubsection{Constrastes múltiples}
-\todo{holi?}
 \section{Contrastes globales sobre la distribución poblacional (test no paramétricos)}
 \subsection{Introducción}
 En muchas ocasiones es necesario emitir un juicio estadístico sobre la distribución poblacional en su conjunto, por ejemplo:
@@ -340,7 +386,7 @@ La manera más simple de identificar si existe o no un QTL en dos poblaciones, e
 Planteando el problema en un lenguaje más matemático, estamos ante dos expresiones diferentes de un rasgo. En la población 1, el rasgo sigue una distribución $N(\mu_1,\sigma)$ y en la población 2, el rasgo sigue una distribución $N(\mu_2,\sigma)$, siendo la $H_0:$ No existen diferencias significativas entre ambas medias poblacionales (o, más específicamente hablando, no hay una diferencia significativa en los genes del marcador seleccionado\footnote{En realidad la hipótesis nula que vamos buscando es la no existencia de diferencias entre todos los marcadores, pero en esta breve exposición de aplicaciones, no vamos a profundizar a tanto nivel}).
 Como podemos ver, es un test de comparación de medias.
 
-Por otra parte, también es habitual realizar test de contraste de hipótesis conocida una región determinada de nuestro marcador. En ese caso se utiliza un estadístico particular LOD (logaritmos de las odd ratio a favor de una relación QTL). Este estadístico como se expone en,\todo{en where?} tiene una distribución aproximada $\chi^2$
+Por otra parte, también es habitual realizar test de contraste de hipótesis conocida una región determinada de nuestro marcador. En ese caso se utiliza un estadístico particular LOD (logaritmos de las odd ratio a favor de una relación QTL). Este estadístico como se expone en,\cite{uned2} tiene una distribución aproximada $\chi^2$
 con lo que podremos utilizar los test para esta distribución.
 Sin embargo, como apuntábamos, si queremos centrarnos en todo el genoma, debemos modificar estos test y con ello los estadísticos en los que se basan. 
 
