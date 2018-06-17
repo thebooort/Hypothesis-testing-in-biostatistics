@@ -58,7 +58,7 @@ El presente expone un recorrido por los principales conceptos y fundamentos del 
 
 
 \section{Base teórica del contraste de hipótesis}
-\subsection{Introdución}
+\subsection{Introducción}
 El contraste de hipótesis es un área de la inferencia estadística que se ocupa de conocer determinados aspectos de la distribución que tiene nuestro experimento.
 
 Más concretamente, \textit{"la finalidad de un contraste de hipótesis es decidir si una determinada hipótesis, afirmación, o conjetura, sobre la distribución poblacional estudiada, es confirmada o invalidada estadísticamente a partir de las observaciones contenidas en la muestra"}, \cite{velez1993principios}.
@@ -104,14 +104,14 @@ A la hora de plantear o diseñar un test de hipótesis buscamos la disminución 
 \subsection{Introducción}
 En el marco de los problemas paramétricos, el criterio descrito para la selección de test puede formularse como:
 
-\textit{ Si la distribución teórica depende de un parámetro $\theta \in \Theta$ acerca del cual hay que contrastar la hipótesis nula $H_0: \theta \in \Theta_0$ frente a la alternativa $H_1: \theta \in \Theta_1$ se denomina funcion de potencia, $\beta(\theta)$, de un test a la probabilidad de rechazar $H_0$ cuando el valor del parametro es $\theta$. Es decir, si se trata de un test no aleatorizado de región crítica C entonces: $$\beta(\theta)=P_\theta(C)$$
+\textit{ Si la distribución teórica depende de un parámetro $\theta \in \Theta$ acerca del cual hay que contrastar la hipótesis nula $H_0: \theta \in \Theta_0$ frente a la alternativa $H_1: \theta \in \Theta_1$ se denomina función de potencia, $\beta(\theta)$, de un test a la probabilidad de rechazar $H_0$ cuando el valor del parámetro es $\theta$. Es decir, si se trata de un test no aleatorizado de región crítica C entonces: $$\beta(\theta)=P_\theta(C)$$
 mientras que en general, para un test de función crítica $\varphi$, es $$\beta(\theta)=E_\theta[\varphi(X_1,...,X_n)].$$
 Un test tiene nivel de significación $\alpha$ si es:  $$\beta(\theta)\leq\alpha \text{ para cada } \theta \in \Theta_0;$$
 y se denomina tamaño del test al número: $$sup_{\theta\in\Theta_0}\beta(\theta).$$
 Es deseable que tamaño y nivel de significación coincidan, verificándose: 
 $$sup_{\theta\in\Theta_0}\beta(\theta)=\alpha$$ }
 
-Una vez tenemos los conceptos básicos en cuanto al constraste de hipótesis, vamos a ofrecer un pequeño recorrido por los test paramétricos que están relacionados con las distribuciones normales.
+Una vez tenemos los conceptos básicos en cuanto al contraste de hipótesis, vamos a ofrecer un pequeño recorrido por los test paramétricos que están relacionados con las distribuciones normales.
 
 
  \subsection{Contraste T de Student}
@@ -130,7 +130,7 @@ Una vez tenemos los conceptos básicos en cuanto al constraste de hipótesis, va
  
  En este caso el estadístico para nuestro test es: 
  $$t=\frac{\bar{x}-\mu_0}{s/\sqrt{n}}$$
- Un vez, obtenido, elejimos un nivel de significación $\alpha$ y finalmente:
+ Un vez, obtenido, elegimos un nivel de significación $\alpha$ y finalmente:
  \begin{itemize}
  	\item Si $t<t_{n-1,\alpha}$, rechazamos $H_0$
  	\item Si $t<t_{n-1,\alpha}$, aceptamos $H_0$
@@ -152,7 +152,7 @@ Una vez tenemos los conceptos básicos en cuanto al constraste de hipótesis, va
  Un vez, obtenido, elegimos un nivel de significación $\alpha$ y finalmente:
  \begin{itemize}
  	\item Si $t>t_{n-1,1-\alpha}$, rechazamos $H_0$
- 	\item Si $t\leq t_{n-1,1-\alpha}$, aceptamoss $H_0$
+ 	\item Si $t\leq t_{n-1,1-\alpha}$, aceptamos $H_0$
  \end{itemize}
  Para lo cual deberemos usar una tabla de la distribución T de Student o un ordenador.
  Añadimos también que el p-valor podría calcularse vía:
@@ -160,7 +160,7 @@ Una vez tenemos los conceptos básicos en cuanto al constraste de hipótesis, va
  
  \subsubsection*{Caso practico en bioestadística}
  (De \cite{rosner2015fundamentals}) 
-Supongamos que estamos examinando el nivel de colesterol de n=10 niños cuyos padres murieron de una enfermedad cardiaca. Mediante las pruebas encontramos que la media de nuestra muestra es de 200 mg/dL con una disviación típica de 50mg/dL. Suponemos que es un parametro que se distribuye como una normal, pero nuestro grupo es demasiado pequeño, por lo que usamos un test T de Student para comparar si la media de colesterol es significativamente mayor aquí que en la poblacion general, la cual posee 175 mg/dL de media.
+Supongamos que estamos examinando el nivel de colesterol de n=10 niños cuyos padres murieron de una enfermedad cardiaca. Mediante las pruebas encontramos que la media de nuestra muestra es de 200 mg/dL con una desviación típica de 50mg/dL. Suponemos que es un parámetro que se distribuye como una normal, pero nuestro grupo es demasiado pequeño, por lo que usamos un test T de Student para comparar si la media de colesterol es significativamente mayor aquí que en la población general, la cual posee 175 mg/dL de media.
 Planteamos por tanto el problema:
 \begin{itemize}
 	\item $H_0:\mu=175$
@@ -170,7 +170,7 @@ Con nivel de significación $\alpha=0.05$
 $$t=\frac{200-175}{50/\sqrt{10}}=\frac{25}{15.81}=1.58$$
 ahora comprobamos:
 $$t<t_{n-1,1-\alpha}=t_{9,0.95}=1.8333$$
-Por lo que acpetamos la hipótesis nula.
+Por lo que aceptamos la hipótesis nula.
 
 \subsubsection{Contraste t de una muestra para la media de una distribución normal con varianza desconocida. Alternativa bilateral}
 Es habitual no poder encajar los test de hipótesis en test unilaterales sobre la distribución. Por ello, añadimos un test bilateral para discernir en problemas en los que se busca comprobar la igualdad o desigualdad de un parámetro.
@@ -184,18 +184,18 @@ Con la particularidad de que la varianza nos es desconocida.
 
 En este caso el estadístico vuelve a ser: 
 $$t=\frac{\bar{x}-\mu_0}{s/\sqrt{n}}$$
-Un vez, obtenido, elejimos un nivel de significación $\alpha$ y finalmente:
+Un vez, obtenido, elegimos un nivel de significación $\alpha$ y finalmente:
 \begin{itemize}
 	\item Si $|t|>t_{n-1,1-\alpha/2}$, rechazamos $H_0$
 	\item Si $|t|\leq t_{n-1,1-\alpha/2}$, aceptamos $H_0$
 \end{itemize}
 Para lo cual deberemos usar una tabla de la distribución T de Student o un ordenador.
-La obtencion del p-valor para este caso es más complicada:
+La obtención del p-valor para este caso es más complicada:
 $$p_{valor} = \begin{cases} 2P[t_{n-1}\leq t], & \mbox{si } t\leq 0 \\ 2(1-P[t_{n-1}\leq t]), & \mbox{si } t>0 \end{cases}$$
 
 \subsection{Contraste (bilateral) $\chi^2$ para la varianza de una distribución normal}
 
-Terminamos la seccion de test para una sola poblacion aportando un caso en el que nos interesa la varianza de la poblacion que suponemos normal.
+Terminamos la sección de test para una sola población aportando un caso en el que nos interesa la varianza de la población que suponemos normal.
 
 En este caso enfrentamos la hipótesis de que nuestros datos tengan una determinada varianza, frente a la posibilidad  de que la varianza no sea la esperada: 
 \begin{itemize}
@@ -205,7 +205,7 @@ En este caso enfrentamos la hipótesis de que nuestros datos tengan una determin
 
 En este caso el estadístico vuelve a ser: 
 $$X^2=\frac{(n-1)S^2}{\sigma^2}$$
-Un vez, obtenido, elejimos un nivel de significación $\alpha$ y finalmente, tras observar que el estadístico viene aproximado por una distribución $\chi^2$:
+Un vez, obtenido, elegimos un nivel de significación $\alpha$ y finalmente, tras observar que el estadístico viene aproximado por una distribución $\chi^2$:
 \begin{itemize}
 	\item Si $X^2<\chi^2_{n-1,\alpha/2}$ o,$X^2>\chi^2_{n-1,1-\alpha/2}$, rechazamos $H_0$
 	\item Si $\chi^2_{n-1,\alpha/2}\leq X^2\leq\chi^2_{n-1,1-\alpha/2}$, aceptamos $H_0$
@@ -238,7 +238,7 @@ Para el calculo final seguimos los mismos procedimientos que en el apartado para
 
 \subsection{Contraste F para dos poblaciones independientes }
 Acabamos la sección de test paramétricos presentando un test para el contraste de hipótesis relacionadas con la igualdad de la varianza de dos poblaciones normales.
-En este caso el estadístico sigue una distribución F de Snedecor y, el test, viene dado por el siguiente plateamiento:
+En este caso el estadístico sigue una distribución F de Snedecor y, el test, viene dado por el siguiente planeamiento:
 
 
 Dadas dos poblaciones distribuidas mediante una normal que poseen varianzas y medias distintas. Sus tamaños son  $n_1$ y $n_2$. Bajo estas condiciones suponemos que queremos contrastar la hipótesis:
@@ -254,9 +254,9 @@ Un vez obtenido el valor, concluimos mediante:
 	\item Si $F>F_{n_1-1,n_2-1.1-\alpha/2}$ o $F<F_{n_1-1,n_2-1.1-\alpha/2}$, rechazamos $H_0$
 	\item Si $F_{n_1-1,n_2-1.1-\alpha/2}\leq F \leq F_{n_1-1,n_2-1.1-\alpha/2}$, aceptamos $H_0$
 \end{itemize}
-Para el calculo final seguimos los mismos procedimientos que en el apartado para una población, utilizando la tabla de la distribucion F de Snedecor.
+Para el calculo final seguimos los mismos procedimientos que en el apartado para una población, utilizando la tabla de la distribución F de Snedecor.
 \includegraphics{ejemplo_grafica.png}
-\todo{Se pueden incluir graficas así si queréis}
+\todo{Se pueden incluir gráficas así si queréis}
  \subsubsection*{Caso practico en bioestadística}
  (De \cite{rosner2015fundamentals}) Trasladar el que empieza en el ejemplo 8.13-8.17 
 
@@ -334,7 +334,6 @@ Con la demostración se da una expresión integral de la distribución buscada q
 
 Para valores grandes de $n$ se puede usar la distribución $K$ de Kolmogorov:
 $$P\{\sqrt{n}\Delta_n \leq z \} \longrightarrow \sum^{\infty}_{K=-\infty} (-1)^{k} e^{-2k^2 z^2}  $$
-
 que fue tabulada por Smirnov.
 
 Puesto que los resultados sobre la distribución de $\Delta_n$ provienen de suponer que la distribución poblacional es continua, es obvio que sólo se podrá utilizar este test en este tipo de distribuciones.
@@ -385,7 +384,6 @@ Notar que $T$ sigue una distribución binomial de parámetros $n$ y $1/2$, bajo 
 
 La región crítica va a depender de cuál sea$H_1$, por ejemplo, si $H_1:M>m_0$, cuando $H_0$ no sea cierta, la muestra tenderá a presentar más valores superiores a $m_0$ de los esperados, por lo que la región crítica será de la forma:
 $$\{T\geq k \},$$
-
 con $k$ tal que $\frac{1}{2^n}\sum_{j=k}^{n} \binom{n}{j} < \alpha$ para que el contraste tenga nivel de significación $\alpha$. Esto es análogo para el caso $H_1: M< m_0$.
 
 Sin embargo, para algo más general como es el caso de $H_1:M\neq m_0$, el test debe rechazar valores muy altos y muy bajos de $T$, de manera que la región crítica será $$\{T\leq k\}\cup \{T\geq n - k \}$$, con $k$ tal que $\frac{1}{2^n}\sum_{j=1}^{k} \binom{n}{j} + \frac{1}{2^n}\sum_{j=n-k}^{n} \binom{n}{j} \leq \alpha$.
@@ -409,18 +407,18 @@ Si llamamos $a_n(t)$ al número de asignaciones de signos a los rangos que hace 
 
 
 \section{Aplicación en Bioinformática:}
-\large{Identificacion de Genes Responsables de Rasgos Cuantitativo \textit{(QuantitativeTrait Loci, QTLs)}}
+\large{Identificación de Genes Responsables de Rasgos Cuantitativo \textit{(QuantitativeTrait Loci, QTLs)}}
 \normalsize{}
 \subsection{Contexto biológico}
 Tras los ejemplos que se han podido observar a lo largo del texto sobre aplicaciones en bioestadística, en especial en el campo de la salud, queremos profundizar en algún aspecto que nos acerque al estudio bioinformático para complementar nuestro trabajo.
 
-En este caso, la temática escogida es el uso que se le pueden dar a los test de hipótesis en la identificacion de genes responsables de rasgos cuantitativos. Aunque todo el estudio de este procedimiento se sale un poco del trabajo, queremos aportar una visión global de este problema biológico y el acercamiento estadístico hacia su solución basándonos en \cite{uned2}.
+En este caso, la temática escogida es el uso que se le pueden dar a los test de hipótesis en la identificación de genes responsables de rasgos cuantitativos. Aunque todo el estudio de este procedimiento se sale un poco del trabajo, queremos aportar una visión global de este problema biológico y el acercamiento estadístico hacia su solución basándonos en \cite{uned2}.
 
 La problemática se centra en el estudio de los rasgos poligenéticos (cuantitativos), es decir, características de los seres vivos que surgen de la interacción de varios genes, además de la posible interacción con el medio ambiente. 
 Nuestro objetivo final es detectar donde se encuentran estos genes, que producen cambios en rasgos cuantitativos (los llamados QTLs), pero realmente a priori no sabemos cuáles son. Por tanto, el procedimiento habitual es marcar tramos de la secuencia de ADN (lo que se conoce como marcador genético) y estudiar si entre dos de ellos existen diferencias cuando el rasgo que queremos comprender es diferente. 
 
 Es intuitivo observar que nuestro resultados no pueden quedarse aquí, puesto que los marcadores genéticos pueden contener una gran cantidad de genes distintos. Surge la necesidad de la primera herramienta estadística que sería una regresión desde el marcador hasta el gen que queremos buscar. Nuestros problemas no acaban ahí, y es que durante la división celular sabemos que se se produce una recombinación genética con lo que la información que nos proporcionan los marcadores puede verse alterada. 
-En resumen, para llevar a cabo este estudio analizaremos diferencias entre marcadores genéticos entre dos poblaciones (retrocruzadas\footnote{El retrocruzamiento es un proceso experimental que se lleva a cabo con el fin de obetener individuos homocigóticos (ambos cromosomas idénticos en ambas posiciones)}) que presente dimorfismo en el rasgo que nos interesa, buscando hacer inferencia de las diferencias entre QTLs usando los marcadores.
+En resumen, para llevar a cabo este estudio analizaremos diferencias entre marcadores genéticos entre dos poblaciones (retrocruzadas\footnote{El retrocruzamiento es un proceso experimental que se lleva a cabo con el fin de obtener individuos homocigóticos (ambos cromosomas idénticos en ambas posiciones)}) que presente dimorfismo en el rasgo que nos interesa, buscando hacer inferencia de las diferencias entre QTLs usando los marcadores.
 
 \subsection{Ejemplos de aplicaciones de test de hipótesis}
 La manera más simple de identificar si existe o no un QTL en dos poblaciones, es considerar cada marcador al que tenemos acceso individualmente, dividir los individuos según su genotipo (homocigóticos y heterocigóticos) y, para cada marcador genético, hacer un test de la $t$ de Student de comparación de dos poblaciones (diferenciadas en nuestro caso por el rasgo escogido), puesto que no es descabellado pensar que al tratar con un rasgo cuantitativo en dos poblaciones, éste venga determinado por una distribución normal.
