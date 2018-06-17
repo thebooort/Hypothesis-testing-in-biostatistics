@@ -12,6 +12,7 @@
 \usepackage{courier}
 \usepackage{listings}
 \usepackage{color}
+\usepackage{todonotes}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
@@ -52,176 +53,176 @@
 \maketitle
 
 \begin{abstract}
-El presente expone un recorrido por los principales conceptos y fundamentos del contraste de hipótesis. En él proporcinamos un enfoque estadístico de este area centrado en test paramétricos (para una o dos poblaciones normales) y test no paramétricos (recogiendo en particular bondad de ajuste, independencia y localizacion) . 
+El presente expone un recorrido por los principales conceptos y fundamentos del contraste de hipótesis. En él proporcionamos un enfoque estadístico de este área centrado en test paramétricos (para una o dos poblaciones normales) y test no paramétricos (recogiendo en particular bondad de ajuste, independencia y localizacion) . 
 \end{abstract}
 
 
 \section{Base teórica del contraste de hipótesis}
 \subsection{Introdución}
-El contraste de hipótesis es un area de la inferencia estadistica que se preocupa por conocer determinados aspectos de la distribución que tiene nuestro experimento.
+El contraste de hipótesis es un área de la inferencia estadística que se ocupa de conocer determinados aspectos de la distribución que tiene nuestro experimento.
 
 Más concretamente, \textit{"la finalidad de un contraste de hipótesis es decidir si una determinada hipótesis, afirmación, o conjetura, sobre la distribución poblacional estudiada, es confirmada o invalidada estadísticamente a partir de las observaciones contenidas en la muestra"}, \cite{velez1993principios}.
 
-En general, dentro de los test de hipótesis, vamos a llamar \textbf{hipótesis nula o $H_0$} a la hipótesis que se asume sobre nuestra distribucion y la cual se pretende contrastar. Frente a ella, nos encontramos la \textbf{hipótesis alternativa o $H_1$}, que agrupa aquellas distribuciones que no poseen $H_0$ como cualidad.
+En general, dentro de los test de hipótesis, vamos a llamar \textbf{hipótesis nula o $H_0$} a la hipótesis que se asume sobre nuestra distribución y la cual se pretende contrastar. Frente a ella, nos encontramos la \textbf{hipótesis alternativa o $H_1$}, que agrupa aquellas distribuciones que no poseen $H_0$ como cualidad.
 
-A parte, tambien destacamos otra división usual:
+A parte, también destacamos otra división usual:
 \begin{itemize}
-	\item \textbf{Hipótesis simples}: son aquellas que especifican totalmente la distribución poblacional (constituidas por una unica funcion de distribucion)
-	\item \textbf{Hipotesis compuestas}: Hipótesis  que comprenden varias distribuciones poblacionales 
+	\item \textbf{Hipótesis simples}: son aquéllas que especifican totalmente la distribución poblacional (constituidas por una única función de distribución)
+	\item \textbf{Hipótesis compuestas}: Hipótesis  que comprenden varias distribuciones poblacionales 
 \end{itemize}
 
 \subsection{Planteamiento general de los contrastes de hipótesis}
-Sea $H_0$ la hipótesis nula y $H_1$ la hipotesis alternativa. El problema del contraste de hipotesis consiste en aceptar o rechazar $H_0$.
+Sea $H_0$ la hipótesis nula y $H_1$ la hipótesis alternativa. El problema del contraste de hipótesis consiste en aceptar o rechazar $H_0$.
 
 \subsubsection{Tipos}
-Habitualmente esta decision podemos seguir un proceso que puede ser o no aleatorio: 
+Habitualmente, para tomar esta decisión podemos seguir un proceso que puede ser o no aleatorio: 
 \begin{itemize}
-	\item si se lleva a cabo dividiendo el espacio muestral $\chi$ en dos regiones distintas:
+	\item si se lleva a cabo dividiendo el espacio muestral $\Omega$ en dos regiones distintas:
 	\begin{itemize}
-		\item region critica (rechazo)
-		\item region de aceptacion (aceptacion).
+		\item región crítica (rechazo)
+		\item región de aceptación 
 	\end{itemize} 
 	hablamos de test no aleatorio.
-	\item Si queremos tener un test aleatorizado: escogeremos una funcion ($\phi$) medible que vaya del espacio de muestra a $[0,1]$ (funcion critica del test), de manera que esta funcion expresa la probabilidad de rechazar la hipotesis nula cuando se observa la muestra $(x_1,...,x_n)$.
+	\item Si queremos tener un test aleatorizado: escogeremos una función $\phi$ medible que vaya del espacio de muestra a $[0,1]$ (función crítica del test), de manera que esta función exprese la probabilidad de rechazar la hipótesis nula cuando se observa la muestra $(x_1,...,x_n)$.
 	Tendremos pues, probabilidad $\phi$ de rechazar $H_0$ y $1-\phi$ de no hacerlo. 
 \end{itemize}
 
 \subsubsection{Errores}
 
-Tipos de errores: tipo I : rechazar $H_0$ cuando es cierta . tipo II: aceptar $H_0$ cuando es falsa.
+Tipos de errores: tipo I : rechazar $H_0$ cuando es cierta ; tipo II: aceptar $H_0$ cuando es falsa.
 
-\subsubsection{Criterios de eleccion}
-A la hora de plantear o diseñar un test de hipotesis buscamos la disminución de todos los tipos de error, es habitual que esto sea dificil de alcanzar, puesto que disminuir la probabilidad de cometer un erro de tipo 1 influye positivamente en la probabilidad de cometer error de tipo 2. Ante esta amplitud de posibilidades, existen un criterio tradicional para para diseñar los test:
+\subsubsection{Criterios de elección}
+A la hora de plantear o diseñar un test de hipótesis buscamos la disminución de todos los tipos de error; es habitual que esto sea difícil de alcanzar, puesto que disminuir la probabilidad de cometer un erro de tipo I influye positivamente en la probabilidad de cometer error de tipo II. Ante esta amplitud de posibilidades, existe un criterio tradicional para para diseñar los test:
 \begin{enumerate}
-	\item fijar una cota para cometer error de tipo 1 , $\alpha$(nivel de significacion)
-	\item Excluir todos los test que no impongan que la probabilidad de rechazar $H_0$ cuando es cierta no supere el valor de $\alpha$  
-	\item  Entre los test no excluidos por la condicion anterior, tratar de minimizar la probabilidad de error de tipo II.
+	\item Fijar una cota para cometer error de tipo 1 , $\alpha$, llamada nivel de significación.
+	\item Excluir todos los test que no impongan que la probabilidad de rechazar $H_0$ cuando es cierta no supere el valor de $\alpha$ . 
+	\item  Entre los test no excluidos por la condición anterior, tratar de minimizar la probabilidad de error de tipo II.
 \end{enumerate}
 
 
 \section{Constraste de hipótesis paramétrico}
 
-En el marco de los problemas parametricos, el criterio descrito para la seleccion de test puede formularse como:
+En el marco de los problemas paramétricos, el criterio descrito para la selección de test puede formularse como:
 
 
-Si la distribucion teorica depende de un parametro $\theta \in \Theta$ acerca del cual hay que contrastar la hipotesis nula $H_0: \theta \in \Theta_0$ frente a la alternativa $H_1: \theta \in \Theta_1$ se denomina funcion de potencia, $\beta(\theta)$, de un test a la probabilidad de rechazar $H_0$ cuando el valor del parametro es $\theta$. Es decir, si se trata de un test no aleatorizado de region critica C entonces: $$\beta(\theta)=P_\theta(C)$$
-mientras que en general, para un test de funcion critica $\varphi$, es $$\beta(\theta)=E_\theta[\varphi(X_1,...,X_n)].$$
-Un test tiene nivel de significacion $\alpha$ si es:  $$\beta(\theta)\leq\alpha \text{ para cada } \theta \in \Theta_0;$$
+Si la distribución teórica depende de un parámetro $\theta \in \Theta$ acerca del cual hay que contrastar la hipótesis nula $H_0: \theta \in \Theta_0$ frente a la alternativa $H_1: \theta \in \Theta_1$ se denomina funcion de potencia, $\beta(\theta)$, de un test a la probabilidad de rechazar $H_0$ cuando el valor del parametro es $\theta$. Es decir, si se trata de un test no aleatorizado de región crítica C entonces: $$\beta(\theta)=P_\theta(C)$$
+mientras que en general, para un test de función crítica $\varphi$, es $$\beta(\theta)=E_\theta[\varphi(X_1,...,X_n)].$$
+Un test tiene nivel de significación $\alpha$ si es:  $$\beta(\theta)\leq\alpha \text{ para cada } \theta \in \Theta_0;$$
 y se denomina tamaño del test al número: $$sup_{\theta\in\Theta_0}\beta(\theta).$$
 
-Es deseable que tamaño y nivel de significacion coincidan, verificandose: 
+Es deseable que tamaño y nivel de significación coincidan, verificándose: 
 $$sup_{\theta\in\Theta_0}\beta(\theta)=\alpha$$
 
 Para distribuciones discretas tendremos que recurrir a test aleatorizados en los cuales variar $\varphi$ de forma continua.
 
-Si tenemos que hacer varios test de funciones criticas podemos obtener una ordenacion parcial de los test mediante la función potencia.
+Si tenemos que hacer varios test de funciones críticas podemos obtener una ordenación parcial de los test mediante la función potencia.
 
-Lo que se suele hacer es diseñar un test de manera que obtengamos la funcion potencia dependiente de $\alpha$ y que se decidad con todas las curvas de potencia cual nos viene bien. Sin embargo esto a menudo es dificil. Por tanto lo que se hace es proceder al diseño en funcion de $\alpha$ y una vez obtenida la muestra concreta, observar el nivel de significacion mas pequeño para el que tal muestra obliga a rechazar la hipotesis nula, éste numero es el p-valor o nivel critico (indica el apoyo que la hipotesis nula recibe de las observaciones, cuanto más grande, mas confirmada queda la hipotesis nula.)
+Lo que se suele hacer es diseñar un test de manera que obtengamos la función potencia dependiente de $\alpha$ y que se decida con todas las curvas de potencia cuál nos viene bien. Sin embargo, esto a menudo es difícil. Por tanto lo que se hace es proceder al diseño en función de $\alpha$ y una vez obtenida la muestra concreta, observar el nivel de significación más pequeño para el que tal muestra obliga a rechazar la hipótesis nula. Este numero es el p-valor o nivel crítico (indica el apoyo que la hipótesis nula recibe de las observaciones, cuanto más grande, mas confirmada queda la hipótesis nula).
 
 
-Un nivel critico superior a 0,1 es apoyo suficiente para mantenerr la hipotesis nula. Cuanto mas cercana a cero se encuentre mas confiadamente podemos rechazar la hipotesis nula ( no perder de vista la probabilidad de error tipo II)
+Un nivel critico superior a $0.1$ es apoyo suficiente para mantener la hipótesis nula. Cuanto mas cercana a cero se encuentre, más confiadamente podemos rechazar la hipótesis nula ( no perder de vista la probabilidad de error tipo II).
 
-\subsubsection{Contraste de hipótesis simple frente a simple}
-metodo sistematico para determinar los test de maxima potencia en cualquier contraste de hipotesis simple frente a simple:
+\subsection{Contraste de hipótesis simple frente a simple}
+Método sistemático para determinar los test de máxima potencia en cualquier contraste de hipótesis simple frente a simple
 Test no aleatorizado:
 Lema de Neyman-Pearson y posterior ejemplo.
 \begin{theorem}
-Dada una muestra aleatoria con distribucion $P_\theta$ sea $f_\theta(x_1,...,x_n)$ su funcion de densidad o de probabilidad (segun que la poblacion sea continua o discreta). Si $C^*\subset X$ es tal que: $$\{(x_1,...,x_n)\in X | f_\theta \ge kf_\theta\}\subset C^*\subset\{(x_1,...,x_n)\in X | f_\theta \geq kf_\theta\}$$
-para alguna constante $k>0$ y es $P_theta_0(C*)=\alpha$, entonces $C^*$ es la region critica de un test de nivel de significacion $\alpha$ para contrastar $H_0:\theta =\theta_0$ frente a $H_1: \theta=\theta_1$, de máxima potencia dentro de la familia de test no aleatorizados.
+Dada una muestra aleatoria con distribución $P_\theta$ sea $f_\theta(x_1,...,x_n)$ su función de densidad o de probabilidad (según la población sea continua o discreta). Si $C^*\subset X$ es tal que: $$\{(x_1,...,x_n)\in X | f_\theta \ge kf_\theta\}\subset C^*\subset\{(x_1,...,x_n)\in X | f_\theta \geq kf_\theta\}$$
+para alguna constante $k>0$ y es $P_{\theta_0}(C*)=\alpha$, entonces $C^*$ es la región crítica de un test de nivel de significación $\alpha$ para contrastar $H_0:\theta =\theta_0$ frente a $H_1: \theta=\theta_1$, de máxima potencia dentro de la familia de test no aleatorizados.
 \end{theorem}
 
- También se destacan casos discretos. Los vamos a hacer?
+
  
- \subsubsection{Contrastes de hipótesis unilaterales}
+ \subsection{Contrastes de hipótesis unilaterales}
 
 
-Es habitual que la hipotesis alternativa no esté tan bien definida. Lo que habitualmente se tiene en la practica son situaciones de la forma $H_0: \theta \geq \Theta$ frente a $H_1: \theta < \Theta$ o viceversa, que reciben el nombre de test unilaterales. Vemos como podemos obtener test uniformemmente de maxima potencia para contrastar hipotesis unilaterales:
+Es habitual que la hipótesis alternativa no esté tan bien definida. Lo que normalmente se tiene en la práctica son situaciones de la forma $H_0: \theta \geq \Theta$ frente a $H_1: \theta < \Theta$ o viceversa, que reciben el nombre de test unilaterales. Veamos cómo podemos obtener test uniformemente de máxima potencia para contrastar hipótesis unilaterales:
 \begin{theorem}
-	Karlin-Rubin: Si la distribucion $P_\theta$ de la muestra tiene razon de verosimilitud monotona el estadistico $T(x_1,..,x_n)$ entonces:
+	Karlin-Rubin: Si la distribución $P_\theta$ de la muestra tiene razón de verosimilitud monótona, el estadístico $T(x_1,..,x_n)$ entonces:
 	\begin{enumerate}[a]
-		\item Para cada $\alpha\in(0,1)$ existe un test $\varphi$ de tamaño $\alpha$ y uniformemente de maxima potencia para contrastar $H_0: \theta \leq\theta_0$ frente a $H_1: \theta >\theta_0$ que es de la forma: 
+		\item Para cada $\alpha\in(0,1)$ existe un test $\varphi$ de tamaño $\alpha$ y uniformemente de máxima potencia para contrastar $H_0: \theta \leq\theta_0$ frente a $H_1: \theta >\theta_0$ que es de la forma: 
+		\todo{de qué forma es? xD}
 		
-		\item todo test con funcion critica de la forma anterior tiene funcion de potencia $\beta()\theta$ estrictamente creciente, mientras sea $0<\beta(\theta)<1.$
+		\item todo test con función critica de la forma anterior tiene función de potencia $\beta(\theta)$ estrictamente creciente, mientras sea $0<\beta(\theta)<1.$
 		\item Para cualquier test $\varphi'$ con $E_{\theta_0}[\varphi']=\alpha$ se cumple $E_{\theta_0}[\varphi]\leq E_{\theta_0}[\varphi']$ para cualquier $\theta \leq \theta_0$.
 	\end{enumerate}
 \end{theorem}
-Le siguen la demostracion y un ejemplo.
+\todo{Le siguen la demostracion y un ejemplo.se va a poner al final?}
 
-\subsubsection{Hipotesis bilaterales}
-Son hipotesis de la forma parametro=$\theta_0$ frente a parametro $\neq\theta_0$.
-AQUI YA SALE LA NORMAL!!! :D
-Introduccion del concepto de test insesgado: La probabillidad de rechazar $H_0$ cuando es falsa es mauor que la de rechazarla cuando es cierta (notese que cualquier  test uniformemente de maxima potencia es insesgado).
+\subsection{Hipótesis bilaterales}
+Son hipótesis de la forma parámetro=$\theta_0$ frente a parametro $\neq\theta_0$.
+
+Introducción del concepto de test insesgado: La probabillidad de rechazar $H_0$ cuando es falsa es mayor que la de rechazarla cuando es cierta (nótese que cualquier  test uniformemente de máxima potencia es insesgado).
 
 
-Introduce el teorema de Lehmann pero creo que nos lo podemos saltar.
+Introduce el teorema de Lehmann pero creo que nos lo podemos saltar.\todo{falta chicha}
 
-\subsection{Tema 9: Metodos de contraste.}
+\subsection{Métodos de contraste}
 
-\subsubsection{Test de tazon de verosimilitudes}
-El test se utiliza en situaciones en las que se desea contrastar si un parametro de la distribucion de la muestra pertenece a un subconjunto del espacio de parametros frente al complementario de ese conjunto.
+\subsubsection{Test de razón de verosimilitudes}
+El test se utiliza en situaciones en las que se desea contrastar si un parámetro de la distribución de la muestra pertenece a un subconjunto del espacio de parámetros frente al complementario de ese conjunto.
 
-El test se basa em que para una muestra fija, su verosimilitud $f_\theta(x_1,...,x_n)$ es una medida de lo bien que explica el valor $\theta$ del parametro los resultados obtenidos. Por consiguiente $ sup_{\theta_0\in\Theta_0}f_\theta(x_1,...,x_n) $ supone un indice acerca de la mejor explicacion de la muestra que puede obtenerse baho $ H_0 $ y coincide con la cantidad que se puede calcular usando el estimador de maxima verosimilitud $ f_{\hat{\theta}}(x_1,...,x_n) $. $sup_{\theta\in\Theta}f_\theta(x_1,...,x_n) $ proporciona tal indice entre todos los posibles valores del parametro y pasa lo mismo con el estimador de maxima verosimilitud.
+El test se basa en que, para una muestra fija, su verosimilitud $f_\theta(x_1,...,x_n)$ es una medida de lo bien que explica el valor $\theta$ del parámetro los resultados obtenidos. Por consiguiente, $ sup_{\theta_0\in\Theta_0}f_\theta(x_1,...,x_n) $ supone un índice acerca de la mejor explicación de la muestra que puede obtenerse bajo $ H_0 $ y coincide con la cantidad que se puede calcular usando el estimador de máxima verosimilitud $ f_{\hat{\theta}}(x_1,...,x_n) $. $sup_{\theta\in\Theta}f_\theta(x_1,...,x_n) $ proporciona tal índice entre todos los posibles valores del parámetro y pasa lo mismo con el estimador de máxima verosimilitud.
 
-Si $ f_{\theta_0} $ es mas bajo que la otra implica que la explicacion de los resultados sobre la base de que $H_0$ es cierta es mucho peor que la explicacion si tal restriccion; por tanto rechazamo $H_0$
-La comparacion entre ambas se hace con el cociente
+Si $ f_{\theta_0} $ es mas bajo que la otra implica que la explicación de los resultados sobre la base de que $H_0$ es cierta es mucho peor que la explicación sin tal restricción; por tanto rechazamos $H_0$
+La comparación entre ambas se hace con el cociente.
 
-Se emplearan test no aleatorizados cuando la distribucion del estadistico cociente sea continua. La distribucion que se coge es la $\chi^2$.
+Se emplearan test no aleatorizados cuando la distribución del estadístico cociente sea continua. La distribución que se coge es la $\chi^2$.
+\todo{El resto son ejemplos, tendríamos que ir eligiendolos.}
 
-El resto son ejemplos, tendríamos que ir eligiendolos.
-
-\subsubsection{Constrastes multiples}
-
-\section{Contrastes globales sobre la distribución poblacional (tests no paramétricos)}
+\subsubsection{Constrastes múltiples}
+\todo{holi?}
+\section{Contrastes globales sobre la distribución poblacional (test no paramétricos)}
 \subsection{Introducción}
-En muchas ocasiones es necesario emitir un juicio estadístico sobre la dist. poblecional en su conjunto: ejemplo
+En muchas ocasiones es necesario emitir un juicio estadístico sobre la distribución poblacional en su conjunto, por ejemplo:
 \begin{itemize}
-\item M.a. de una población, ¿puede admitirse que la dist. poblacional coincide con una dada? Problema de la bondad del ajuste
+\item Ante una muestra aleatoria de una población, ¿puede admitirse que la distribución poblacional coincide con una dada? Problema de la bondad del ajuste
 \item Teniendo varias m.a.s., puede admitirse que provengan de la misma distribución teórica? Problema de homogeneidad
 \item Se observan dos o más características de los elementos de una población, son independientes? Problema de la independencia.
 \end{itemize}
 
 Se distinguen dos tipos de planteamientos, a saber:
 \begin{enumerate}
-\item Descomponer el recorrido de la distribución teórica en un número finito de subconjuntosy clasificar las observaciones muestrales según el conjunto al que pertenezcan. Después, comparar las frecuencias observadas de cada subconjunto con las que corresponderían a la distribución teórica. Esto da lugar a los tests $\chi^2$, los cuales reducen un problema no paramétrico a uno que sí lo es.
+\item Descomponer el recorrido de la distribución teórica en un número finito de subconjuntos y clasificar las observaciones muestrales según el conjunto al que pertenezcan. Después, comparar las frecuencias observadas de cada subconjunto con las que corresponderían a la distribución teórica. Esto da lugar a los test $\chi^2$, los cuales reducen un problema no paramétrico a uno que sí lo es.
 \item Unas la distribución muestral $F^*_n(x)$ para compararla con la distribución teórica o para compararlas entre sí. Midiendo la distancia entre ambas puede saberse si es o no significativa siempre que se tenga un patrón
 \end{enumerate}
 
 \subsection{Contrastes $\chi^2$ de bondad del ajuste}
 \textbf{Hipótesis simple} \\
-Se dispone de una m.a.s. de tamaño n de una población con distribución desconocida $F$. Contrastar si puede aceptarse la hipótesis $H_0 : F = F_0$ donde $F_0$ es una distribución especificada (no parsamétrica). La hipótesis nula $H_1$ se trata entonces de todas las distribuciones distintas a $F_0$.
+Se dispone de una m.a.s. de tamaño n de una población con distribución desconocida $F$. Se quiere contrastar si puede aceptarse la hipótesis $H_0 : F = F_0$ donde $F_0$ es una distribución especificada (no paramétrica). La hipótesis alternativa $H_1$ se trata entonces de todas las distribuciones distintas a $F_0$.
 
 El recorrido de la distribución poblacional se divide en $k$ conjuntos disjuntos $A_1,...,A_k$. Sea $p^0_i$ la probabilidad de cada $A_i$ bajo $F_0$ y $p_i$ la probabilidad desconocida que la distribución teórica asigna a cada $A_i$:
 
-La variable aleatoria que cuenta el nº de observaciones de la muestra en cada subconjunto tiene distribución multinomial con parámetros $n$ y $\textbf{p}= (p_1,...,p_k)$:
+La variable aleatoria que cuenta el número de observaciones de la muestra en cada subconjunto tiene distribución multinomial con parámetros $n$ y $\textbf{p}= (p_1,...,p_k)$:
 $$P\{N_1=n_1,...,N_k=n_k\}= \frac{n!}{n_1!\cdots n_k!} p^{n_1}_1\cdots p^{n_k}_k$$
 
-Se ha logrado pues pasar a un test paramétrico de $H_0: $\textbf{$p$} =\textbf{$p^0$} frente a la hipótesis de que el parámetro sea otro.
+Se ha logrado pues pasar a un test paramétrico de $H_0 :   \textbf{p} = \textbf{p}^0$ frente a la hipótesis de que el parámetro sea otro.
 
-Por tanto, esto se puede resolver por un test de razón de verosimilitudes, aunque la tradición clásica hace que el estadístico a usar normalmente sea otro (que da los mismos resultados)(esto se puede desarrollar como mucho, no sé cuánto nos vamos a meter)
+Por tanto, esto se puede resolver por un test de razón de verosimilitudes, aunque la tradición clásica hace que el estadístico a usar normalmente sea otro que da los mismos resultados. Este se debe a que el test de razón de verosimilitudes es posterior a los test $\chi^2$.
+\\
 
 \textbf{Hipótesis compuesta} \\
-La situación habitual es que la hipótesis a contrastar sea compuesta; más concretamente se especifica una familia de distribuciones con forma funcional dad pero dependiente de algunos parámetros no especificados.
+La situación habitual es que la hipótesis a contrastar sea compuesta; más concretamente se especifica una familia de distribuciones con forma funcional dada pero dependiente de algunos parámetros no especificados.
 
-Se podría pensar en hacer los dos tests por separado, i.e., realizar la estimación puntual de los parámetros para contrastar después el ajuste a la distribución poblacional que indiquen los propios datos como la más adecuada, pero para ello se necesitarían dos m.a.s. independientes (explicación de esto p.439).
+Se podría pensar en hacer los dos test por separado, i.e., realizar la estimación puntual de los parámetros para contrastar después el ajuste a la distribución poblacional que indiquen los propios datos como la más adecuada, pero para ello se necesitarían dos m.a.s. independientes.
 
 Alternativa: Contrastar una hipótesis nula de la forma $F \in \{F_\theta| \theta \in \Theta \subset R^q\}$
-Se procede de igual manera que con la hipótesis simple, terminando por comparar paramétricamente una distribución multinomial (de nuevo, esto se puede extender lo que queramos, según cómo vaya lo demás).
+Se procede de igual manera que con la hipótesis simple, terminando por comparar paramétricamente una distribución multinomial.
 
 \subsection{Contraste $\chi^2$ de homogeneidad}
 ¿Tenemos $m$ muestras de tamaños $n_1, n_2,...,n_m$ o bien una única muestra de tamaño $n_1+n_2+\cdots + n_m$?
 
-Al ser un test $\chi ^2$ el procedimiento es el mismo: dividir en subconjuntos, clasificar las observaciones muestrales y convertirlo todo en un test paramétrico sobre los parámetros de la distribución multinomial que sigue la variable aleatoria que cuenta el número de observaciones de la muestra en cada subconjunto. (Again, se alarga tanto como queráis).
+Al ser un test $\chi ^2$ el procedimiento es el mismo: dividir en subconjuntos, clasificar las observaciones muestrales y convertirlo todo en un test paramétrico sobre los parámetros de la distribución multinomial que sigue la variable aleatoria que cuenta el número de observaciones de la muestra en cada subconjunto. 
 
 \subsection{Contraste $\chi^2$ de independencia}
-Se tienen $n$ elementos de una población en los que se observan 2 caracterísiticas, $X$ e $Y$ obteniéndose una m.a.s. bidimensional $(X_1,Y_1),...,(X_n,Y_n)$, ¿son estas características independientes?
-SE PROCEDE DE LA MISMA MANERA POR SER UN TEST CHI CUADRADO
+Se tienen $n$ elementos de una población en los que se observan 2 características, $X$ e $Y$ obteniéndose una m.a.s. bidimensional $(X_1,Y_1),...,(X_n,Y_n)$, ¿son estas características independientes? La forma de proceder vuelve a ser análoga a las anteriores, lo que nos demuestra la versatilidad de los test $\chi^2$.
 
 \subsection{Contraste de Kolmogorov-Smirnov }
 Desventajas de los tests $\chi^2$ : al discretizar las observaciones muestrales en conjuntos de una cierta partición , en el caso de las distribuciones continuas se ignora el valor exacto de las observaciones, lo que puede dar lugar a errores significativos en caso de que la muestra no sea lo suficientemente grande.
 
-Por tanto, para el caso de bondad del ajuste a una distribución unidimensional de tipo continuo es preferible el uso de un pocedimiento alternativo: en lugar de estudiar la diferencia entre los histogramas de frecuencias se compoara la función de distribución muestral con la función de distribución teórica.
+Por tanto, para el caso de bondad del ajuste a una distribución unidimensional de tipo continuo es preferible el uso de un procedimiento alternativo: en lugar de estudiar la diferencia entre los histogramas de frecuencias se compara la función de distribución muestral con la función de distribución teórica.
 
-La función de distribución muestral asociada a  una m.a. $x_1, x_2,..,x_n$ es 
+La función de distribución muestral asociada a  una muestra aleatoria $x_1, x_2,..,x_n$ es 
 $$F^*_n(x) = \frac{nº de x_i \leq x}{n} = \left\{ \begin{array}{lcc}
              0 &   si  & x \leq x_{(1)} \\
              \\ i/n &  si & x_{(i)} < x < x_{(i+1)} \\
@@ -230,8 +231,8 @@ $$F^*_n(x) = \frac{nº de x_i \leq x}{n} = \left\{ \begin{array}{lcc}
    \right. $$
 donde $x_{(1)},...,x_{(n)}$ son los elementos de la m.a. ordenada.
 
-Si estamos frente a una m.a.s. de una población descrita por la variable aleatoria $X$ con función de distribución $F$, por el \textbf{Teorema de Glivenko-Cantelli} se tiene que hay probabilidad 1 de obtener una sucesión muestral con la cual $F^*_n(x)$ converja a $F(x)$ uniformemente en $x$,i.e.,
-$$\sup |F^*_n(x) - F(x)| \longrightarrow^{c.s.} 0$$
+Si estamos frente a una muestra aleatoria simple de una población descrita por la variable aleatoria $X$ con función de distribución $F$, por el \textbf{Teorema de Glivenko-Cantelli} se tiene que hay probabilidad 1 de obtener una sucesión muestral con la cual $F^*_n(x)$ converja a $F(x)$ uniformemente en $x$, i.e.,
+$$\sup |F^*_n(x) - F(x)| \xrightarrow{c.s.} 0$$
 % esto se tiene que poder escribir mejor
 
 Teniendo en cuenta que $F$ es desconocida y que se pretende contrastar la hipótesis nula $H_0 : F_0 = F$ usaremos como estadístico
@@ -241,7 +242,7 @@ y por tanto tendremos como región crítica $\{\Delta_n > k\}$. Aunque esto de p
 \begin{theorem}
 (Lema) Si $F = F_0$ y $F_0$ es continua, la distribución de $\Delta_n$ no depende de $F_0$
 \end{theorem}
-Con la demostración se da una expresión integral de la distribución buscada (p.456) que no proporciona un resultado explícito pero que permite tabular la distribución de $\Delta_n$ para valores pequeños de $n$.
+Con la demostración se da una expresión integral de la distribución buscada que no proporciona un resultado explícito pero que permite tabular la distribución de $\Delta_n$ para valores pequeños de $n$.
 
 Para valores grandes de $n$ se puede usar la distribución $K$ de Kolmogorov:
 $$P\{\sqrt{n}\Delta_n \leq z \} \longrightarrow \sum^{\infty}_{K=-\infty} (-1)^{k} e^{-2k^2 z^2}  $$
@@ -250,13 +251,13 @@ que fue tabulada por Smirnov.
 
 Puesto que los resultados sobre la distribución de $\Delta_n$ provienen de suponer que la distribución poblacional es continua, es obvio que sólo se podrá utilizar este test en este tipo de distribuciones.
 
-Como pega, comentar que para hipótesis compuestas es necesario tener dos muestras independientes, cosa que no pasaba con los tests $\chi^2$.
+Como pega, comentar que para hipótesis compuestas es necesario tener dos muestras independientes, cosa que no pasaba con los test $\chi^2$.
 
 
 
 \subsection{Contraste de homogeneidad de Kolmogorov-Smirnov}
 
-Se dispone de dos m.a.s. independientes, $X_1,...,X_n $ e $Y_1,...,Y_m$ y se quiere contrastar la hipótesis nula $H_0:F_X = F_Y$.
+Se dispone de dos muestras aleatorias simples independientes, $X_1,...,X_n $ e $Y_1,...,Y_m$ y se quiere contrastar la hipótesis nula $H_0:F_X = F_Y$.
 
 Si dichas distribuciones son de tipo continuo, los tests $\chi^2$ tienen los mismos problemas que en la sección anterior y sólo podrían usarse para muestras grandes.
 
@@ -279,7 +280,7 @@ Para contrastar la independencia entre dos características poblacionales contin
 \subsection{Contrastes de Localización}
 Dada una distribución unidimensional desconocida de una población, en ocasiones sólo interesa conocer su posición sobre la recta ya que se presupone que las condiciones en que se observa el fenómeno sólo pueden trasladarla, dejando invariante su forma.
 
-Si puede admitirse la normalidad de las distribuciones, la manera de proceder sría aplicando tests paramétricos sobre la media de una normal. Sin embargo, cuando no quepa esta posibilidad, lo habitual es el uso de la mediana muestral para contrastar hipótesis sobre las medianas poblacionales.
+Si puede admitirse la normalidad de las distribuciones, la manera de proceder sería aplicando test paramétricos sobre la media de una normal. Sin embargo, cuando no quepa esta posibilidad, lo habitual es el uso de la mediana muestral para contrastar hipótesis sobre las medianas poblacionales.
 
 \subsubsection{Test de los signos}
 Se trata de una prueba no paramétrica para comparar el rango medio de dos muestras relacionadas y determinar si existen diferencias entre ellas. Es una alternativa al test $t$ de Student cuando no se puede suponer la normalidad de las muestras.
@@ -304,7 +305,7 @@ Sin embargo, para algo más general como es el caso de $H_1:M\neq m_0$, el test 
 Si el tamaño muestral es lo suficientemente grade, puede emplearse la aproximación normal a la distribución binomial.
 
 \subsubsection{El test de Wilcoxon de los rangos signados}
-En el caso de que la distribución pueda considerarse simétrica, ademásde continua, Wilcoxon propuso un test para la misma hipótesis que el test de los signos, es decir, $H_0:M =m_0$ que saca más provecho de los valores de las observaciones.
+En el caso de que la distribución pueda considerarse simétrica, además de continua, Wilcoxon propuso un test para la misma hipótesis que el test de los signos, es decir, $H_0:M =m_0$ que saca más provecho de los valores de las observaciones.
 
 Llamemos $D_i=X_i - m_0$ a las diferencias entre las observaciones muestrales y el valor a contrastar para $M$. Podemos ordenar los valores absolutos $|D_i|$ y anotar el rango $r(|D_i|)$ que cada uno ocupa en la ordenación.  Entonces podemos usar como estadístico de contraste la suma de los rangos de las observaciones mayores que $m_0$:
 $$T^+ = \sum_{i =1}^{n} r(|D_i|)I_{\{D_i>0\}}.$$
@@ -327,23 +328,23 @@ Tras los ejemplos que se han podido observar a lo largo del texto sobre aplicaci
 
 En este caso, la temática escogida es el uso que se le pueden dar a los test de hipótesis en la identificacion de genes responsables de rasgos cuantitativos. Aunque todo el estudio de este procedimiento se sale un poco del trabajo, queremos aportar una visión global de este problema biológico y el acercamiento estadístico hacia su solución basándonos en \cite{uned2}.
 
-La problematica se centra en el estudio de los rasgos poligenéticos (cuantitativos), es decir, caracteristicas de los seres vivos que surgen de la interaccion de varios genes, ademas de la posible interaccion con el medio ambiente. 
-Nuestro objetivo final es detectar donde se encuentran estos genes, que producen cambios en rasgos cuantitativos (los llamados QTLs), pero realmente a priori no sabemos cuales son. Por tanto, el procedimiento habitual es marcar tramos de la secuencia de ADN (lo que se conoce como marcador genético) y estudiar si entre dos de ellos existen diferencias cuando el rasgo que queremos comprender es diferente. 
+La problemática se centra en el estudio de los rasgos poligenéticos (cuantitativos), es decir, características de los seres vivos que surgen de la interacción de varios genes, además de la posible interacción con el medio ambiente. 
+Nuestro objetivo final es detectar donde se encuentran estos genes, que producen cambios en rasgos cuantitativos (los llamados QTLs), pero realmente a priori no sabemos cuáles son. Por tanto, el procedimiento habitual es marcar tramos de la secuencia de ADN (lo que se conoce como marcador genético) y estudiar si entre dos de ellos existen diferencias cuando el rasgo que queremos comprender es diferente. 
 
-Es intiutivo observar que nuestro resultados no pueden quedarse aquí, puesto que los marcadores genéticos pueden contener una gran cantidad de genes distintos. Surge la necesidad de la primera herramienta estadística que sería una regresion desde el marcador hasta el gen que queremos buscar. Nuestros problemas no acaban ahi, y es que durante la división celular sabemos que se se produce una recombinación genética con lo que la información que nos proporcionan los marcadores puede verse alterada. 
-En resumen, para llevar a cabo este estudio analizaremos diferencias entre marcadores geneticos entre dos poblaciones (retrocruzadas\footnote{El retrocruzamiento es un proceso experimental con el fin de obetener individuos homocigoticos (ambos cromosomas identicos en ambas posiciones)}) que presente dimorfismo en el rasgo que nos interesa, buscando hacer inferencia de las diferencias entre QTLs usando los marcadores.
+Es intuitivo observar que nuestro resultados no pueden quedarse aquí, puesto que los marcadores genéticos pueden contener una gran cantidad de genes distintos. Surge la necesidad de la primera herramienta estadística que sería una regresión desde el marcador hasta el gen que queremos buscar. Nuestros problemas no acaban ahí, y es que durante la división celular sabemos que se se produce una recombinación genética con lo que la información que nos proporcionan los marcadores puede verse alterada. 
+En resumen, para llevar a cabo este estudio analizaremos diferencias entre marcadores genéticos entre dos poblaciones (retrocruzadas\footnote{El retrocruzamiento es un proceso experimental que se lleva a cabo con el fin de obetener individuos homocigóticos (ambos cromosomas idénticos en ambas posiciones)}) que presente dimorfismo en el rasgo que nos interesa, buscando hacer inferencia de las diferencias entre QTLs usando los marcadores.
 
 \subsection{Ejemplos de aplicaciones de test de hipótesis}
-La manera más simple de identificar si existe o no un QTL en dos poblaciones, es considerar cada marcador al que tenemos acceso individualmente, dividir los individuos segun su genotipo (homocigoticos y heterocióticos) y, para cada marcador genetico, hacer un test de la t de Student de comparacion de dos poblaciones (diferenciadas en nuestro caso por el rasgo escogido), puesto que no es descabellado pensar que al tratar con un rasgo cuantitativo en dos poblaciones, éste venga determinado por una distribución normal.
+La manera más simple de identificar si existe o no un QTL en dos poblaciones, es considerar cada marcador al que tenemos acceso individualmente, dividir los individuos según su genotipo (homocigóticos y heterocigóticos) y, para cada marcador genético, hacer un test de la $t$ de Student de comparación de dos poblaciones (diferenciadas en nuestro caso por el rasgo escogido), puesto que no es descabellado pensar que al tratar con un rasgo cuantitativo en dos poblaciones, éste venga determinado por una distribución normal.
 
-PLanteando el problema en un lenguaje más matemático, estamos ante dos expresiones difernetes de un rasgo. En la poblacion 1 el rasgo sigue una distribución $N(\mu_1,\sigma)$ y en la población 2 el rasgo sigue una distribucion $N(\mu_2,\sigma)$, siendo la $H_0:$No existen diferencias significativas entre ambas medias poblacionales (o, más específicamente hablando, no hay una diferencia significativa en los genes del marcador seleccionado\footnote{En realidad la hipótesis nula que vamos buscando es la no existencia de diferencias entre todos los marcadores, pero en esta breve exposición de aplicaciones, no vamos a profundizar a tanto nivel}).
-Como podemos ver, un test de comparación de medias.
+Planteando el problema en un lenguaje más matemático, estamos ante dos expresiones diferentes de un rasgo. En la población 1, el rasgo sigue una distribución $N(\mu_1,\sigma)$ y en la población 2, el rasgo sigue una distribución $N(\mu_2,\sigma)$, siendo la $H_0:$ No existen diferencias significativas entre ambas medias poblacionales (o, más específicamente hablando, no hay una diferencia significativa en los genes del marcador seleccionado\footnote{En realidad la hipótesis nula que vamos buscando es la no existencia de diferencias entre todos los marcadores, pero en esta breve exposición de aplicaciones, no vamos a profundizar a tanto nivel}).
+Como podemos ver, es un test de comparación de medias.
 
-Por otra parte, también es habitual realizar test de hipótesis conocida una región determinada de nuestro marcador. En ese caso se utiliza un estadístico particular LOD (logaritmos de las odd ratio a favor de una relación QTL). Este estadístico como se expone en, tiene una distribución aproximada $\chi^2$
+Por otra parte, también es habitual realizar test de contraste de hipótesis conocida una región determinada de nuestro marcador. En ese caso se utiliza un estadístico particular LOD (logaritmos de las odd ratio a favor de una relación QTL). Este estadístico como se expone en,\todo{en where?} tiene una distribución aproximada $\chi^2$
 con lo que podremos utilizar los test para esta distribución.
-Sin embargo, como apuntabamos si queremos centrarnos en todo el genoma, debemos modificar estos tests y con ello los estadisticos en los que se basan. 
+Sin embargo, como apuntábamos, si queremos centrarnos en todo el genoma, debemos modificar estos test y con ello los estadísticos en los que se basan. 
 
-Exponemos así que lo dicho en el trabajo es solo una pincelada de las aplicaciones de los test de hipótesis y tambien de la teoría estadístca en la que yacen. Conforme nuevos problemas surgen en biología y en especial en bioinformática con su actual auge, la estadística tambien debe evolucionar.
+Exponemos así que lo dicho en el trabajo es solo una pincelada de las aplicaciones de los test de hipótesis y también de la teoría estadística en la que yacen. Conforme surgen nuevos problemas en biología y en especial en bioinformática con su actual auge, la estadística también debe evolucionar.
 
 
 
