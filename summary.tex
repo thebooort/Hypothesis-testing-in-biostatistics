@@ -217,6 +217,48 @@ Para lo cual deberemos usar una tabla de la distribución $\chi^2$ o un ordenado
 
 
 \subsection{Contrastes para dos poblaciones normales}
+\subsection{Contraste t  para dos poblaciones independientes con varianzas iguales}
+
+Dadas dos poblaciones distribuidas mediante una normal que poseen la misma varianza. Sus tamaños son  $n_1$ y $n_2$. Bajo estas condiciones suponemos que queremos contrastar la hipótesis:
+\begin{itemize}
+	\item $H_0:\mu_1=\mu_2$
+	\item $H_1:\mu_1\neq \mu_2$
+\end{itemize}
+Para una significación $\alpha$.
+En este caso el estadístico que utilizaremos es: 
+$$t=\frac{\bar{x_1}-\bar{x_2}}{s\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}$$
+donde definimos s como:
+$$s=\sqrt{[(n_1-1)s_1^2+(n_2-1)s_2^2]/(n_1+n_2-2)}$$
+Un vez, obtenido, el valor, concluimos mediante:
+\begin{itemize}
+	\item Si $t>t_{n_1+n_2-2,1-\alpha/2}$ o,$t<-t_{n_1+n_2-2,1-\alpha/2}$, rechazamos $H_0$
+	\item Si $-t_{n_1+n_2-2,1-\alpha/2}\leq t\leq t_{n_1+n_2-2,1-\alpha/2}$, aceptamos $H_0$
+\end{itemize}
+Para el calculo final seguimos los mismos procedimientos que en el apartado para una población.
+
+\subsection{Contraste F para dos poblaciones independientes }
+Acabamos la sección de test paramétricos presentando un test para el contraste de hipótesis relacionadas con la igualdad de la varianza de dos poblaciones normales.
+En este caso el estadístico sigue una distribución F de Snedecor y, el test, viene dado por el siguiente plateamiento:
+
+
+Dadas dos poblaciones distribuidas mediante una normal que poseen varianzas y medias distintas. Sus tamaños son  $n_1$ y $n_2$. Bajo estas condiciones suponemos que queremos contrastar la hipótesis:
+\begin{itemize}
+	\item $H_0:\sigma^2_1=\sigma^2_2$
+	\item $H_1:\sigma^2_1\neq \sigma^2_2$
+\end{itemize}
+Para una significación $\alpha$.
+En este caso el estadístico que utilizaremos es: 
+$$F=\frac{s_1^2}{s_2^2}$$
+Un vez obtenido el valor, concluimos mediante:
+\begin{itemize}
+	\item Si $F>F_{n_1-1,n_2-1.1-\alpha/2}$ o $F<F_{n_1-1,n_2-1.1-\alpha/2}$, rechazamos $H_0$
+	\item Si $F_{n_1-1,n_2-1.1-\alpha/2}\leq F \leq F_{n_1-1,n_2-1.1-\alpha/2}$, aceptamos $H_0$
+\end{itemize}
+Para el calculo final seguimos los mismos procedimientos que en el apartado para una población, utilizando la tabla de la distribucion F de Snedecor.
+\includegraphics{ejemplo_grafica.png}
+\todo{Se pueden incluir graficas así si queréis}
+ \subsubsection*{Caso practico en bioestadística}
+ (De \cite{rosner2015fundamentals}) Trasladar el que empieza en el ejemplo 8.13-8.17 
 
 \section{Contrastes globales sobre la distribución poblacional (test no paramétricos)}
 \subsection{Introducción}
