@@ -46,7 +46,7 @@
 %opening
 \title{Hypothesis testing in biostatistics}
 
-\author{Rubén Hurtado, Bartolomé Ortiz , Cristina Seva }
+\author{Rubén Hurtado, Bartolomé Ortiz, Cristina Seva }
 
 \begin{document}
 
@@ -63,9 +63,9 @@ El contraste de hipótesis es un área de la inferencia estadística que se ocup
 
 Más concretamente, \textit{"la finalidad de un contraste de hipótesis es decidir si una determinada hipótesis, afirmación, o conjetura, sobre la distribución poblacional estudiada, es confirmada o invalidada estadísticamente a partir de las observaciones contenidas en la muestra"}, \cite{velez1993principios}.
 
-En general, dentro de los test de hipótesis, vamos a llamar \textbf{hipótesis nula o $H_0$} a la hipótesis que se asume sobre nuestra distribución y la cual se pretende contrastar. Frente a ella, nos encontramos la \textbf{hipótesis alternativa o $H_1$}, que agrupa aquellas distribuciones que no poseen $H_0$ como cualidad.
+En general, dentro de los test de hipótesis, vamos a llamar \textbf{hipótesis nula} o $\textbf{H}_\textbf{0}$ a la hipótesis que se asume sobre nuestra distribución y la cual se pretende contrastar. Frente a ella, nos encontramos la \textbf{hipótesis alternativa} o $\textbf{H}_\textbf{1}$, que agrupa aquellas distribuciones que no poseen $H_0$ como cualidad.
 
-A parte, también destacamos otra división usual:
+Asimismo, también destacamos otra división usual:
 \begin{itemize}
 	\item \textbf{Hipótesis simples}: son aquéllas que especifican totalmente la distribución poblacional (constituidas por una única función de distribución)
 	\item \textbf{Hipótesis compuestas}: Hipótesis  que comprenden varias distribuciones poblacionales 
@@ -94,7 +94,7 @@ Tipos de errores: tipo I : rechazar $H_0$ cuando es cierta ; tipo II: aceptar $H
 \subsubsection{Criterios de elección}
 A la hora de plantear o diseñar un test de hipótesis buscamos la disminución de todos los tipos de error; es habitual que esto sea difícil de alcanzar, puesto que disminuir la probabilidad de cometer un erro de tipo I influye positivamente en la probabilidad de cometer error de tipo II. Ante esta amplitud de posibilidades, existe un criterio tradicional para para diseñar los test:
 \begin{enumerate}
-	\item Fijar una cota para cometer error de tipo 1 , $\alpha$, llamada nivel de significación.
+	\item Fijar una cota para cometer error de tipo I , $\alpha$, llamada nivel de significación.
 	\item Excluir todos los test que no impongan que la probabilidad de rechazar $H_0$ cuando es cierta no supere el valor de $\alpha$ . 
 	\item  Entre los test no excluidos por la condición anterior, tratar de minimizar la probabilidad de error de tipo II.
 \end{enumerate}
@@ -114,13 +114,15 @@ $$sup_{\theta\in\Theta_0}\beta(\theta)=\alpha$$ }
 Una vez tenemos los conceptos básicos en cuanto al contraste de hipótesis, vamos a ofrecer un pequeño recorrido por los test paramétricos que están relacionados con las distribuciones normales.
 
 
- \subsection{Contraste T de Student}
- El test t de Student o Test-T es cualquier prueba en la que el estadístico utilizado tiene una distribución t de Student si la hipótesis nula es cierta.
+ \subsection{Contraste $t$ de Student}
+ El test $t$ de Student o Test-T es cualquier prueba en la que el estadístico utilizado tiene una distribución $t$ de Student si la hipótesis nula es cierta.
  
  Este test se suele utilizar cuando la población estudiada sigue una distribución normal pero el tamaño muestral es demasiado pequeño como para que el estadístico en el que está basada la inferencia esté normalmente distribuido, utilizándose una estimación de la desviación típica en lugar del valor real. 
  
- En la bioestadística podemos tener casos en los cuales nuestro tamaño de muestra sera pequeño. Esto por ejemplo puede darse en medicina cuando tratamos a grupo reducido de pacientes. 
- \subsubsection{Contraste t de una muestra para la media de una distribución normal con varianza desconocida (Media alternativa <media nula)}
+ En la bioestadística podemos tener casos en los cuales nuestro tamaño de muestra sera pequeño. Esto por ejemplo puede darse en medicina cuando tratamos a grupo reducido de pacientes.
+
+ \subsubsection{Contraste t de una muestra para la media de una distribución normal con varianza desconocida (Media alternativa <media nula)  \todo{y este título wtf?}}
+ 
  En este caso enfrentamos la hipótesis de que nuestros datos tengan una determinada media, frente a la posibilidad  de que la media sea menor: 
  \begin{itemize}
  	\item $H_0:\mu=\mu_0$
@@ -130,16 +132,16 @@ Una vez tenemos los conceptos básicos en cuanto al contraste de hipótesis, vam
  
  En este caso el estadístico para nuestro test es: 
  $$t=\frac{\bar{x}-\mu_0}{s/\sqrt{n}}$$
- Un vez, obtenido, elegimos un nivel de significación $\alpha$ y finalmente:
+ Una vez obtenido, elegimos un nivel de significación $\alpha$ y finalmente:
  \begin{itemize}
  	\item Si $t<t_{n-1,\alpha}$, rechazamos $H_0$
  	\item Si $t<t_{n-1,\alpha}$, aceptamos $H_0$
  \end{itemize}
- Para lo cual deberemos usar una tabla de la distribución T de Student o un ordenador.
- Añadimos también que el p-valor podría calcularse vía:
+ Para lo cual deberemos usar una tabla de la distribución $t$ de Student o un ordenador.
+ Añadimos también que el $p$-valor podría calcularse vía:
  $$p_{valor}=P[t_{n-1}\leq t]$$
  
- \subsubsection{Contraste t de una muestra para la media de una distribución normal con varianza desconocida (Media alternativa >media nula)}
+ \subsubsection{Contraste $t$ de una muestra para la media de una distribución normal con varianza desconocida. \\ Media alternativa $>$ media nula.}
  En este caso enfrentamos la hipótesis que completa el estado anterior, es decir, queremos saber si nuestros datos tienen una determinada media, frente a la posibilidad  de que la media sea mayor: 
  \begin{itemize}
  	\item $H_0:\mu=\mu_0$
@@ -154,13 +156,13 @@ Una vez tenemos los conceptos básicos en cuanto al contraste de hipótesis, vam
  	\item Si $t>t_{n-1,1-\alpha}$, rechazamos $H_0$
  	\item Si $t\leq t_{n-1,1-\alpha}$, aceptamos $H_0$
  \end{itemize}
- Para lo cual deberemos usar una tabla de la distribución T de Student o un ordenador.
- Añadimos también que el p-valor podría calcularse vía:
+ Para lo cual deberemos usar una tabla de la distribución $t$ de Student o un ordenador.
+ Nuevamente, el $p$-valor podría calcularse vía:
  $$p_{valor}=P[t_{n-1}> t]$$
  
- \subsubsection*{Caso practico en bioestadística}
+ \subsubsection*{Caso práctico en bioestadística}
  (De \cite{rosner2015fundamentals}) 
-Supongamos que estamos examinando el nivel de colesterol de n=10 niños cuyos padres murieron de una enfermedad cardiaca. Mediante las pruebas encontramos que la media de nuestra muestra es de 200 mg/dL con una desviación típica de 50mg/dL. Suponemos que es un parámetro que se distribuye como una normal, pero nuestro grupo es demasiado pequeño, por lo que usamos un test T de Student para comparar si la media de colesterol es significativamente mayor aquí que en la población general, la cual posee 175 mg/dL de media.
+Supongamos que estamos examinando el nivel de colesterol de $n=10$ niños cuyos padres murieron de una enfermedad cardiaca. Mediante las pruebas encontramos que la media de nuestra muestra es de 200 mg/dL con una desviación típica de 50 mg/dL. Suponemos que es un parámetro que se distribuye como una normal, pero nuestro grupo es demasiado pequeño, por lo que usamos un test $t$ de Student para comparar si la media de colesterol es significativamente mayor aquí que en la población general, la cual posee 175 mg/dL de media.
 Planteamos por tanto el problema:
 \begin{itemize}
 	\item $H_0:\mu=175$
@@ -172,13 +174,13 @@ ahora comprobamos:
 $$t<t_{n-1,1-\alpha}=t_{9,0.95}=1.8333$$
 Por lo que aceptamos la hipótesis nula.
 
-\subsubsection{Contraste t de una muestra para la media de una distribución normal con varianza desconocida. Alternativa bilateral}
+\subsubsection{Contraste $t$ de una muestra para la media de una distribución normal con varianza desconocida. Alternativa bilateral}
 Es habitual no poder encajar los test de hipótesis en test unilaterales sobre la distribución. Por ello, añadimos un test bilateral para discernir en problemas en los que se busca comprobar la igualdad o desigualdad de un parámetro.
 
 En este caso enfrentamos la hipótesis de que nuestros datos tengan una determinada media, frente a la posibilidad  de que la media sea menor: 
 \begin{itemize}
 	\item $H_0:\mu=\mu_0$
-	\item $H_1: \mu\neq mu_0$
+	\item $H_1: \mu\neq \mu_0$
 \end{itemize}
 Con la particularidad de que la varianza nos es desconocida.
 
@@ -189,11 +191,11 @@ Un vez, obtenido, elegimos un nivel de significación $\alpha$ y finalmente:
 	\item Si $|t|>t_{n-1,1-\alpha/2}$, rechazamos $H_0$
 	\item Si $|t|\leq t_{n-1,1-\alpha/2}$, aceptamos $H_0$
 \end{itemize}
-Para lo cual deberemos usar una tabla de la distribución T de Student o un ordenador.
+Para lo cual deberemos usar una tabla de la distribución $t$ de Student o un ordenador.
 La obtención del p-valor para este caso es más complicada:
 $$p_{valor} = \begin{cases} 2P[t_{n-1}\leq t], & \mbox{si } t\leq 0 \\ 2(1-P[t_{n-1}\leq t]), & \mbox{si } t>0 \end{cases}$$
 
-\subsection{Contraste (bilateral) $\chi^2$ para la varianza de una distribución normal}
+\subsection{Contraste bilateral $\chi^2$ para la varianza de una distribución normal}
 
 Terminamos la sección de test para una sola población aportando un caso en el que nos interesa la varianza de la población que suponemos normal.
 
@@ -205,79 +207,80 @@ En este caso enfrentamos la hipótesis de que nuestros datos tengan una determin
 
 En este caso el estadístico vuelve a ser: 
 $$X^2=\frac{(n-1)S^2}{\sigma^2}$$
-Un vez, obtenido, elegimos un nivel de significación $\alpha$ y finalmente, tras observar que el estadístico viene aproximado por una distribución $\chi^2$:
+Un vez obtenido, elegimos un nivel de significación $\alpha$ y finalmente, tras observar que el estadístico viene aproximado por una distribución $\chi^2$:
 \begin{itemize}
-	\item Si $X^2<\chi^2_{n-1,\alpha/2}$ o,$X^2>\chi^2_{n-1,1-\alpha/2}$, rechazamos $H_0$
+	\item Si $X^2<\chi^2_{n-1,\alpha/2}$ ó $X^2>\chi^2_{n-1,1-\alpha/2}$, rechazamos $H_0$
 	\item Si $\chi^2_{n-1,\alpha/2}\leq X^2\leq\chi^2_{n-1,1-\alpha/2}$, aceptamos $H_0$
 \end{itemize}
 Para lo cual deberemos usar una tabla de la distribución $\chi^2$ o un ordenador.
 
- \subsubsection*{Caso practico en bioestadística}
-(De \cite{rosner2015fundamentals}) Trasladar el que empieza en el ejemplo 6.39 y sigue por 7.46 y 7.47
+ \subsubsection*{Caso práctico en bioestadística}
+(De \cite{rosner2015fundamentals})
+\todo{ Trasladar el que empieza en el ejemplo 6.39 y sigue por 7.46 y 7.47}
 
 
 \subsection{Contrastes para dos poblaciones normales}
 \subsection{Contraste t  para dos poblaciones independientes con varianzas iguales}
 
-Dadas dos poblaciones distribuidas mediante una normal que poseen la misma varianza. Sus tamaños son  $n_1$ y $n_2$. Bajo estas condiciones suponemos que queremos contrastar la hipótesis:
+Dadas dos poblaciones de tamaños $n_1$ y $n_2$ distribuidas mediante una normal que poseen la misma varianza, suponemos que queremos contrastar la hipótesis:
 \begin{itemize}
 	\item $H_0:\mu_1=\mu_2$
 	\item $H_1:\mu_1\neq \mu_2$
 \end{itemize}
-Para una significación $\alpha$.
+para una significación $\alpha$.
 En este caso el estadístico que utilizaremos es: 
 $$t=\frac{\bar{x_1}-\bar{x_2}}{s\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}$$
-donde definimos s como:
+donde definimos $s$ como:
 $$s=\sqrt{[(n_1-1)s_1^2+(n_2-1)s_2^2]/(n_1+n_2-2)}$$
-Un vez, obtenido, el valor, concluimos mediante:
+Un vez obtenido el valor, concluimos mediante:
 \begin{itemize}
-	\item Si $t>t_{n_1+n_2-2,1-\alpha/2}$ o,$t<-t_{n_1+n_2-2,1-\alpha/2}$, rechazamos $H_0$
+	\item Si $t>t_{n_1+n_2-2,1-\alpha/2}$ ó $t<-t_{n_1+n_2-2,1-\alpha/2}$, rechazamos $H_0$
 	\item Si $-t_{n_1+n_2-2,1-\alpha/2}\leq t\leq t_{n_1+n_2-2,1-\alpha/2}$, aceptamos $H_0$
 \end{itemize}
-Para el calculo final seguimos los mismos procedimientos que en el apartado para una población.
+Para el cálculo final seguimos los mismos procedimientos que en el apartado para una población.
 
 \subsection{Contraste F para dos poblaciones independientes }
 Acabamos la sección de test paramétricos presentando un test para el contraste de hipótesis relacionadas con la igualdad de la varianza de dos poblaciones normales.
-En este caso el estadístico sigue una distribución F de Snedecor y, el test, viene dado por el siguiente planeamiento:
+En este caso el estadístico sigue una distribución $F$ de Snedecor y, el test, viene dado por el siguiente planteamiento:
 
 
-Dadas dos poblaciones distribuidas mediante una normal que poseen varianzas y medias distintas. Sus tamaños son  $n_1$ y $n_2$. Bajo estas condiciones suponemos que queremos contrastar la hipótesis:
+Dadas dos poblaciones de tamaños son  $n_1$ y $n_2$ distribuidas mediante una normal que poseen varianzas y medias distintas. Suponemos que queremos contrastar la hipótesis:
 \begin{itemize}
 	\item $H_0:\sigma^2_1=\sigma^2_2$
 	\item $H_1:\sigma^2_1\neq \sigma^2_2$
 \end{itemize}
-Para una significación $\alpha$.
+Para un nivel de significación $\alpha$.
 En este caso el estadístico que utilizaremos es: 
 $$F=\frac{s_1^2}{s_2^2}$$
 Un vez obtenido el valor, concluimos mediante:
 \begin{itemize}
-	\item Si $F>F_{n_1-1,n_2-1.1-\alpha/2}$ o $F<F_{n_1-1,n_2-1.1-\alpha/2}$, rechazamos $H_0$
+	\item Si $F>F_{n_1-1,n_2-1.1-\alpha/2}$ ó $F<F_{n_1-1,n_2-1.1-\alpha/2}$, rechazamos $H_0$
 	\item Si $F_{n_1-1,n_2-1.1-\alpha/2}\leq F \leq F_{n_1-1,n_2-1.1-\alpha/2}$, aceptamos $H_0$
 \end{itemize}
-Para el calculo final seguimos los mismos procedimientos que en el apartado para una población, utilizando la tabla de la distribución F de Snedecor.
+Para el cálculo final seguimos los mismos procedimientos que en el apartado para una población, utilizando la tabla de la distribución $F$ de Snedecor.
 \includegraphics{ejemplo_grafica.png}
 \todo{Se pueden incluir gráficas así si queréis}
- \subsubsection*{Caso practico en bioestadística}
- (De \cite{rosner2015fundamentals}) Trasladar el que empieza en el ejemplo 8.13-8.17 
+ \subsubsection*{Caso práctico en bioestadística}\todo{Trasladar el que empieza en el ejemplo 8.13-8.17} 
+ (De \cite{rosner2015fundamentals}) 
 
-\section{Contrastes globales sobre la distribución poblacional (test no paramétricos)}
+\section{Contrastes globales sobre la distribución poblacional: test no paramétricos}
 \subsection{Introducción}
 En muchas ocasiones es necesario emitir un juicio estadístico sobre la distribución poblacional en su conjunto, por ejemplo:
 \begin{itemize}
 \item Ante una muestra aleatoria de una población, ¿puede admitirse que la distribución poblacional coincide con una dada? Problema de la bondad del ajuste
-\item Teniendo varias m.a.s., puede admitirse que provengan de la misma distribución teórica? Problema de homogeneidad
+\item Teniendo varias m.a.s., ¿puede admitirse que provengan de la misma distribución teórica? Problema de homogeneidad
 \item Se observan dos o más características de los elementos de una población, son independientes? Problema de la independencia.
 \end{itemize}
 
 Se distinguen dos tipos de planteamientos, a saber:
 \begin{enumerate}
 \item Descomponer el recorrido de la distribución teórica en un número finito de subconjuntos y clasificar las observaciones muestrales según el conjunto al que pertenezcan. Después, comparar las frecuencias observadas de cada subconjunto con las que corresponderían a la distribución teórica. Esto da lugar a los test $\chi^2$, los cuales reducen un problema no paramétrico a uno que sí lo es.
-\item Unas la distribución muestral $F^*_n(x)$ para compararla con la distribución teórica o para compararlas entre sí. Midiendo la distancia entre ambas puede saberse si es o no significativa siempre que se tenga un patrón
+\item Usar la distribución muestral $F^*_n(x)$ para compararla con la distribución teórica o para compararlas entre sí si es un problema de independencia. Midiendo la distancia entre ambas puede saberse si es o no significativa siempre que se tenga un patrón
 \end{enumerate}
 
 \subsection{Contrastes $\chi^2$ de bondad del ajuste}
 \textbf{Hipótesis simple} \\
-Se dispone de una m.a.s. de tamaño n de una población con distribución desconocida $F$. Se quiere contrastar si puede aceptarse la hipótesis $H_0 : F = F_0$ donde $F_0$ es una distribución especificada (no paramétrica). La hipótesis alternativa $H_1$ se trata entonces de todas las distribuciones distintas a $F_0$.
+Se dispone de una m.a.s. de tamaño $n$ de una población con distribución desconocida $F$. Se quiere contrastar si puede aceptarse la hipótesis $H_0 : F = F_0$ donde $F_0$ es una distribución especificada (no paramétrica). La hipótesis alternativa $H_1$ se trata entonces de todas las distribuciones distintas a $F_0$.
 
 El recorrido de la distribución poblacional se divide en $k$ conjuntos disjuntos $A_1,...,A_k$. Sea $p^0_i$ la probabilidad de cada $A_i$ bajo $F_0$ y $p_i$ la probabilidad desconocida que la distribución teórica asigna a cada $A_i$:
 
@@ -286,7 +289,7 @@ $$P\{N_1=n_1,...,N_k=n_k\}= \frac{n!}{n_1!\cdots n_k!} p^{n_1}_1\cdots p^{n_k}_k
 
 Se ha logrado pues pasar a un test paramétrico de $H_0 :   \textbf{p} = \textbf{p}^0$ frente a la hipótesis de que el parámetro sea otro.
 
-Por tanto, esto se puede resolver por un test de razón de verosimilitudes, aunque la tradición clásica hace que el estadístico a usar normalmente sea otro que da los mismos resultados. Este se debe a que el test de razón de verosimilitudes es posterior a los test $\chi^2$.
+Por tanto, esto se puede resolver por un test de razón de verosimilitudes, aunque la tradición clásica hace que el estadístico a usar normalmente sea otro que da los mismos resultados. Esto se debe a que el test de razón de verosimilitudes es posterior a los test $\chi^2$.
 \\
 
 \textbf{Hipótesis compuesta} \\
