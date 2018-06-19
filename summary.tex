@@ -63,7 +63,9 @@ El contraste de hipótesis es un área de la inferencia estadística que se ocup
 
 Más concretamente, \textit{"la finalidad de un contraste de hipótesis es decidir si una determinada hipótesis, afirmación, o conjetura, sobre la distribución poblacional estudiada, es confirmada o invalidada estadísticamente a partir de las observaciones contenidas en la muestra"}, \cite{velez1993principios}.
 
-En general, dentro de los test de hipótesis, vamos a llamar \textbf{hipótesis nula o $H_0$} a la hipótesis que se asume sobre nuestra distribución y la cual se pretende contrastar. Frente a ella, nos encontramos la \textbf{hipótesis alternativa o $H_1$}, que agrupa aquellas distribuciones que no poseen $H_0$ como cualidad.
+En general, en el marco de los test de hipótesis, llamamos \textbf{hipótesis nula o $H_0$} a la hipótesis que se asume sobre nuestra distribución y la cual se pretende contrastar.
+Frente a ella, se propone la \textbf{hipótesis alternativa o $H_1$}, que agrupa aquellas distribuciones que no poseen $H_0$ como cualidad.
+Cabe destacar que en un test de hipótesis 
 
 A parte, también destacamos otra división usual:
 \begin{itemize}
@@ -77,7 +79,7 @@ Sea $H_0$ la hipótesis nula y $H_1$ la hipótesis alternativa. El problema del 
 \subsubsection{Tipos}
 Habitualmente, para tomar esta decisión podemos seguir un proceso que puede ser o no aleatorio: 
 \begin{itemize}
-	\item si se lleva a cabo dividiendo el espacio muestral $\Omega$ en dos regiones distintas:
+    \item si se lleva a cabo dividiendo el espacio muestral $\Omega$ en dos regiones distintas: \todo{qué espacio muestral??}
 	\begin{itemize}
 		\item región crítica (rechazo)
 		\item región de aceptación 
@@ -89,20 +91,37 @@ Habitualmente, para tomar esta decisión podemos seguir un proceso que puede ser
 
 \subsubsection{Errores}
 
-Tipos de errores: tipo I : rechazar $H_0$ cuando es cierta ; tipo II: aceptar $H_0$ cuando es falsa.
+    A la hora de realizar un test de hipótesis hay dos errores que pueden cometerse.
+    El primero, llamado \textbf{error de tipo I}, consiste en rechazar la hipótesis nula $H_0$ cuando esta es verdadera.
+    Por el contrario el otro error, llamado \textbf{error de tipo II}, consiste en no rechazar la hipótesis nula cuando esta es falsa.
 
-\subsubsection{Criterios de elección}
-A la hora de plantear o diseñar un test de hipótesis buscamos la disminución de todos los tipos de error; es habitual que esto sea difícil de alcanzar, puesto que disminuir la probabilidad de cometer un erro de tipo I influye positivamente en la probabilidad de cometer error de tipo II. Ante esta amplitud de posibilidades, existe un criterio tradicional para para diseñar los test:
+    Los test se caracterizan por la probibilidad de cometer estos errores.
+    Por un lado, a la probabilidad de cometer un error de tipo I se la conoce como \textbf{nivel de significación del test}, y suele denotarse con la letra griega $\alpha$.
+    Por otro, a la probabilidad de no cometer un error tipo II, esto es, de rechazar $H_0$ cuando esta es falsa, se la conoce como \textbf{potencia del test}.\todo{no hay alguna notacación para esto?}
+
+%    En un principio, nos gustaría hacer el nivel de significancia los más pequeño posible a la vez que maximizamos la potencia del test; de forma que minimizásemos la probabilidad cometer cualquier error.
+%    Sin embargo, un nivel de significancia muy pequeño implica que aceptamos la hipótesis nula de forma más frecuente, mientras que una potencia elevada implica lo contrario.
+%    Por tanto, no podemos alcanzar el objetivo deseado: un menor nivel de significación implicará una menor potencia y viceversa.
+%    En consecuencia, será necesario encontrar un compromiso.
+
+
+\subsubsection{Criterios de elección del test}
+    A la hora de plantear o diseñar un test de hipótesis buscamos la disminución de todos los tipos de error; es habitual que esto sea difícil de alcanzar, puesto que disminuir la probabilidad de cometer un erro de tipo I influye positivamente en la probabilidad de cometer error de tipo II. Ante esta amplitud de posibilidades, existe un criterio tradicional para para diseñar los test:
 \begin{enumerate}
-	\item Fijar una cota para cometer error de tipo 1 , $\alpha$, llamada nivel de significación.
+	\item Fijar un nivel de significación $\alpha$.
 	\item Excluir todos los test que no impongan que la probabilidad de rechazar $H_0$ cuando es cierta no supere el valor de $\alpha$ . 
-	\item  Entre los test no excluidos por la condición anterior, tratar de minimizar la probabilidad de error de tipo II.
+	\item  Entre los test no excluidos por la condición anterior, elegir aquel que maximice la potencia del test.
 \end{enumerate}
 
 
 \section{Test paramétricos: Distribución Normal}
+
+     Dentro de los distintos tipos de tests estadísticos, los \textbf{tests paramétricos} son aquellos en los que se asume cierta distribución para la muestra y se constrasta el valor de sus parámetros.
+     Concretamente, nosotros nos centraremos en el caso en el que la muestra sigue una distribución normal.
+     
 \subsection{Introducción}
-En el marco de los problemas paramétricos, el criterio descrito para la selección de test puede formularse como:
+En el marco de los problemas paramétricos, el criterio descrito para la selección de test puede formularse como:\todo{¿por qué tanta cursiva?}
+
 
 \textit{ Si la distribución teórica depende de un parámetro $\theta \in \Theta$ acerca del cual hay que contrastar la hipótesis nula $H_0: \theta \in \Theta_0$ frente a la alternativa $H_1: \theta \in \Theta_1$ se denomina función de potencia, $\beta(\theta)$, de un test a la probabilidad de rechazar $H_0$ cuando el valor del parámetro es $\theta$. Es decir, si se trata de un test no aleatorizado de región crítica C entonces: $$\beta(\theta)=P_\theta(C)$$
 mientras que en general, para un test de función crítica $\varphi$, es $$\beta(\theta)=E_\theta[\varphi(X_1,...,X_n)].$$
@@ -158,7 +177,7 @@ Una vez tenemos los conceptos básicos en cuanto al contraste de hipótesis, vam
  Añadimos también que el p-valor podría calcularse vía:
  $$p_{valor}=P[t_{n-1}> t]$$
  
- \subsubsection*{Caso practico en bioestadística}
+ \subsubsection*{Caso práctico en bioestadística}
  (De \cite{rosner2015fundamentals}) 
 Supongamos que estamos examinando el nivel de colesterol de n=10 niños cuyos padres murieron de una enfermedad cardiaca. Mediante las pruebas encontramos que la media de nuestra muestra es de 200 mg/dL con una desviación típica de 50mg/dL. Suponemos que es un parámetro que se distribuye como una normal, pero nuestro grupo es demasiado pequeño, por lo que usamos un test T de Student para comparar si la media de colesterol es significativamente mayor aquí que en la población general, la cual posee 175 mg/dL de media.
 Planteamos por tanto el problema:
@@ -204,7 +223,7 @@ En este caso enfrentamos la hipótesis de que nuestros datos tengan una determin
 \end{itemize}
 
 En este caso el estadístico vuelve a ser: 
-$$X^2=\frac{(n-1)S^2}{\sigma^2}$$
+$$X^2=\frac{(n-1)S^2}{\sigma_0^2}$$
 Un vez, obtenido, elegimos un nivel de significación $\alpha$ y finalmente, tras observar que el estadístico viene aproximado por una distribución $\chi^2$:
 \begin{itemize}
 	\item Si $X^2<\chi^2_{n-1,\alpha/2}$ o,$X^2>\chi^2_{n-1,1-\alpha/2}$, rechazamos $H_0$
@@ -212,55 +231,145 @@ Un vez, obtenido, elegimos un nivel de significación $\alpha$ y finalmente, tra
 \end{itemize}
 Para lo cual deberemos usar una tabla de la distribución $\chi^2$ o un ordenador.
 
- \subsubsection*{Caso practico en bioestadística}
+\subsubsection*{Caso práctico en bioestadística}
 (De \cite{rosner2015fundamentals}) Trasladar el que empieza en el ejemplo 6.39 y sigue por 7.46 y 7.47
+    Para la medida de la presión diástolica y sistólica se usan los llamados sonidos de Korotkov. 
+    Estos son unos sonidos característicos que se oyen cuando la presión del brazalete de medida alcanza una presión igual a la sistólica (sonido de Korotkov de primera fase) y a la diastólica (sonido de Korotkov de quinta fase).
+
+    Hay dos formas de analizar estos sonidos: pueden ser escuchados directamente por el personal médico o representados gráficamente para su análisis visual.
+    Se espera que el segundo método, al permitir un estudio más cuantitativo, presente una menor variabilidad al ser usado por diferentes observadores.
+    Sin embargo, por ser este método más novedoso, el personal médico tiene menos experiencia y podría darse que su uso llevase a una mayor variabilidad entre observadores.
+
+    Para discernir qué es lo que ocurre realmente, recurrimos a un contraste de hipótesis. 
+    Asumimos que la diferencia entre las medidas de los observadores sigue una distribución normal con ambos métodos, y que la varianza de esta normal supone una medida adecuada de la variabilidad entre observadores.
+    En el caso del método tradicional se sabe que la varianza de la diferencia entre medidas es $\sigma_0^2=35 (\textrm{mmHg})^2$.
+    Con respecto al nuevo método contamos con los datos de las medidas realizadas por dos observadores a 10 personas diferentes, que muestran una varianza muestral $s^2 = 8.178 (\textrm{mmHg})^2$.
+
+    Con estos datos, y dado que no sabemos si el nuevo método supone un aumento o disminución de la variabilidad, recurrimos a un test bilateral con las siguientes hipótesis nula y alternativa:
+    \begin{equation}
+        H_0 : \sigma^2 = \sigma_0^2, \;
+        H_1 : \sigma^2 \neq \sigma_0^2
+    \end{equation}
+    donde $\sigma^2$ es la varianza de la diferencia de medidas en el nuevo método.
+
+    Siguiendo el proceso descrito anteriormente, empezamos calculando el estadístico $X^2$:
+    \begin{equation}
+        X^2
+        =
+        \frac{(n-1)S^2}{\sigma_0^2}
+        =
+        \frac{(10 - 1) 8.178}{35}
+        =
+        2.103
+        .
+    \end{equation}
+
+    Si usamos un nivel de significación $\alpha = 0.05$, los valores críticos son $\chi^2_{9, 0.025} = 2.70$ y $\chi^2_{9,0.975} = 19.02$. 
+    Dado que $X^2$ cae fuera de la región de aceptación, rechazamos $H_0$.
+    \todo{en el libro se amplia esto con cálculo del valor p e intervalo de confianza}
+
+
+
 
 
 \subsection{Contrastes para dos poblaciones normales}
-\subsection{Contraste t  para dos poblaciones independientes con varianzas iguales}
+\todo{añadir introducción}
 
-Dadas dos poblaciones distribuidas mediante una normal que poseen la misma varianza. Sus tamaños son  $n_1$ y $n_2$. Bajo estas condiciones suponemos que queremos contrastar la hipótesis:
+\subsubsection{Contraste $t$ para dos poblaciones independientes con varianzas iguales}
+\label{sec:t_2samplessamevar}
+
+    Sean dos poblaciones distribuidas mediante dos distribuciones normales con varianzas desconocidas pero iguales y con tamaños $n_1$ y $n_2$ respectivamente.
+    Bajo estas condiciones suponemos que queremos comprobar si sus medias son iguales, esto es hacer el siguiente contraste de hipótesis:
 \begin{itemize}
 	\item $H_0:\mu_1=\mu_2$
 	\item $H_1:\mu_1\neq \mu_2$
 \end{itemize}
-Para una significación $\alpha$.
-En este caso el estadístico que utilizaremos es: 
-$$t=\frac{\bar{x_1}-\bar{x_2}}{s\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}$$
-donde definimos s como:
-$$s=\sqrt{[(n_1-1)s_1^2+(n_2-1)s_2^2]/(n_1+n_2-2)}$$
-Un vez, obtenido, el valor, concluimos mediante:
+para un nivel de significación $\alpha$.
+
+En este caso el estadístico que tendremos que utilizar es: 
+\begin{equation}
+    t
+    =
+    \frac{\bar{x}_1-\bar{x}_2}{s\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}
+\end{equation}
+donde definimos $s$ como:
+\begin{equation}
+    s=\sqrt{\frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n_1+n_2-2}}
+\end{equation}
+Un vez obtenido el valor del estadístico, concluimos el contraste según:
 \begin{itemize}
-	\item Si $t>t_{n_1+n_2-2,1-\alpha/2}$ o,$t<-t_{n_1+n_2-2,1-\alpha/2}$, rechazamos $H_0$
+	\item Si $t > t_{n_1+n_2-2,1-\alpha/2}$ ó $t < -t_{n_1+n_2-2,1-\alpha/2}$, rechazamos $H_0$
 	\item Si $-t_{n_1+n_2-2,1-\alpha/2}\leq t\leq t_{n_1+n_2-2,1-\alpha/2}$, aceptamos $H_0$
 \end{itemize}
-Para el calculo final seguimos los mismos procedimientos que en el apartado para una población.
+Para el cálculo final seguimos los mismos procedimientos que en el apartado para una población.\todo{??}
 
-\subsection{Contraste F para dos poblaciones independientes }
+\subsubsection{Contraste $F$ para dos poblaciones independientes }
+\label{sec:F_2samples}
 Acabamos la sección de test paramétricos presentando un test para el contraste de hipótesis relacionadas con la igualdad de la varianza de dos poblaciones normales.
-En este caso el estadístico sigue una distribución F de Snedecor y, el test, viene dado por el siguiente planeamiento:
 
-
-Dadas dos poblaciones distribuidas mediante una normal que poseen varianzas y medias distintas. Sus tamaños son  $n_1$ y $n_2$. Bajo estas condiciones suponemos que queremos contrastar la hipótesis:
-\begin{itemize}
+    Sean dos poblaciones distribuidas mediante dos distribuciones normales con medias $\mu_1$ y $\mu_2$ y  tamaños $n_1$ y $n_2$ respectivamente.
+    Bajo estas condiciones queremos contrastar la hipótesis:
+    \begin{itemize}
 	\item $H_0:\sigma^2_1=\sigma^2_2$
 	\item $H_1:\sigma^2_1\neq \sigma^2_2$
-\end{itemize}
-Para una significación $\alpha$.
-En este caso el estadístico que utilizaremos es: 
-$$F=\frac{s_1^2}{s_2^2}$$
-Un vez obtenido el valor, concluimos mediante:
-\begin{itemize}
+    \end{itemize}
+    para un nivel de significación $\alpha$.
+
+    En este caso el estadístico que utilizaremos es: 
+    $$F=\frac{s_1^2}{s_2^2}$$
+    Bajo la hipótesis nula, este estadístico sigue una distribución $F$ de Snedecor y con parámetros $(n_1 - 1)$ y $(n_2 - 1)$.
+
+    Un vez obtenido el valor, concluimos mediante:
+    \begin{itemize}
 	\item Si $F>F_{n_1-1,n_2-1.1-\alpha/2}$ o $F<F_{n_1-1,n_2-1.1-\alpha/2}$, rechazamos $H_0$
 	\item Si $F_{n_1-1,n_2-1.1-\alpha/2}\leq F \leq F_{n_1-1,n_2-1.1-\alpha/2}$, aceptamos $H_0$
-\end{itemize}
-Para el calculo final seguimos los mismos procedimientos que en el apartado para una población, utilizando la tabla de la distribución F de Snedecor.
+    \end{itemize}
+    Para el cálculo final seguimos los mismos procedimientos que en el apartado para una población, utilizando la tabla de la distribución F de Snedecor.
+    \todo{??}
+
+    Este test resulta útil en los casos en los que se quiere comprobar la igualdad de varianzas para aplicar a posteri el test $t$  de la media presentado en s: \ref{sec:t_2samplessamevar}.
+
+
 \includegraphics{ejemplo_grafica.png}
 \todo{Se pueden incluir gráficas así si queréis}
- \subsubsection*{Caso practico en bioestadística}
+
+\subsubsection*{Caso practico en bioestadística}
  (De \cite{rosner2015fundamentals}) Trasladar el que empieza en el ejemplo 8.13-8.17 
 
+    Supongamos que queremos comparar el nivel de colesterol en sangre de dos colectivos, que suponemos distribuidos por dos distribuciones normales $N(\mu_1, \sigma_1^2)$ y $N(\mu_2, \sigma_2^2)$.
+    El primer colectiva presenta una muestra y varianza muestral de $\bar{x}_1 = 207.3 (\textrm{mg/dL})$, $s_1 = 35.6 (\textrm{mg/dL})$, mientras que el segundo $\bar{x}_2 = 193.4 (\textrm{mg/dL})$, $s_2 = 17.3 (\textrm{mg/dL})$.
+    Sus tamaños son, respectivamente, $n_1 = 100$ y $n_2 = 74$.
+    Para ello, queremos aplicar el test $t$ introducido en la sección~\ref{sec:t_2samplessamevar} para ver si sus medias son iguales.
+    Sin embargo, no podemos hacer esto si no sabemos previamente que $\sigma_1^2 = \sigma_2^2$.
+    Así, hemos de empezar realizando el test $F$ descrito en la sección~\ref{sec:F_
+2samples}.
+
+    Las hipótesis en este caso son:
+    \begin{equation}
+	H_0:\sigma^2_1=\sigma^2_2 \; H_1:\sigma^2_1\neq \sigma^2_2
+    \end{equation}
+    Y el estadístco a comprobar:
+    $$F
+    =
+    \frac{s_1^2}{s_2^2}
+    = 
+    \frac{207.3^2}{193.4^2}
+    =
+    4.23
+    $$
+
+    Tomando un nivel de confianza $\alpha = 0.05$, pasamos a calcular los valores críticos del estimador:
+    \begin{equation}
+        F_{99,\, 73,\, 0.975} = 1.54908
+        F_{99,\, 73,\, 0.025} = 0.65476
+    \end{equation}
+
+    Dado que el estimador queda fuera de la región de aceptación, rechazaríamos la hipótesis nula y no podríamos utilizar el test $t$ para comparar las medias.
+    \todo{¿completar con valores p?}
+   
+
 \section{Contrastes globales sobre la distribución poblacional (test no paramétricos)}
+
 \subsection{Introducción}
 En muchas ocasiones es necesario emitir un juicio estadístico sobre la distribución poblacional en su conjunto, por ejemplo:
 \begin{itemize}
