@@ -65,7 +65,6 @@ Más concretamente, \textit{"la finalidad de un contraste de hipótesis es decid
 
 En general, en el marco de los test de hipótesis, llamamos \textbf{hipótesis nula o $H_0$} a la hipótesis que se asume sobre nuestra distribución y la cual se pretende contrastar.
 Frente a ella, se propone la \textbf{hipótesis alternativa o $H_1$}, que agrupa aquellas distribuciones que no poseen $H_0$ como cualidad.
-Cabe destacar que en un test de hipótesis 
 
 Asimismo, también destacamos otra división usual:
 \begin{itemize}
@@ -97,7 +96,8 @@ Habitualmente, para tomar esta decisión podemos seguir un proceso que puede ser
 
     Los test se caracterizan por la probibilidad de cometer estos errores.
     Por un lado, a la probabilidad de cometer un error de tipo I se la conoce como \textbf{nivel de significación del test}, y suele denotarse con la letra griega $\alpha$.
-    Por otro, a la probabilidad de no cometer un error tipo II, esto es, de rechazar $H_0$ cuando esta es falsa, se la conoce como \textbf{potencia del test}.\todo{no hay alguna notacación para esto?}
+    Por otro, a la probabilidad de no cometer un error tipo II, esto es, de rechazar $H_0$ cuando esta es falsa, se la conoce como \textbf{potencia del test}.
+    La probabilidad de cometer un error de tipo II suele denotarse por $\beta$, de forma que la potencia de un test es $1 - \beta$.
 
 %    En un principio, nos gustaría hacer el nivel de significancia los más pequeño posible a la vez que maximizamos la potencia del test; de forma que minimizásemos la probabilidad cometer cualquier error.
 %    Sin embargo, un nivel de significancia muy pequeño implica que aceptamos la hipótesis nula de forma más frecuente, mientras que una potencia elevada implica lo contrario.
@@ -112,6 +112,10 @@ Habitualmente, para tomar esta decisión podemos seguir un proceso que puede ser
 	\item Excluir todos los test que no impongan que la probabilidad de rechazar $H_0$ cuando es cierta no supere el valor de $\alpha$ . 
 	\item  Entre los test no excluidos por la condición anterior, elegir aquel que maximice la potencia del test.
 \end{enumerate}
+
+    Este criterio hace que habitualmente $\alpha$ sea mucho menor que $\beta$. 
+    En consecuencia, mientras que el rechazo de $H_0$ implicará que $H_1$ es cierta, el no rechazo de $H_0$ no es suficiente para afirmar esta se verifique.
+    \todo{¿estáis de acuerdo?}
 
 
 \section{Test paramétricos: Distribución Normal}
