@@ -54,7 +54,7 @@
 \maketitle
 
 \begin{abstract}
-El presente expone un recorrido por los principales conceptos y fundamentos del contraste de hipótesis. En él proporcionamos un enfoque estadístico de este área centrado en test paramétricos (para una o dos poblaciones normales) y test no paramétricos (recogiendo en particular bondad de ajuste, independencia y localizacion) . 
+El presente expone un recorrido por los principales conceptos y fundamentos del contraste de hipótesis. En él proporcionamos un enfoque estadístico de este área centrado en test paramétricos (para una o dos poblaciones normales) y test no paramétricos (recogiendo en particular bondad de ajuste, independencia y localización) . 
 \end{abstract}
 
 
@@ -95,7 +95,7 @@ Habitualmente, para tomar esta decisión podemos seguir un proceso que puede ser
     El primero, llamado \textbf{error de tipo I}, consiste en rechazar la hipótesis nula $H_0$ cuando esta es verdadera.
     Por el contrario el otro error, llamado \textbf{error de tipo II}, consiste en no rechazar la hipótesis nula cuando esta es falsa.
 
-    Los test se caracterizan por la probibilidad de cometer estos errores.
+    Los test se caracterizan por la probabilidad de cometer estos errores.
     Por un lado, a la probabilidad de cometer un error de tipo I se la conoce como \textbf{nivel de significación del test}, y suele denotarse con la letra griega $\alpha$.
     Por otro, a la probabilidad de no cometer un error tipo II, esto es, de rechazar $H_0$ cuando esta es falsa, se la conoce como \textbf{potencia del test}.
     La probabilidad de cometer un error de tipo II suele denotarse por $\beta$, de forma que la potencia de un test es $1 - \beta$.
@@ -119,9 +119,17 @@ Habitualmente, para tomar esta decisión podemos seguir un proceso que puede ser
     \todo{¿estáis de acuerdo?}
 
 
+\subsubsection{Valor $p$}
+    Cuando realizamos un test a un nivel de significación dado, obtenemos una respuesta binaria: aceptamos o rechazamos.
+    Sin embargo, podría interesarnos saber como de seguro es el rechazo o aceptación obtenidos, es decir, cuantificar significación estadística del test ($\alpha$ sólo nos da una cota).
+    
+    Para esto se utiliza el concepto de \textbf{valor $p$}, que no es más que el nivel de significación en el límite entre la aceptación y el rechazo.
+    De esta forma si, por ejemplo, en un test $p= 0.02$, sabemos que rechazaremos $H_0$ siempre que el nivel de significación sea mayor a $0.02$.
+
+
 \section{Test paramétricos para una población normal}
 
-     Dentro de los distintos tipos de tests estadísticos, los \textbf{tests paramétricos} son aquellos en los que se asume cierta distribución para la muestra y se constrasta el valor de sus parámetros.
+     Dentro de los distintos tipos de tests estadísticos, los \textbf{tests paramétricos} son aquellos en los que se asume cierta distribución para la muestra y se contrasta el valor de sus parámetros.
      Concretamente, nosotros nos centraremos en el caso en el que la muestra sigue una distribución normal.
      
 \subsection{Introducción}
@@ -262,13 +270,13 @@ Elegido un nivel de significación $\alpha$, el criterio de aceptación es:
 	\item Si $\chi^2_{n-1,\alpha/2}\leq X^2\leq\chi^2_{n-1,1-\alpha/2}$, aceptamos $H_0$
         ,
 \end{itemize}
-    donde $\chi^2_{m, p}$ representa el cuantil de orden $p$ de la districión $\chi^2$ con $m$ grados de libertad.
+    donde $\chi^2_{m, p}$ representa el cuantil de orden $p$ de la distribución $\chi^2$ con $m$ grados de libertad.
 
     Para encontrar estos valores podemos usar una tabla de la distribución $\chi^2$ o un ordenador.
 
 \subsubsection*{Caso práctico en bioestadística}
 %(De \cite{rosner2015fundamentals}) Trasladar el que empieza en el ejemplo 6.39 y sigue por 7.46 y 7.47
-    Para la medida de la presión diástolica y sistólica se usan los llamados sonidos de Korotkov. 
+    Para la medida de la presión diastólica y sistólica se usan los llamados sonidos de Korotkov. 
     Estos son unos sonidos característicos que se oyen cuando la presión del brazalete de medida alcanza una presión igual a la sistólica (sonido de Korotkov de primera fase) y a la diastólica (sonido de Korotkov de quinta fase).
 
     Hay dos formas de analizar estos sonidos: pueden ser escuchados directamente por el personal médico o representados gráficamente para su análisis visual.
@@ -331,9 +339,9 @@ donde definimos $s$ como:
 \begin{equation}
     s=\sqrt{\frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n_1+n_2-2}}
 \end{equation}
-y en el que $\bar{x}_i$ y $n_i$ son la media muestral y el tamaño de la muestra de la pobnlación $i$.
+y en el que $\bar{x}_i$ y $n_i$ son la media muestral y el tamaño de la muestra de la población $i$.
 
-Este estadístico vendra distribuido según una $t$ de Student con $n_1 + n_2 - 2$ grados de libertad.
+Este estadístico vendrá distribuido según una $t$ de Student con $n_1 + n_2 - 2$ grados de libertad.
 
 Un vez obtenido el valor del estadístico, concluimos el contraste según:
 \begin{itemize}
@@ -363,9 +371,10 @@ Acabamos la sección de test paramétricos presentando un test para el contraste
 	\item Si $F>F_{n_1-1,n_2-1.1-\alpha/2}$ o $F<F_{n_1-1,n_2-1.1-\alpha/2}$, rechazamos $H_0$
 	\item Si $F_{n_1-1,n_2-1.1-\alpha/2}\leq F \leq F_{n_1-1,n_2-1.1-\alpha/2}$, aceptamos $H_0$
     \end{itemize}
+
     Para el cálculo final seguimos los mismos procedimientos que en el apartado para una población, utilizando la tabla de la distribución F de Snedecor.
 
-    Este test resulta útil en los casos en los que se quiere comprobar la igualdad de varianzas para aplicar a posteri el test $t$  de la media presentado en la sección \ref{sec:t_2samplessamevar}.
+    Este test resulta útil en los casos en los que se quiere comprobar la igualdad de varianzas para aplicar a posteriori el test $t$  de la media presentado en la sección \ref{sec:t_2samplessamevar}.
 
 
 %\includegraphics{ejemplo_grafica.png}
@@ -386,7 +395,7 @@ Acabamos la sección de test paramétricos presentando un test para el contraste
     \begin{equation}
 	H_0:\sigma^2_1=\sigma^2_2; \quad H_1:\sigma^2_1\neq \sigma^2_2
     \end{equation}
-    Y el estadístco a comprobar:
+    Y el estadístico a comprobar:
     $$F
     =
     \frac{s_1^2}{s_2^2}
@@ -424,7 +433,7 @@ Se distinguen dos tipos de planteamientos, a saber:
 \end{enumerate}
 
 \subsection{Contrastes $\chi^2$ de bondad del ajuste}
-\textbf{Hipótesis simple} \\
+\subsubsection*{Hipótesis simple} 
 Se dispone de una m.a.s. de tamaño $n$ de una población con distribución desconocida $F$. Se quiere contrastar si puede aceptarse la hipótesis $H_0 : F = F_0$ donde $F_0$ es una distribución especificada (no paramétrica). La hipótesis alternativa $H_1$ se trata entonces de todas las distribuciones distintas a $F_0$.
 
 El recorrido de la distribución poblacional se divide en $k$ conjuntos disjuntos $A_1,...,A_k$. Sea $p^0_i$ la probabilidad de cada $A_i$ bajo $F_0$ y $p_i$ la probabilidad desconocida que la distribución teórica asigna a cada $A_i$:
@@ -447,26 +456,65 @@ que bajo la hipótesis nula viene aproximada (para $n$ grande) por una distribuc
 Con esto, podemos construir la región crítica y realizar el test.
 
 
-\textbf{Hipótesis compuesta} \\
+\subsubsection*{Hipótesis compuesta} 
 La situación habitual es que la hipótesis a contrastar sea compuesta; más concretamente se especifica una familia de distribuciones con forma funcional dada pero dependiente de algunos parámetros no especificados.
 
 Se podría pensar en hacer los dos test por separado, i.e., realizar la estimación puntual de los parámetros para contrastar después el ajuste a la distribución poblacional que indiquen los propios datos como la más adecuada, pero para ello se necesitarían dos m.a.s. independientes.
 
-Alternativa: Contrastar una hipótesis nula de la forma $F \in \{F_\theta| \theta \in \Theta \subset R^q\}$
-\todo{qué significa $F_{\theta}$ y $\Theta$?}
-Se procede de igual manera que con la hipótesis simple, terminando por comparar paramétricamente una distribución multinomial.
+Alternativa: Contrastar una hipótesis nula de la forma $F \in \{F_\theta| \theta \in \Theta \subset R^q\}$, donde $\theta$ representa una elección de los $q$ parámetros de la distribución y $\Theta$ el conjunto de parámetros considerados en la hipótesis nula.
+En este caso primero se obtiene por máxima verosimilitud la estimación del $\theta$ adecuado en $\Theta$. Una vez hecho esto se procede de igual manera que con la hipótesis simple, terminando por comparar paramétricamente una distribución multinomial.
+Nótese que en este caso el estimador tendrá que ser comparado con una distribución de $k - 1 - q$ grados de libertad.
 
 \subsection{Contraste $\chi^2$ de homogeneidad}
 %¿Tenemos $m$ muestras de tamaños $n_1, n_2,...,n_m$ o bien una única muestra de tamaño $n_1+n_2+\cdots + n_m$?
-Dadas $m$ muestras de tamaños $n_1, n_2,...,n_m$, ¿vienen éstas de la misma distribución teórica?
+Dadas $m$ muestras de tamaños $n_1, n_2,...,n_m$ nos preguntas: ¿vienen éstas de la misma distribución poblacional?
 
 %Al ser un test $\chi ^2$ el procedimiento es el mismo: dividir en subconjuntos, clasificar las observaciones muestrales y convertirlo todo en un test paramétrico sobre los parámetros de la distribución multinomial que sigue la variable aleatoria que cuenta el número de observaciones de la muestra en cada subconjunto. 
 
-Al ser un test $\chi ^2$ el procedimiento es el mismo que en la sección anterior. Empezamos por dividir en subconjuntos y clasificar las observaciones muestrales y convertirlo todo en un test paramétrico sobre los parámetros de la distribución multinomial que sigue la variable aleatoria que cuenta el número de observaciones de la muestra en cada subconjunto. 
-\todo{no entiendo}
+Al ser un test $\chi ^2$ el procedimiento es el mismo que en la sección anterior. Empezamos por dividir en subconjuntos y clasificar las observaciones de cada muestra. La hipótesis nula aquí es que la probabilidad de cada subconjunto $A_j$ en la muestra $i$, $p_{ij}$, no dependa de la muestra elegida; esto es:
+\begin{equation}
+    p_{ij} = p_i, \quad \forall j
+    .
+\end{equation}
+
+El estimador a considerar aquí es:
+\begin{equation}
+    D
+    =
+    \sum_{i=1}^m \sum_{j=1}^k
+            \frac{(n_{ij} - n_i n_{\cdot j}/n)^2}{n_i n_{\cdot j}/n}
+    ,        
+\end{equation}
+en el que $n_{ij}$ es la frecuencia del subconjunto $A_j$ en la muestra $i$, $n_i$ el tamaño de la muestra $i$ y $n_{\cdot j}$ la frecuencia del subconjunto $A_j$ al considerar todas las muestras.
+Este estimador vendrá distribuido según una distribución $\chi^2_{(m-1)(k-1)}$ bajo la hipótesis nula.
+
+
+
+
 \subsection{Contraste $\chi^2$ de independencia}
-Se tienen $n$ elementos de una población en los que se observan 2 características, $X$ e $Y$ obteniéndose una m.a.s. bidimensional $(X_1,Y_1),...,(X_n,Y_n)$, ¿son estas características independientes? La forma de proceder vuelve a ser análoga a las anteriores, lo que nos demuestra la versatilidad de los test $\chi^2$.
-\todo{no sé proceder análogamente}
+    Se tienen $n$ elementos de una población en los que se observan 2 características, $X$ e $Y$ obteniéndose una m.a.s. bidimensional $(X_1,Y_1),...,(X_n,Y_n)$, ¿son estas características independientes? La forma de proceder vuelve a ser análoga a las anteriores, lo que nos demuestra la versatilidad de los test $\chi^2$.
+
+    En este caso dividiremos los datos en subconjuntos $k\cdot r$ en función de el valor de $X$ y de $Y$ ($k$ subconjuntos en $X$ y $r$ subconjuntos en $Y$).
+    Llamaremos $n_{ij}$ al número de elementos de la muestra  que están simultáneamente en el subconjunto $A_i$ de $X$ y $B_j$ de $Y$, $n_{\cdot j}$ a los que están en $B_j$ (independientemente del valor de $X$) y $n_{i \cdot}$ a los que están en $A_i$ independientemente de $Y$.
+
+    La hipótesis nula será que para todo $i$, $j$:
+    \begin{equation}
+        p_{ij} = p_{i \cdot} p_{\cdot j}
+    \end{equation}
+    con $p$ la probabilidad en la distribución poblacional y los subíndices siguiendo la misma notación que la $n$.
+
+    Con esta notación, el estimador a usar en este caso es:
+    \begin{equation}
+        D
+        =
+        \sum_{i=1}^k \sum_{j=1}^r
+                \frac{(n_{ij} - n_{i\cdot} n_{\cdot j}/n)^2}
+                {n_{i \cdot} n_{\cdot j}/n}
+        ,        
+    \end{equation}
+    que bajo la hipótesis nula sigue una distribución $\chi^2_{(k-1)(r-1)}$.
+
+
 
 \subsection{Contraste de Kolmogorov-Smirnov }
 Desventajas de los tests $\chi^2$ : al discretizar las observaciones muestrales en conjuntos de una cierta partición, en el caso de las distribuciones continuas se ignora el valor exacto de las observaciones, lo que puede dar lugar a errores significativos en caso de que la muestra no sea lo suficientemente grande.
@@ -596,33 +644,6 @@ con lo que podremos utilizar los test para esta distribución.
 Sin embargo, como apuntábamos, si queremos centrarnos en todo el genoma, debemos modificar estos test y con ello los estadísticos en los que se basan. 
 
 Exponemos así que lo dicho en el trabajo es solo una pincelada de las aplicaciones de los test de hipótesis y también de la teoría estadística en la que yacen. Conforme surgen nuevos problemas en biología y en especial en bioinformática con su actual auge, la estadística también debe evolucionar.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 \bibliographystyle{apalike}
