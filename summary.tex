@@ -12,6 +12,7 @@
 \usepackage{courier}
 \usepackage{listings}
 \usepackage{color}
+\usepackage{physics}
 \usepackage{todonotes}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
@@ -118,7 +119,7 @@ Habitualmente, para tomar esta decisión podemos seguir un proceso que puede ser
     \todo{¿estáis de acuerdo?}
 
 
-\section{Test paramétricos: Distribución Normal}
+\section{Test paramétricos para una población normal}
 
      Dentro de los distintos tipos de tests estadísticos, los \textbf{tests paramétricos} son aquellos en los que se asume cierta distribución para la muestra y se constrasta el valor de sus parámetros.
      Concretamente, nosotros nos centraremos en el caso en el que la muestra sigue una distribución normal.
@@ -127,12 +128,19 @@ Habitualmente, para tomar esta decisión podemos seguir un proceso que puede ser
 En el marco de los problemas paramétricos, el criterio descrito para la selección de test puede formularse como:\todo{¿por qué tanta cursiva?}
 
 
-\textit{ Si la distribución teórica depende de un parámetro $\theta \in \Theta$ acerca del cual hay que contrastar la hipótesis nula $H_0: \theta \in \Theta_0$ frente a la alternativa $H_1: \theta \in \Theta_1$ se denomina función de potencia, $\beta(\theta)$, de un test a la probabilidad de rechazar $H_0$ cuando el valor del parámetro es $\theta$. Es decir, si se trata de un test no aleatorizado de región crítica C entonces: $$\beta(\theta)=P_\theta(C)$$
-mientras que en general, para un test de función crítica $\varphi$, es $$\beta(\theta)=E_\theta[\varphi(X_1,...,X_n)].$$
+\textit{
+    Si la distribución teórica depende de un parámetro $\theta \in \Theta$ acerca del cual hay que contrastar la hipótesis nula $H_0: \theta \in \Theta_0$ frente a la alternativa $H_1: \theta \in \Theta_1$ se denomina función de potencia, $\beta(\theta)$, de un test a la probabilidad de rechazar $H_0$ cuando el valor del parámetro es $\theta$. Es decir, si se trata de un test no aleatorizado de región crítica C entonces: $$\beta(\theta)=P_\theta(C)$$
+mientras que en general, para un test de función crítica $\phi$, es $$\beta(\theta)=E_\theta[\phi(X_1,...,X_n)].$$
+\todo{¿explicar que son las X}
 Un test tiene nivel de significación $\alpha$ si es:  $$\beta(\theta)\leq\alpha \text{ para cada } \theta \in \Theta_0;$$
-y se denomina tamaño del test al número: $$sup_{\theta\in\Theta_0}\beta(\theta).$$
+y se denomina tamaño del test al número: 
+\begin{equation}
+    \mathrm{sup}_{\theta\in\Theta_0}\beta(\theta)
+    .
+\end{equation}
 Es deseable que tamaño y nivel de significación coincidan, verificándose: 
-$$sup_{\theta\in\Theta_0}\beta(\theta)=\alpha$$ }
+$$\mathrm{sup}_{\theta\in\Theta_0}\beta(\theta)=\alpha$$ }
+\todo{qué significa el tamaño del test y por qué es deseable que coincida con el nivel de significación?}
 
 Una vez tenemos los conceptos básicos en cuanto al contraste de hipótesis, vamos a ofrecer un pequeño recorrido por los test paramétricos que están relacionados con las distribuciones normales.
 
@@ -144,25 +152,36 @@ Una vez tenemos los conceptos básicos en cuanto al contraste de hipótesis, vam
  
  En la bioestadística podemos tener casos en los cuales nuestro tamaño de muestra sera pequeño. Esto por ejemplo puede darse en medicina cuando tratamos a grupo reducido de pacientes.
 
- \subsubsection{Contraste t de una muestra para la media de una distribución normal con varianza desconocida (Media alternativa <media nula)  \todo{y este título wtf?}}
+ \subsubsection{Contraste t de una muestra para la media de una distribución normal con varianza desconocida (media alternativa $<$ media hipótesis nula)}
  
- En este caso enfrentamos la hipótesis de que nuestros datos tengan una determinada media, frente a la posibilidad  de que la media sea menor: 
+ En este caso enfrentamos la hipótesis de que nuestros datos tengan una determinada media, frente a la posibilidad  de que la media sea menor:
  \begin{itemize}
- 	\item $H_0:\mu=\mu_0$
- 	\item $H_1: \mu<mu_0$
+ 	\item $H_0:\mu = \mu_0$
+ 	\item $H_1: \mu < \mu_0$
  \end{itemize}
- Con la particularidad de que la varianza nos es desconocida.
+considerando además que la varianza nos es desconocida.
+
+A este tipo de test  en el que el valor del parámetro en la hipótesis alternativa puede que ser mayor o menor, pero no ambos, se le llama \textbf{contraste unilateral}.
  
  En este caso el estadístico para nuestro test es: 
- $$t=\frac{\bar{x}-\mu_0}{s/\sqrt{n}}$$
- Una vez obtenido, elegimos un nivel de significación $\alpha$ y finalmente:
+ $$t=\frac{\bar{x}-\mu_0}{s/\sqrt{n}},$$
+ donde $\bar{x}$ es la media muestral, $s$ es la raíz cuadrada de la cuasivarianza muestral y $n$ el tamaño de la muestra.
+
+ Puede probarse que, bajo la hipótesis nula, el estadístico anterior está distribuido según una $t$ de Student con $n - 1$ grados de libertad.
+ A partir de esta información y dado un nivel de significación $\alpha$, podemos encontrar la región crítica para este estadístico.
+ Dado que $\alpha$ es la probabilidad de rechazar $H_0$ cuando esta es cierta, la probabilidad, bajo $H_0$ de obtener un valor del estadístico $t$ en la región crítica debe ser $\alpha$.
+
+ Como hemos asumido que la media de la distribución debe ser menor o igual que $\mu_0$, esto se traduce en el siguiente criterio:
  \begin{itemize}
- 	\item Si $t<t_{n-1,\alpha}$, rechazamos $H_0$
- 	\item Si $t<t_{n-1,\alpha}$, aceptamos $H_0$
+ 	\item si $t<t_{n-1,\alpha}$, rechazamos $H_0$
+ 	\item si $t<t_{n-1,\alpha}$, aceptamos $H_0$
  \end{itemize}
- Para lo cual deberemos usar una tabla de la distribución $t$ de Student o un ordenador.
+ en el que $t_{m, p}$ es el cuantil de orden $p$ de la distribución $t$ de Student con $m$ grados de libertad. Para obtener estos valores deberemos usar una tabla de la distribución $t$ de Student o un ordenador.
+
  Añadimos también que el $p$-valor podría calcularse vía:
- $$p_{valor}=P[t_{n-1}\leq t]$$
+ $$p_{valor}=P[t_{n-1}\leq t].$$
+ \todo{qué es el p-valor?? Explicar antes}
+
  
  \subsubsection{Contraste $t$ de una muestra para la media de una distribución normal con varianza desconocida. \\ Media alternativa $>$ media nula.}
  En este caso enfrentamos la hipótesis que completa el estado anterior, es decir, queremos saber si nuestros datos tienen una determinada media, frente a la posibilidad  de que la media sea mayor: 
@@ -170,18 +189,19 @@ Una vez tenemos los conceptos básicos en cuanto al contraste de hipótesis, vam
  	\item $H_0:\mu=\mu_0$
  	\item $H_1: \mu>mu_0$
  \end{itemize}
- Con la particularidad de que la varianza nos es desconocida.
+ donde de nuevo consideramos que la varianza nos es desconocida.
  
- En este caso el estadístico para nuestro test es el mismo: 
+ En este caso el estadístico para nuestro test es el mismo que en el anterior:
  $$t=\frac{\bar{x}-\mu_0}{s/\sqrt{n}}$$
- Un vez, obtenido, elegimos un nivel de significación $\alpha$ y finalmente:
+ y lo que cambia son las regiones crítica y de aceptación:
  \begin{itemize}
- 	\item Si $t>t_{n-1,1-\alpha}$, rechazamos $H_0$
- 	\item Si $t\leq t_{n-1,1-\alpha}$, aceptamos $H_0$
+ 	\item si $t>t_{n-1,1-\alpha}$, rechazamos $H_0$
+ 	\item si $t\leq t_{n-1,1-\alpha}$, aceptamos $H_0$
  \end{itemize}
- Para lo cual deberemos usar una tabla de la distribución $t$ de Student o un ordenador.
+
  Nuevamente, el $p$-valor podría calcularse vía:
  $$p_{valor}=P[t_{n-1}> t]$$
+ \todo{hay que explicar qué significa el valor p}
  
  \subsubsection*{Caso práctico en bioestadística}
  (De \cite{rosner2015fundamentals}) 
@@ -198,25 +218,29 @@ $$t<t_{n-1,1-\alpha}=t_{9,0.95}=1.8333$$
 Por lo que aceptamos la hipótesis nula.
 
 \subsubsection{Contraste $t$ de una muestra para la media de una distribución normal con varianza desconocida. Alternativa bilateral}
-Es habitual no poder encajar los test de hipótesis en test unilaterales sobre la distribución. Por ello, añadimos un test bilateral para discernir en problemas en los que se busca comprobar la igualdad o desigualdad de un parámetro.
+Es habitual no poder encajar los test de hipótesis en test unilaterales sobre la distribución. 
+En estos casos recurrimos a \textbf{tests bilaterales} en los que se busca comprobar la igualdad o desigualdad de un parámetro.
 
-En este caso enfrentamos la hipótesis de que nuestros datos tengan una determinada media, frente a la posibilidad  de que la media sea menor: 
+En este caso enfrentamos la hipótesis de que nuestros datos tengan una determinada media, frente a la posibilidad de que esta tome cualquier otro valor:
 \begin{itemize}
 	\item $H_0:\mu=\mu_0$
 	\item $H_1: \mu\neq \mu_0$
 \end{itemize}
-Con la particularidad de que la varianza nos es desconocida.
+donde otra vez la varianza nos es desconocida.
 
-En este caso el estadístico vuelve a ser: 
-$$t=\frac{\bar{x}-\mu_0}{s/\sqrt{n}}$$
+El estadístico es el mismo que en los casos anteriores:
+$$t=\frac{\bar{x}-\mu_0}{s/\sqrt{n}}.$$
 Un vez, obtenido, elegimos un nivel de significación $\alpha$ y finalmente:
+
+Lo que cambia es la región de rechazo, que repartimos (arbitrariamente) por igual entre las colas de la distribución
 \begin{itemize}
 	\item Si $|t|>t_{n-1,1-\alpha/2}$, rechazamos $H_0$
-	\item Si $|t|\leq t_{n-1,1-\alpha/2}$, aceptamos $H_0$
+	\item Si $|t|\leq t_{n-1,1-\alpha/2}$, aceptamos $H_0$.
 \end{itemize}
-Para lo cual deberemos usar una tabla de la distribución $t$ de Student o un ordenador.
+
 La obtención del p-valor para este caso es más complicada:
 $$p_{valor} = \begin{cases} 2P[t_{n-1}\leq t], & \mbox{si } t\leq 0 \\ 2(1-P[t_{n-1}\leq t]), & \mbox{si } t>0 \end{cases}$$
+\todo{se ha explicado valores p?}
 
 \subsection{Contraste bilateral $\chi^2$ para la varianza de una distribución normal}
 
@@ -227,18 +251,23 @@ En este caso enfrentamos la hipótesis de que nuestros datos tengan una determin
 	\item $H_0:\sigma^2=\sigma^2_0$
 	\item $H_1: \sigma^2\neq\sigma^2_0$
 \end{itemize}
+donde la media $\mu$ de la distribución es desconocida.
 
-En este caso el estadístico vuelve a ser: 
-$$X^2=\frac{(n-1)S^2}{\sigma_0^2}$$
-Un vez, obtenido, elegimos un nivel de significación $\alpha$ y finalmente, tras observar que el estadístico viene aproximado por una distribución $\chi^2$:
+Ahora el estadístico es:
+    $$X^2=\frac{(n-1)s^2}{\sigma_0^2}$$
+que viene aproximado por una distribución $\chi^2$ con $n - 1$ grados de libertad.
+Elegido un nivel de significación $\alpha$, el criterio de aceptación es:
 \begin{itemize}
 	\item Si $X^2<\chi^2_{n-1,\alpha/2}$ ó $X^2>\chi^2_{n-1,1-\alpha/2}$, rechazamos $H_0$
 	\item Si $\chi^2_{n-1,\alpha/2}\leq X^2\leq\chi^2_{n-1,1-\alpha/2}$, aceptamos $H_0$
+        ,
 \end{itemize}
-Para lo cual deberemos usar una tabla de la distribución $\chi^2$ o un ordenador.
+    donde $\chi^2_{m, p}$ representa el cuantil de orden $p$ de la districión $\chi^2$ con $m$ grados de libertad.
+
+    Para encontrar estos valores podemos usar una tabla de la distribución $\chi^2$ o un ordenador.
 
 \subsubsection*{Caso práctico en bioestadística}
-(De \cite{rosner2015fundamentals}) Trasladar el que empieza en el ejemplo 6.39 y sigue por 7.46 y 7.47
+%(De \cite{rosner2015fundamentals}) Trasladar el que empieza en el ejemplo 6.39 y sigue por 7.46 y 7.47
     Para la medida de la presión diástolica y sistólica se usan los llamados sonidos de Korotkov. 
     Estos son unos sonidos característicos que se oyen cuando la presión del brazalete de medida alcanza una presión igual a la sistólica (sonido de Korotkov de primera fase) y a la diastólica (sonido de Korotkov de quinta fase).
 
@@ -248,8 +277,8 @@ Para lo cual deberemos usar una tabla de la distribución $\chi^2$ o un ordenado
 
     Para discernir qué es lo que ocurre realmente, recurrimos a un contraste de hipótesis. 
     Asumimos que la diferencia entre las medidas de los observadores sigue una distribución normal con ambos métodos, y que la varianza de esta normal supone una medida adecuada de la variabilidad entre observadores.
-    En el caso del método tradicional se sabe que la varianza de la diferencia entre medidas es $\sigma_0^2=35 (\textrm{mmHg})^2$.
-    Con respecto al nuevo método contamos con los datos de las medidas realizadas por dos observadores a 10 personas diferentes, que muestran una varianza muestral $s^2 = 8.178 (\textrm{mmHg})^2$.
+    En el caso del método tradicional se sabe que la varianza de la diferencia entre medidas es $\sigma_0^2=35 \; (\textrm{mmHg})^2$.
+    Con respecto al nuevo método contamos con los datos de las medidas realizadas por dos observadores a 10 personas diferentes, que muestran una varianza muestral $s^2 = 8.178 \; (\textrm{mmHg})^2$.
 
     Con estos datos, y dado que no sabemos si el nuevo método supone un aumento o disminución de la variabilidad, recurrimos a un test bilateral con las siguientes hipótesis nula y alternativa:
     \begin{equation}
@@ -272,14 +301,16 @@ Para lo cual deberemos usar una tabla de la distribución $\chi^2$ o un ordenado
 
     Si usamos un nivel de significación $\alpha = 0.05$, los valores críticos son $\chi^2_{9, 0.025} = 2.70$ y $\chi^2_{9,0.975} = 19.02$. 
     Dado que $X^2$ cae fuera de la región de aceptación, rechazamos $H_0$.
+    Es decir, el la variabilidad de los dos métodos es diferente.
     \todo{en el libro se amplia esto con cálculo del valor p e intervalo de confianza}
 
 
+\section{Tests paramétricos para dos poblaciones normales}
 
-\subsection{Contrastes para dos poblaciones normales}
-\todo{añadir introducción}
+    Además de los contrastes anteriores, para una sola población, podemos realizar contrastes con varias poblaciones.
+    En este caso no se asumen conocidos los valores de ninguno de los parámetros, sino que son comparados entre las dos poblaciones.
 
-\subsubsection{Contraste $t$ para dos poblaciones independientes con varianzas iguales}
+\subsection{Contraste $t$ para dos poblaciones independientes con varianzas iguales}
 \label{sec:t_2samplessamevar}
 
     Sean dos poblaciones distribuidas mediante dos distribuciones normales con varianzas desconocidas pero iguales y con tamaños $n_1$ y $n_2$ respectivamente.
@@ -300,14 +331,18 @@ donde definimos $s$ como:
 \begin{equation}
     s=\sqrt{\frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n_1+n_2-2}}
 \end{equation}
+y en el que $\bar{x}_i$ y $n_i$ son la media muestral y el tamaño de la muestra de la pobnlación $i$.
+
+Este estadístico vendra distribuido según una $t$ de Student con $n_1 + n_2 - 2$ grados de libertad.
+
 Un vez obtenido el valor del estadístico, concluimos el contraste según:
 \begin{itemize}
 	\item Si $t > t_{n_1+n_2-2,1-\alpha/2}$ ó $t < -t_{n_1+n_2-2,1-\alpha/2}$, rechazamos $H_0$
 	\item Si $-t_{n_1+n_2-2,1-\alpha/2}\leq t\leq t_{n_1+n_2-2,1-\alpha/2}$, aceptamos $H_0$
 \end{itemize}
-Para el cálculo final seguimos los mismos procedimientos que en el apartado para una población.\todo{??}
+%Para el cálculo final seguimos los mismos procedimientos que en el apartado para una población.\todo{??}
 
-\subsubsection{Contraste $F$ para dos poblaciones independientes }
+\subsection{Contraste $F$ para dos poblaciones independientes }
 \label{sec:F_2samples}
 Acabamos la sección de test paramétricos presentando un test para el contraste de hipótesis relacionadas con la igualdad de la varianza de dos poblaciones normales.
 
@@ -323,18 +358,17 @@ Acabamos la sección de test paramétricos presentando un test para el contraste
     $$F=\frac{s_1^2}{s_2^2}$$
     Bajo la hipótesis nula, este estadístico sigue una distribución $F$ de Snedecor y con parámetros $(n_1 - 1)$ y $(n_2 - 1)$.
 
-    Un vez obtenido el valor, concluimos mediante:
+    Un vez obtenido el valor del estadístico, concluimos mediante:
     \begin{itemize}
 	\item Si $F>F_{n_1-1,n_2-1.1-\alpha/2}$ o $F<F_{n_1-1,n_2-1.1-\alpha/2}$, rechazamos $H_0$
 	\item Si $F_{n_1-1,n_2-1.1-\alpha/2}\leq F \leq F_{n_1-1,n_2-1.1-\alpha/2}$, aceptamos $H_0$
     \end{itemize}
     Para el cálculo final seguimos los mismos procedimientos que en el apartado para una población, utilizando la tabla de la distribución F de Snedecor.
-    \todo{??}
 
-    Este test resulta útil en los casos en los que se quiere comprobar la igualdad de varianzas para aplicar a posteri el test $t$  de la media presentado en s: \ref{sec:t_2samplessamevar}.
+    Este test resulta útil en los casos en los que se quiere comprobar la igualdad de varianzas para aplicar a posteri el test $t$  de la media presentado en la sección \ref{sec:t_2samplessamevar}.
 
 
-\includegraphics{ejemplo_grafica.png}
+%\includegraphics{ejemplo_grafica.png}
 \todo{Se pueden incluir gráficas así si queréis}
 
 \subsubsection*{Caso practico en bioestadística}
@@ -350,7 +384,7 @@ Acabamos la sección de test paramétricos presentando un test para el contraste
 
     Las hipótesis en este caso son:
     \begin{equation}
-	H_0:\sigma^2_1=\sigma^2_2 \; H_1:\sigma^2_1\neq \sigma^2_2
+	H_0:\sigma^2_1=\sigma^2_2; \quad H_1:\sigma^2_1\neq \sigma^2_2
     \end{equation}
     Y el estadístco a comprobar:
     $$F
@@ -365,6 +399,7 @@ Acabamos la sección de test paramétricos presentando un test para el contraste
     Tomando un nivel de confianza $\alpha = 0.05$, pasamos a calcular los valores críticos del estimador:
     \begin{equation}
         F_{99,\, 73,\, 0.975} = 1.54908
+        ; \quad
         F_{99,\, 73,\, 0.025} = 0.65476
     \end{equation}
 
@@ -378,13 +413,13 @@ Acabamos la sección de test paramétricos presentando un test para el contraste
 En muchas ocasiones es necesario emitir un juicio estadístico sobre la distribución poblacional en su conjunto, por ejemplo:
 \begin{itemize}
 \item Ante una muestra aleatoria de una población, ¿puede admitirse que la distribución poblacional coincide con una dada? Problema de la bondad del ajuste
-\item Teniendo varias m.a.s., ¿puede admitirse que provengan de la misma distribución teórica? Problema de homogeneidad
+\item Teniendo varias muestras aleatorias simples (m.a.s.), ¿puede admitirse que provengan de la misma distribución teórica? Problema de homogeneidad
 \item Se observan dos o más características de los elementos de una población, son independientes? Problema de la independencia.
 \end{itemize}
 
 Se distinguen dos tipos de planteamientos, a saber:
 \begin{enumerate}
-\item Descomponer el recorrido de la distribución teórica en un número finito de subconjuntos y clasificar las observaciones muestrales según el conjunto al que pertenezcan. Después, comparar las frecuencias observadas de cada subconjunto con las que corresponderían a la distribución teórica. Esto da lugar a los test $\chi^2$, los cuales reducen un problema no paramétrico a uno que sí lo es.
+    \item Descomponer el recorrido de la distribución teórica en un número finito de subconjuntos y clasificar las observaciones muestrales según el conjunto al que pertenezcan. Después, comparar las frecuencias observadas de cada subconjunto con las que corresponderían a la distribución teórica. Esto da lugar a los test $\chi^2$, los cuales reducen un problema no paramétrico a uno que sí lo es.
 \item Usar la distribución muestral $F^*_n(x)$ para compararla con la distribución teórica o para compararlas entre sí si es un problema de independencia. Midiendo la distancia entre ambas puede saberse si es o no significativa siempre que se tenga un patrón
 \end{enumerate}
 
@@ -396,10 +431,11 @@ El recorrido de la distribución poblacional se divide en $k$ conjuntos disjunto
 
 La variable aleatoria que cuenta el número de observaciones de la muestra en cada subconjunto tiene distribución multinomial con parámetros $n$ y $\textbf{p}= (p_1,...,p_k)$:
 $$P\{N_1=n_1,...,N_k=n_k\}= \frac{n!}{n_1!\cdots n_k!} p^{n_1}_1\cdots p^{n_k}_k$$
+\todo{qué es $N_i$, $n_i$ y n?}
 
 Se ha logrado pues pasar a un test paramétrico de $H_0 :   \textbf{p} = \textbf{p}^0$ frente a la hipótesis de que el parámetro sea otro.
 
-Por tanto, esto se puede resolver por un test de razón de verosimilitudes, aunque la tradición clásica hace que el estadístico a usar normalmente sea otro que da los mismos resultados. Esto se debe a que el test de razón de verosimilitudes es posterior a los test $\chi^2$.
+Por tanto, esto se puede resolver por un test de razón de verosimilitudes, aunque la tradición clásica hace que el estadístico a usar normalmente sea otro que da los mismos resultados \todo{cuál??}. Esto se debe a que el test de razón de verosimilitudes es posterior a los test $\chi^2$.
 \\
 
 \textbf{Hipótesis compuesta} \\
@@ -408,23 +444,28 @@ La situación habitual es que la hipótesis a contrastar sea compuesta; más con
 Se podría pensar en hacer los dos test por separado, i.e., realizar la estimación puntual de los parámetros para contrastar después el ajuste a la distribución poblacional que indiquen los propios datos como la más adecuada, pero para ello se necesitarían dos m.a.s. independientes.
 
 Alternativa: Contrastar una hipótesis nula de la forma $F \in \{F_\theta| \theta \in \Theta \subset R^q\}$
+\todo{qué significa $F_{\theta}$ y $\Theta$?}
 Se procede de igual manera que con la hipótesis simple, terminando por comparar paramétricamente una distribución multinomial.
 
 \subsection{Contraste $\chi^2$ de homogeneidad}
-¿Tenemos $m$ muestras de tamaños $n_1, n_2,...,n_m$ o bien una única muestra de tamaño $n_1+n_2+\cdots + n_m$?
+%¿Tenemos $m$ muestras de tamaños $n_1, n_2,...,n_m$ o bien una única muestra de tamaño $n_1+n_2+\cdots + n_m$?
+Dadas $m$ muestras de tamaños $n_1, n_2,...,n_m$, ¿vienen éstas de la misma distribución teórica?
 
-Al ser un test $\chi ^2$ el procedimiento es el mismo: dividir en subconjuntos, clasificar las observaciones muestrales y convertirlo todo en un test paramétrico sobre los parámetros de la distribución multinomial que sigue la variable aleatoria que cuenta el número de observaciones de la muestra en cada subconjunto. 
+%Al ser un test $\chi ^2$ el procedimiento es el mismo: dividir en subconjuntos, clasificar las observaciones muestrales y convertirlo todo en un test paramétrico sobre los parámetros de la distribución multinomial que sigue la variable aleatoria que cuenta el número de observaciones de la muestra en cada subconjunto. 
 
+Al ser un test $\chi ^2$ el procedimiento es el mismo que en la sección anterior. Empezamos por dividir en subconjuntos y clasificar las observaciones muestrales y convertirlo todo en un test paramétrico sobre los parámetros de la distribución multinomial que sigue la variable aleatoria que cuenta el número de observaciones de la muestra en cada subconjunto. 
+\todo{no entiendo}
 \subsection{Contraste $\chi^2$ de independencia}
 Se tienen $n$ elementos de una población en los que se observan 2 características, $X$ e $Y$ obteniéndose una m.a.s. bidimensional $(X_1,Y_1),...,(X_n,Y_n)$, ¿son estas características independientes? La forma de proceder vuelve a ser análoga a las anteriores, lo que nos demuestra la versatilidad de los test $\chi^2$.
+\todo{no sé proceder análogamente}
 
 \subsection{Contraste de Kolmogorov-Smirnov }
-Desventajas de los tests $\chi^2$ : al discretizar las observaciones muestrales en conjuntos de una cierta partición , en el caso de las distribuciones continuas se ignora el valor exacto de las observaciones, lo que puede dar lugar a errores significativos en caso de que la muestra no sea lo suficientemente grande.
+Desventajas de los tests $\chi^2$ : al discretizar las observaciones muestrales en conjuntos de una cierta partición, en el caso de las distribuciones continuas se ignora el valor exacto de las observaciones, lo que puede dar lugar a errores significativos en caso de que la muestra no sea lo suficientemente grande.
 
 Por tanto, para el caso de bondad del ajuste a una distribución unidimensional de tipo continuo es preferible el uso de un procedimiento alternativo: en lugar de estudiar la diferencia entre los histogramas de frecuencias se compara la función de distribución muestral con la función de distribución teórica.
 
-La función de distribución muestral asociada a  una muestra aleatoria $x_1, x_2,..,x_n$ es 
-$$F^*_n(x) = \frac{nº de x_i \leq x}{n} = \left\{ \begin{array}{lcc}
+La función de distribución muestral asociada a una muestra aleatoria $x_1, x_2,..,x_n$ es 
+$$F^*_n(x) = \frac{(\textrm{nº de $x_i$}) \leq x}{n} = \left\{ \begin{array}{lcc}
              0 &   si  & x \leq x_{(1)} \\
              \\ i/n &  si & x_{(i)} < x < x_{(i+1)} \\
              \\ 1 &  si  & x \geq x_{(n)}
@@ -438,7 +479,7 @@ $$\sup |F^*_n(x) - F(x)| \xrightarrow{c.s.} 0$$
 
 Teniendo en cuenta que $F$ es desconocida y que se pretende contrastar la hipótesis nula $H_0 : F_0 = F$ usaremos como estadístico
 $$\Delta_n = \sup |F^*_n(x) - F(x)|  $$
-y por tanto tendremos como región crítica $\{\Delta_n > k\}$. Aunque esto de poco sirve si no se conoce la distribución de $\Delta_n$ bajo la hipótesis nula para determinar el nivel crítico $k$ a partir del cual sus valores son significativos de la existencia de una desviación de $F$ respecto a $F_0$.
+y por tanto tendremos como región crítica $\{\Delta_n > k\}$. Aunque esto de poco sirve si no se conoce la distribución de $\Delta_n$ bajo la hipótesis nula, necesaria para determinar el nivel crítico $k$ a partir del cual sus valores son significativos de la existencia de una desviación de $F$ respecto a $F_0$.
 
 \begin{theorem}
 (Lema) Si $F = F_0$ y $F_0$ es continua, la distribución de $\Delta_n$ no depende de $F_0$
@@ -446,7 +487,7 @@ y por tanto tendremos como región crítica $\{\Delta_n > k\}$. Aunque esto de p
 Con la demostración se da una expresión integral de la distribución buscada que no proporciona un resultado explícito pero que permite tabular la distribución de $\Delta_n$ para valores pequeños de $n$.
 
 Para valores grandes de $n$ se puede usar la distribución $K$ de Kolmogorov:
-$$P\{\sqrt{n}\Delta_n \leq z \} \longrightarrow \sum^{\infty}_{K=-\infty} (-1)^{k} e^{-2k^2 z^2}  $$
+$$P\{\sqrt{n}\Delta_n \leq z \} \longrightarrow \sum^{\infty}_{k=-\infty} (-1)^{k} e^{-2k^2 z^2}  $$
 que fue tabulada por Smirnov.
 
 Puesto que los resultados sobre la distribución de $\Delta_n$ provienen de suponer que la distribución poblacional es continua, es obvio que sólo se podrá utilizar este test en este tipo de distribuciones.
@@ -471,7 +512,7 @@ Contrastamos la hipótesis $H_0$ con un test de región crítica $\{ \Delta_{n,m
 La distribución del estadístico $\Delta_{n,m}$ se pueden determinar por métodos combinatorios, aunque también están tabulados para $n$ y $m$ pequeños.
 
 Para $n$ y $m$ grandes, se puede usar los resultados de la distribución asintótica de Kolmogorov:
-$$P\{ \sqrt{\frac{nm}{n+m}}\Delta_{n,m}\leq z\}\longrightarrow \sum^{\infty}_{i=-\infty}(-1)^i e^{-2i^2z^2}$$
+$$P\left\{ \sqrt{\frac{nm}{n+m}}\Delta_{n,m}\leq z\right\}\longrightarrow \sum^{\infty}_{i=-\infty}(-1)^i e^{-2i^2z^2}$$
 
 
 \subsection{Contrastes de Independencia}
@@ -485,7 +526,7 @@ Si puede admitirse la normalidad de las distribuciones, la manera de proceder se
 \subsubsection{Test de los signos}
 Se trata de una prueba no paramétrica para comparar el rango medio de dos muestras relacionadas y determinar si existen diferencias entre ellas. Es una alternativa al test $t$ de Student cuando no se puede suponer la normalidad de las muestras.
 
-Se dispone de una muestra aleatoria simple de tamaño $n$ proveniente de una distribución continua pero desconocida $F$ cuya mediana se denotará por $M$. Se quiere contrastar la hipótesis nula $H_0: M=m_0$frente a una delas alternativas, ya sea $M<m_0$, $M>m_0$ o simplemente $M\neq m_0$.
+Se dispone de una muestra aleatoria simple de tamaño $n$ proveniente de una distribución continua pero desconocida $F$ cuya mediana se denotará por $M$. Se quiere contrastar la hipótesis nula $H_0: M=m_0$ frente a una de las alternativas, ya sea $M<m_0$, $M>m_0$ o simplemente $M\neq m_0$.
 
 Por definición, $F(M)=1/2$ por lo que si $H_0$ se cumple, cabe esperar que en torno a la mitad de las observaciones estén por debajo de $m_0$ y la otra mitad esté por encima. Basaremos por tanto el contraste en el estadístico
 
@@ -493,15 +534,17 @@ Por definición, $F(M)=1/2$ por lo que si $H_0$ se cumple, cabe esperar que en t
 $T$ = número de observaciones muestrales mayores que $m_0$.
 \end{center}
 
-Notar que $T$ sigue una distribución binomial de parámetros $n$ y $1/2$, bajo la hipótesis nula.
+Notar que $T$ sigue una distribución binomial de parámetros $n$ y $1/2$ bajo la hipótesis nula.
 
-La región crítica va a depender de cuál sea$H_1$, por ejemplo, si $H_1:M>m_0$, cuando $H_0$ no sea cierta, la muestra tenderá a presentar más valores superiores a $m_0$ de los esperados, por lo que la región crítica será de la forma:
+La región crítica va a depender de cuál sea $H_1$, por ejemplo, si $H_1:M>m_0$, cuando $H_0$ no sea cierta, la muestra tenderá a presentar más valores superiores a $m_0$ de los esperados, por lo que la región crítica será de la forma:
 $$\{T\geq k \},$$
 con $k$ tal que $\frac{1}{2^n}\sum_{j=k}^{n} \binom{n}{j} < \alpha$ para que el contraste tenga nivel de significación $\alpha$. Esto es análogo para el caso $H_1: M< m_0$.
 
-Sin embargo, para algo más general como es el caso de $H_1:M\neq m_0$, el test debe rechazar valores muy altos y muy bajos de $T$, de manera que la región crítica será $$\{T\leq k\}\cup \{T\geq n - k \}$$, con $k$ tal que $\frac{1}{2^n}\sum_{j=1}^{k} \binom{n}{j} + \frac{1}{2^n}\sum_{j=n-k}^{n} \binom{n}{j} \leq \alpha$.
+Sin embargo, para algo más general como es el caso de $H_1:M\neq m_0$, el test debe rechazar valores muy altos y muy bajos de $T$, de manera que la región crítica será 
+    $$\{T\leq k\}\cup \{T\geq n - k \},$$
+con $k$ tal que $\frac{1}{2^n}\sum_{j=1}^{k} \binom{n}{j} + \frac{1}{2^n}\sum_{j=n-k}^{n} \binom{n}{j} \leq \alpha$, siendo $\alpha$ el nivel de significación.
 
-Si el tamaño muestral es lo suficientemente grade, puede emplearse la aproximación normal a la distribución binomial.
+Si el tamaño muestral es lo suficientemente grande, puede emplearse la aproximación normal a la distribución binomial.
 
 \subsubsection{El test de Wilcoxon de los rangos signados}
 En el caso de que la distribución pueda considerarse simétrica, además de continua, Wilcoxon propuso un test para la misma hipótesis que el test de los signos, es decir, $H_0:M =m_0$ que saca más provecho de los valores de las observaciones.
