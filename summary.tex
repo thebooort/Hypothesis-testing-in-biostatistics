@@ -79,7 +79,7 @@ Sea $H_0$ la hipótesis nula y $H_1$ la hipótesis alternativa. El problema del 
 \subsubsection{Tipos}
 Habitualmente, para tomar esta decisión podemos seguir un proceso que puede ser o no aleatorio: 
 \begin{itemize}
-    \item si se lleva a cabo dividiendo el espacio muestral $\Omega$ en dos regiones distintas: \todo{qué espacio muestral??}
+    \item si se lleva a cabo dividiendo el espacio muestral $\Omega$ en dos regiones distintas: 
 	\begin{itemize}
 		\item región crítica (rechazo)
 		\item región de aceptación 
@@ -139,7 +139,6 @@ En el marco de los problemas paramétricos, el criterio descrito para la selecci
 \textit{
     Si la distribución teórica depende de un parámetro $\theta \in \Theta$ acerca del cual hay que contrastar la hipótesis nula $H_0: \theta \in \Theta_0$ frente a la alternativa $H_1: \theta \in \Theta_1$ se denomina función de potencia, $\beta(\theta)$, de un test a la probabilidad de rechazar $H_0$ cuando el valor del parámetro es $\theta$. Es decir, si se trata de un test no aleatorizado de región crítica C entonces: $$\beta(\theta)=P_\theta(C)$$
 mientras que en general, para un test de función crítica $\phi$, es $$\beta(\theta)=E_\theta[\phi(X_1,...,X_n)].$$
-\todo{¿explicar que son las X}
 Un test tiene nivel de significación $\alpha$ si es:  $$\beta(\theta)\leq\alpha \text{ para cada } \theta \in \Theta_0;$$
 y se denomina tamaño del test al número: 
 \begin{equation}
@@ -188,7 +187,6 @@ A este tipo de test  en el que el valor del parámetro en la hipótesis alternat
 
  Añadimos también que el $p$-valor podría calcularse vía:
  $$p_{valor}=P[t_{n-1}\leq t].$$
- \todo{qué es el p-valor?? Explicar antes}
 
  
  \subsubsection{Contraste $t$ de una muestra para la media de una distribución normal con varianza desconocida. \\ Media alternativa $>$ media nula.}
@@ -209,7 +207,6 @@ A este tipo de test  en el que el valor del parámetro en la hipótesis alternat
 
  Nuevamente, el $p$-valor podría calcularse vía:
  $$p_{valor}=P[t_{n-1}> t]$$
- \todo{hay que explicar qué significa el valor p}
  
  \subsubsection*{Caso práctico en bioestadística}
  (De \cite{rosner2015fundamentals}) 
@@ -248,7 +245,6 @@ Lo que cambia es la región de rechazo, que repartimos (arbitrariamente) por igu
 
 La obtención del p-valor para este caso es más complicada:
 $$p_{valor} = \begin{cases} 2P[t_{n-1}\leq t], & \mbox{si } t\leq 0 \\ 2(1-P[t_{n-1}\leq t]), & \mbox{si } t>0 \end{cases}$$
-\todo{se ha explicado valores p?}
 
 \subsection{Contraste bilateral $\chi^2$ para la varianza de una distribución normal}
 
@@ -378,7 +374,6 @@ Acabamos la sección de test paramétricos presentando un test para el contraste
 
 
 %\includegraphics{ejemplo_grafica.png}
-\todo{Se pueden incluir gráficas así si queréis}
 
 \subsubsection*{Caso practico en bioestadística}
  (De \cite{rosner2015fundamentals}) Trasladar el que empieza en el ejemplo 8.13-8.17 
