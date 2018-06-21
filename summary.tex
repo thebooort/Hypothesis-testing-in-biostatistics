@@ -429,14 +429,23 @@ Se dispone de una m.a.s. de tamaño $n$ de una población con distribución desc
 
 El recorrido de la distribución poblacional se divide en $k$ conjuntos disjuntos $A_1,...,A_k$. Sea $p^0_i$ la probabilidad de cada $A_i$ bajo $F_0$ y $p_i$ la probabilidad desconocida que la distribución teórica asigna a cada $A_i$:
 
-La variable aleatoria que cuenta el número de observaciones de la muestra en cada subconjunto tiene distribución multinomial con parámetros $n$ y $\textbf{p}= (p_1,...,p_k)$:
-$$P\{N_1=n_1,...,N_k=n_k\}= \frac{n!}{n_1!\cdots n_k!} p^{n_1}_1\cdots p^{n_k}_k$$
-\todo{qué es $N_i$, $n_i$ y n?}
+La variable aleatoria que cuenta el número de observaciones de la muestra en cada subconjunto tiene distribución multinomial con parámetros $n$ (tamaño de muestra) y $\textbf{p}= (p_1,...,p_k)$:
+$$P\{n_1,..., n_k\}= \frac{n!}{n_1!\cdots n_k!} p^{n_1}_1\cdots p^{n_k}_k,$$
+donde $n_i$ es el número de observaciones en cada subconjunto $A_i$.
 
 Se ha logrado pues pasar a un test paramétrico de $H_0 :   \textbf{p} = \textbf{p}^0$ frente a la hipótesis de que el parámetro sea otro.
 
-Por tanto, esto se puede resolver por un test de razón de verosimilitudes, aunque la tradición clásica hace que el estadístico a usar normalmente sea otro que da los mismos resultados \todo{cuál??}. Esto se debe a que el test de razón de verosimilitudes es posterior a los test $\chi^2$.
-\\
+Por tanto, esto se puede resolver por un test de razón de verosimilitudes, aunque la tradición clásica hace que se utilice habitualmente un test $\chi^<2$, dado que este es anterior en el tiempo. Este además aporta los mismos resultados que el de razón de verosimilitudes.
+%el estadístico a usar normalmente sea otro que da los mismos resultados \todo{cuál??}. Esto se debe a que el test de razón de verosimilitudes es posterior a los test $\chi^2$.
+
+El estadístico a usar en este caso es:
+\begin{equation}
+    D = \sum_{i=1}^k \frac{(n_i - n p^0_i)^2}{n p^0_i}
+    ,
+\end{equation}
+que bajo la hipótesis nula viene aproximada (para $n$ grande) por una distribución $\chi^2$ con $k - 1$ grados de libertad.
+Con esto, podemos construir la región crítica y realizar el test.
+
 
 \textbf{Hipótesis compuesta} \\
 La situación habitual es que la hipótesis a contrastar sea compuesta; más concretamente se especifica una familia de distribuciones con forma funcional dada pero dependiente de algunos parámetros no especificados.
