@@ -64,8 +64,8 @@ El contraste de hipótesis es un área de la inferencia estadística que se ocup
 
 Más concretamente, \textit{"la finalidad de un contraste de hipótesis es decidir si una determinada hipótesis, afirmación, o conjetura, sobre la distribución poblacional estudiada, es confirmada o invalidada estadísticamente a partir de las observaciones contenidas en la muestra"}, \cite{velez1993principios}.
 
-En general, en el marco de los test de hipótesis, llamamos \textbf{hipótesis nula o $H_0$} a la hipótesis que se asume sobre nuestra distribución y la cual se pretende contrastar.
-Frente a ella, se propone la \textbf{hipótesis alternativa o $H_1$}, que agrupa aquellas distribuciones que no poseen $H_0$ como cualidad.
+En general, en el marco de los test de hipótesis, llamamos \textbf{hipótesis nula} o $\textbf{H}_0$ a la hipótesis que se asume sobre nuestra distribución y la cual se pretende contrastar.
+Frente a ella, se propone la \textbf{hipótesis alternativa} o $\textbf{H}_1$, que agrupa aquellas distribuciones que no poseen $H_0$ como cualidad.
 
 Asimismo, también destacamos otra división usual:
 \begin{itemize}
@@ -86,14 +86,14 @@ Habitualmente, para tomar esta decisión podemos seguir un proceso que puede ser
 	\end{itemize} 
 	hablamos de test no aleatorio.
 	\item Si queremos tener un test aleatorizado: escogeremos una función $\phi$ medible que vaya del espacio de muestra a $[0,1]$ (función crítica del test), de manera que esta función exprese la probabilidad de rechazar la hipótesis nula cuando se observa la muestra $(x_1,...,x_n)$.
-	Tendremos pues, probabilidad $\phi$ de rechazar $H_0$ y $1-\phi$ de no hacerlo. 
+	Tendremos pues probabilidad $\phi$ de rechazar $H_0$ y $1-\phi$ de no hacerlo. 
 \end{itemize}
 
 \subsubsection{Errores}
 
-    A la hora de realizar un test de hipótesis hay dos errores que pueden cometerse.
-    El primero, llamado \textbf{error de tipo I}, consiste en rechazar la hipótesis nula $H_0$ cuando esta es verdadera.
-    Por el contrario el otro error, llamado \textbf{error de tipo II}, consiste en no rechazar la hipótesis nula cuando esta es falsa.
+    A la hora de realizar un test de hipótesis, hay dos tipos de errores que pueden cometerse.
+    El primero, llamado \textbf{error de tipo I}, consiste en rechazar la hipótesis nula $H_0$ cuando ésta es verdadera.
+    Por el contrario el otro error, llamado \textbf{error de tipo II}, consiste en no rechazar la hipótesis nula cuando ésta es falsa.
 
     Los test se caracterizan por la probabilidad de cometer estos errores.
     Por un lado, a la probabilidad de cometer un error de tipo I se la conoce como \textbf{nivel de significación del test}, y suele denotarse con la letra griega $\alpha$.
@@ -111,7 +111,7 @@ Habitualmente, para tomar esta decisión podemos seguir un proceso que puede ser
 \begin{enumerate}
 	\item Fijar un nivel de significación $\alpha$.
 	\item Excluir todos los test que no impongan que la probabilidad de rechazar $H_0$ cuando es cierta no supere el valor de $\alpha$ . 
-	\item  Entre los test no excluidos por la condición anterior, elegir aquel que maximice la potencia del test.
+	\item  Entre los test no excluidos por la condición anterior, elegir aquél que maximice la potencia del test.
 \end{enumerate}
 
     Este criterio hace que habitualmente $\alpha$ sea mucho menor que $\beta$. 
@@ -121,7 +121,7 @@ Habitualmente, para tomar esta decisión podemos seguir un proceso que puede ser
 
 \subsubsection{Valor $p$}
     Cuando realizamos un test a un nivel de significación dado, obtenemos una respuesta binaria: aceptamos o rechazamos.
-    Sin embargo, podría interesarnos saber como de seguro es el rechazo o aceptación obtenidos, es decir, cuantificar significación estadística del test ($\alpha$ sólo nos da una cota).
+    Sin embargo, podría interesarnos saber cómo de seguro es el rechazo o aceptación obtenidos, es decir, cuantificar la significación estadística del test (ya que $\alpha$ sólo nos da una cota).
     
     Para esto se utiliza el concepto de \textbf{valor $p$}, que no es más que el nivel de significación en el límite entre la aceptación y el rechazo.
     De esta forma si, por ejemplo, en un test $p= 0.02$, sabemos que rechazaremos $H_0$ siempre que el nivel de significación sea mayor a $0.02$.
@@ -129,7 +129,7 @@ Habitualmente, para tomar esta decisión podemos seguir un proceso que puede ser
 
 \section{Test paramétricos para una población normal}
 
-     Dentro de los distintos tipos de tests estadísticos, los \textbf{tests paramétricos} son aquellos en los que se asume cierta distribución para la muestra y se contrasta el valor de sus parámetros.
+     Dentro de los distintos tipos de test estadísticos, los \textbf{tests paramétricos} son aquellos en los que se asume cierta distribución para la muestra y se contrasta el valor de sus parámetros.
      Concretamente, nosotros nos centraremos en el caso en el que la muestra sigue una distribución normal.
      
 \subsection{Introducción}
@@ -157,9 +157,9 @@ Una vez tenemos los conceptos básicos en cuanto al contraste de hipótesis, vam
  
  Este test se suele utilizar cuando la población estudiada sigue una distribución normal pero el tamaño muestral es demasiado pequeño como para que el estadístico en el que está basada la inferencia esté normalmente distribuido, utilizándose una estimación de la desviación típica en lugar del valor real. 
  
- En la bioestadística podemos tener casos en los cuales nuestro tamaño de muestra sera pequeño. Esto por ejemplo puede darse en medicina cuando tratamos a grupo reducido de pacientes.
+ En la bioestadística podemos tener casos en los cuales nuestro tamaño de muestra sea pequeño. Esto por ejemplo puede darse en medicina cuando tratamos a grupo reducido de pacientes.
 
- \subsubsection{Contraste t de una muestra para la media de una distribución normal con varianza desconocida (media alternativa $<$ media hipótesis nula)}
+ \subsubsection{Contraste $t$ de una muestra para la media de una distribución normal con varianza desconocida (media alternativa $<$ media hipótesis nula)}
  
  En este caso enfrentamos la hipótesis de que nuestros datos tengan una determinada media, frente a la posibilidad  de que la media sea menor:
  \begin{itemize}
@@ -214,7 +214,7 @@ Supongamos que estamos examinando el nivel de colesterol de $n=10$ niños cuyos 
 Planteamos por tanto el problema:
 \begin{itemize}
 	\item $H_0:\mu=175$
-	\item $H_1: \mu>mu_0$
+	\item $H_1: \mu > \mu_0$
 \end{itemize}
 Con nivel de significación $\alpha=0.05$
 $$t=\frac{200-175}{50/\sqrt{10}}=\frac{25}{15.81}=1.58$$
@@ -235,7 +235,7 @@ donde otra vez la varianza nos es desconocida.
 
 El estadístico es el mismo que en los casos anteriores:
 $$t=\frac{\bar{x}-\mu_0}{s/\sqrt{n}}.$$
-Un vez, obtenido, elegimos un nivel de significación $\alpha$ y finalmente:
+Un vez obtenido, elegimos un nivel de significación $\alpha$ y finalmente:
 
 Lo que cambia es la región de rechazo, que repartimos (arbitrariamente) por igual entre las colas de la distribución
 \begin{itemize}
@@ -271,7 +271,7 @@ Elegido un nivel de significación $\alpha$, el criterio de aceptación es:
     Para encontrar estos valores podemos usar una tabla de la distribución $\chi^2$ o un ordenador.
 
 \subsubsection*{Caso práctico en bioestadística}
-%(De \cite{rosner2015fundamentals}) Trasladar el que empieza en el ejemplo 6.39 y sigue por 7.46 y 7.47
+(De \cite{rosner2015fundamentals}) 
     Para la medida de la presión diastólica y sistólica se usan los llamados sonidos de Korotkov. 
     Estos son unos sonidos característicos que se oyen cuando la presión del brazalete de medida alcanza una presión igual a la sistólica (sonido de Korotkov de primera fase) y a la diastólica (sonido de Korotkov de quinta fase).
 
@@ -305,7 +305,7 @@ Elegido un nivel de significación $\alpha$, el criterio de aceptación es:
 
     Si usamos un nivel de significación $\alpha = 0.05$, los valores críticos son $\chi^2_{9, 0.025} = 2.70$ y $\chi^2_{9,0.975} = 19.02$. 
     Dado que $X^2$ cae fuera de la región de aceptación, rechazamos $H_0$.
-    Es decir, el la variabilidad de los dos métodos es diferente.
+    Es decir, la variabilidad de los dos métodos es diferente.
     \todo{en el libro se amplia esto con cálculo del valor p e intervalo de confianza}
 
 
@@ -376,14 +376,13 @@ Acabamos la sección de test paramétricos presentando un test para el contraste
 %\includegraphics{ejemplo_grafica.png}
 
 \subsubsection*{Caso practico en bioestadística}
- (De \cite{rosner2015fundamentals}) Trasladar el que empieza en el ejemplo 8.13-8.17 
-
-    Supongamos que queremos comparar el nivel de colesterol en sangre de dos colectivos, que suponemos distribuidos por dos distribuciones normales $N(\mu_1, \sigma_1^2)$ y $N(\mu_2, \sigma_2^2)$.
+ (De \cite{rosner2015fundamentals}) 
+Supongamos que queremos comparar el nivel de colesterol en sangre de dos colectivos, que suponemos distribuidos por dos distribuciones normales $N(\mu_1, \sigma_1^2)$ y $N(\mu_2, \sigma_2^2)$.
     El primer colectiva presenta una muestra y varianza muestral de $\bar{x}_1 = 207.3 (\textrm{mg/dL})$, $s_1 = 35.6 (\textrm{mg/dL})$, mientras que el segundo $\bar{x}_2 = 193.4 (\textrm{mg/dL})$, $s_2 = 17.3 (\textrm{mg/dL})$.
     Sus tamaños son, respectivamente, $n_1 = 100$ y $n_2 = 74$.
     Para ello, queremos aplicar el test $t$ introducido en la sección~\ref{sec:t_2samplessamevar} para ver si sus medias son iguales.
     Sin embargo, no podemos hacer esto si no sabemos previamente que $\sigma_1^2 = \sigma_2^2$.
-    Así, hemos de empezar realizando el test $F$ descrito en la sección~\ref{sec:F_
+    Así, hemos de empezar realizando el test $F$ descrito en la sección \ref{sec:F_
 2samples}.
 
     Las hipótesis en este caso son:
@@ -439,7 +438,7 @@ donde $n_i$ es el número de observaciones en cada subconjunto $A_i$.
 
 Se ha logrado pues pasar a un test paramétrico de $H_0 :   \textbf{p} = \textbf{p}^0$ frente a la hipótesis de que el parámetro sea otro.
 
-Por tanto, esto se puede resolver por un test de razón de verosimilitudes, aunque la tradición clásica hace que se utilice habitualmente un test $\chi^<2$, dado que este es anterior en el tiempo. Este además aporta los mismos resultados que el de razón de verosimilitudes.
+Por tanto, esto se puede resolver por un test de razón de verosimilitudes, aunque la tradición clásica hace que se utilice habitualmente un test $\chi^2$, dado que este es anterior en el tiempo. Este además aporta los mismos resultados que el de razón de verosimilitudes.
 %el estadístico a usar normalmente sea otro que da los mismos resultados \todo{cuál??}. Esto se debe a que el test de razón de verosimilitudes es posterior a los test $\chi^2$.
 
 El estadístico a usar en este caso es:
@@ -462,9 +461,8 @@ Nótese que en este caso el estimador tendrá que ser comparado con una distribu
 
 \subsection{Contraste $\chi^2$ de homogeneidad}
 %¿Tenemos $m$ muestras de tamaños $n_1, n_2,...,n_m$ o bien una única muestra de tamaño $n_1+n_2+\cdots + n_m$?
-Dadas $m$ muestras de tamaños $n_1, n_2,...,n_m$ nos preguntas: ¿vienen éstas de la misma distribución poblacional?
+Dadas $m$ muestras de tamaños $n_1, n_2,...,n_m$ nos podemos preguntar: ¿vienen éstas de la misma distribución poblacional?
 
-%Al ser un test $\chi ^2$ el procedimiento es el mismo: dividir en subconjuntos, clasificar las observaciones muestrales y convertirlo todo en un test paramétrico sobre los parámetros de la distribución multinomial que sigue la variable aleatoria que cuenta el número de observaciones de la muestra en cada subconjunto. 
 
 Al ser un test $\chi ^2$ el procedimiento es el mismo que en la sección anterior. Empezamos por dividir en subconjuntos y clasificar las observaciones de cada muestra. La hipótesis nula aquí es que la probabilidad de cada subconjunto $A_j$ en la muestra $i$, $p_{ij}$, no dependa de la muestra elegida; esto es:
 \begin{equation}
@@ -512,7 +510,7 @@ Este estimador vendrá distribuido según una distribución $\chi^2_{(m-1)(k-1)}
 
 
 \subsection{Contraste de Kolmogorov-Smirnov }
-Desventajas de los tests $\chi^2$ : al discretizar las observaciones muestrales en conjuntos de una cierta partición, en el caso de las distribuciones continuas se ignora el valor exacto de las observaciones, lo que puede dar lugar a errores significativos en caso de que la muestra no sea lo suficientemente grande.
+Pese a su versatilidad, los tests $\chi^2$ tienen algunas desventajas: al discretizar las observaciones muestrales en conjuntos de una cierta partición, en el caso de las distribuciones continuas se ignora el valor exacto de las observaciones, lo que puede dar lugar a errores significativos en caso de que la muestra no sea lo suficientemente grande.
 
 Por tanto, para el caso de bondad del ajuste a una distribución unidimensional de tipo continuo es preferible el uso de un procedimiento alternativo: en lugar de estudiar la diferencia entre los histogramas de frecuencias se compara la función de distribución muestral con la función de distribución teórica.
 
@@ -622,10 +620,10 @@ Tras los ejemplos que se han podido observar a lo largo del texto sobre aplicaci
 
 En este caso, la temática escogida es el uso que se le pueden dar a los test de hipótesis en la identificación de genes responsables de rasgos cuantitativos. Aunque todo el estudio de este procedimiento se sale un poco del trabajo, queremos aportar una visión global de este problema biológico y el acercamiento estadístico hacia su solución basándonos en \cite{uned2}.
 
-La problemática se centra en el estudio de los rasgos poligenéticos (cuantitativos), es decir, características de los seres vivos que surgen de la interacción de varios genes, además de la posible interacción con el medio ambiente. 
+La problemática se centra en el estudio de los rasgos poligenéticos (cuantitativos), es decir, características fenotípicas de los seres vivos que surgen de la interacción de varios genes, además de la posible interacción con el medio ambiente. 
 Nuestro objetivo final es detectar donde se encuentran estos genes, que producen cambios en rasgos cuantitativos (los llamados QTLs), pero realmente a priori no sabemos cuáles son. Por tanto, el procedimiento habitual es marcar tramos de la secuencia de ADN (lo que se conoce como marcador genético) y estudiar si entre dos de ellos existen diferencias cuando el rasgo que queremos comprender es diferente. 
 
-Es intuitivo observar que nuestro resultados no pueden quedarse aquí, puesto que los marcadores genéticos pueden contener una gran cantidad de genes distintos. Surge la necesidad de la primera herramienta estadística que sería una regresión desde el marcador hasta el gen que queremos buscar. Nuestros problemas no acaban ahí, y es que durante la división celular sabemos que se se produce una recombinación genética con lo que la información que nos proporcionan los marcadores puede verse alterada. 
+Es intuitivo observar que nuestro resultados no pueden quedarse aquí, puesto que los marcadores genéticos pueden contener una gran cantidad de genes distintos. Surge la necesidad de la primera herramienta estadística, que sería una regresión desde el marcador hasta el gen que queremos buscar. Nuestros problemas no acaban ahí, y es que durante la división celular sabemos que se se produce una recombinación genética con lo que la información que nos proporcionan los marcadores puede verse alterada. 
 En resumen, para llevar a cabo este estudio analizaremos diferencias entre marcadores genéticos entre dos poblaciones (retrocruzadas\footnote{El retrocruzamiento es un proceso experimental que se lleva a cabo con el fin de obtener individuos homocigóticos (ambos cromosomas idénticos en ambas posiciones)}) que presente dimorfismo en el rasgo que nos interesa, buscando hacer inferencia de las diferencias entre QTLs usando los marcadores.
 
 \subsection{Ejemplos de aplicaciones de test de hipótesis}
@@ -634,7 +632,7 @@ La manera más simple de identificar si existe o no un QTL en dos poblaciones, e
 Planteando el problema en un lenguaje más matemático, estamos ante dos expresiones diferentes de un rasgo. En la población 1, el rasgo sigue una distribución $N(\mu_1,\sigma)$ y en la población 2, el rasgo sigue una distribución $N(\mu_2,\sigma)$, siendo la $H_0:$ No existen diferencias significativas entre ambas medias poblacionales (o, más específicamente hablando, no hay una diferencia significativa en los genes del marcador seleccionado\footnote{En realidad la hipótesis nula que vamos buscando es la no existencia de diferencias entre todos los marcadores, pero en esta breve exposición de aplicaciones, no vamos a profundizar a tanto nivel}).
 Como podemos ver, es un test de comparación de medias.
 
-Por otra parte, también es habitual realizar test de contraste de hipótesis conocida una región determinada de nuestro marcador. En ese caso se utiliza un estadístico particular LOD (logaritmos de las odd ratio a favor de una relación QTL). Este estadístico como se expone en,\cite{uned2} tiene una distribución aproximada $\chi^2$
+Por otra parte, también es habitual realizar test de contraste de hipótesis conocida una región determinada de nuestro marcador. En ese caso se utiliza un estadístico particular LOD (logaritmos de las odd ratio a favor de una relación QTL). Este estadístico, como se expone en \cite{uned2},  tiene una distribución aproximada $\chi^2$
 con lo que podremos utilizar los test para esta distribución.
 Sin embargo, como apuntábamos, si queremos centrarnos en todo el genoma, debemos modificar estos test y con ello los estadísticos en los que se basan. 
 
